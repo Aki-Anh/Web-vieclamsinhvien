@@ -1,0 +1,308 @@
+/* --- CÀI ĐẶT CHUNG --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- HEADER --- */
+header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #141e30; /* Đổi màu chữ logo sang xanh đen cho ngầu */
+}
+
+.logo span {
+  color: #c30058; /* Chữ "Jobs" màu hồng đậm */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+/* Hover vào menu sẽ ra màu hồng đậm */
+.nav-links a:hover {
+  color: #c30058;
+}
+
+.btn-login {
+  background: #c30058; /* Nền hồng */
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+/* Hover nút login: Chuyển sang màu Xanh đen (màu phụ của bạn) */
+.btn-login:hover {
+  background: #141e30;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  background: linear-gradient(135deg, #141e30, #c30058);
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+}
+.hero p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.search-box {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f1f3f5;
+  border-radius: 5px;
+  min-width: 200px;
+}
+
+.input-group i {
+  color: #888;
+  margin-right: 10px;
+}
+
+.input-group input,
+.input-group select {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-box button {
+  background: #141e30;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-box button:hover {
+  background: #c30058;
+}
+
+/* --- CATEGORIES --- */
+.categories {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.categories h2,
+.jobs-list h2 {
+  margin-bottom: 20px;
+  color: #141e30;
+}
+
+.category-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cat-item {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  border: 1px solid #dfe6e9;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.cat-item:hover {
+  border-color: #c30058;
+  color: #c30058;
+  transform: translateY(-2px);
+}
+
+.jobs-list {
+  margin-bottom: 60px;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.job-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover vào thẻ Job: Viền chuyển màu Hồng */
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: #c30058;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Part-time: Đổi từ xanh lá sang tông Hồng nhạt để hợp với #c30058 */
+.part-time {
+  background: #ffe6f0; /* Nền hồng rất nhạt */
+  color: #c30058; /* Chữ hồng đậm */
+}
+
+/* Full-time: Giữ nguyên xanh dương hoặc đổi sang xanh đen nhạt */
+.full-time {
+  background: #e2f0fb;
+  color: #0984e3;
+}
+
+.internship {
+  background: #fff4e6;
+  color: #fdcb6e;
+}
+
+.date {
+  color: #b2bec3;
+}
+
+.job-title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #141e30; /* Tên công việc dùng màu xanh đen đậm đà */
+}
+.company {
+  color: #636e72;
+  margin-bottom: 15px;
+}
+
+.job-details {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: #636e72;
+  font-size: 0.9rem;
+}
+
+/* Nút Ứng Tuyển */
+.btn-apply {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #c30058; /* Viền hồng */
+  background: transparent;
+  color: #c30058; /* Chữ hồng */
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-apply:hover {
+  background: #c30058; /* Hover vào nền thành hồng */
+  color: white; /* Chữ trắng */
+}
+
+/* --- FOOTER --- */
+footer {
+  background: white;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  color: #636e72;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .search-box {
+    flex-direction: column;
+  }
+  .search-box button {
+    width: 100%;
+  }
+}
