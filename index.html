@@ -15,31 +15,40 @@
     Hiển thị mục đích của hệ thống, một số công việc nổi bật, và điều hướng người dùng đến các chức năng chính.
     Không yêu cầu đăng nhập, đóng vai trò là điểm vào của hệ thống. -->
     
-<div class="main">
+<div class="layout">
     <header class="header">
 
-        <div class="header__logo">
+        <div class="header__container">
+        <a class="header__logo" href="index.html">
             <!-- <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo"> -->
             <h1>CTJobs</h1>
-        </div>
+        </a>
 
-        <nav class="header__nav" aria-label="Menu chính">
+        <nav id="primary-navigation" class="header__nav" aria-label="Menu chính">
             <!-- Navigation chính (responsive, sẽ xử lý bằng CSS/JS) -->
-            <ul class="header__nav-menu">
+            <ul class="header__menu">
                 <li><a class="header__nav-link" href="index.html">Trang chủ</a></li>
                 <li><a class="header__nav-link" href="pages/jobs.html">Danh sách việc làm</a></li>
                 <li><a class="header__nav-link" href="pages/saved-jobs.html">Việc làm đã lưu</a></li>
                 <li><a class="header__nav-link" href="pages/about.html">Về chúng tôi</a></li>
                 <li><a class="header__nav-link" href="pages/contact.html">Liên hệ</a></li>
             </ul>
-
-            <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
-            <div class="header__nav-auth">
-                <a href="login.html">Đăng nhập</a>
-                <a href="register.html">Đăng ký</a>
-            </div>
         </nav>
-        
+            <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
+            <div class="header__actions">
+                <div class="header__auth">
+                    <a href="login.html">Đăng nhập</a>
+                    <a href="register.html">Đăng ký</a>
+                </div>
+                <div class="header__employer">
+                    <a href="login.html">Dành cho nhà tuyển dụng</a>
+                </div>
+            </div>
+
+            <button class="header__toggle">☰</button>
+
+        </div>
+
     </header>
 
     
@@ -71,6 +80,10 @@
                 <!-- Ô nhập liệu -->
                 <input class="search-bar__input"
                 type="text" placeholder="Nhập từ khóa công việc">
+
+                <!-- Danh sách keyword chọn nhanh -->
+                <label for="search-keyword">Từ khóa</label>
+                <input id="search-keyword" >
                 <!-- Bảng chọn khu vực -->
                 <select class="search-bar__select">
                     <option value="">Chọn khu vực</option>
@@ -171,15 +184,17 @@
         </section>
 
         <!-- Template job-card (dùng làm mẫu cho JS clone hoặc render động) -->
-        <template class="job-card" hidden>
-            <h3 class="job-card__title">Frontend Developer</h3>
-            <p class="job-card__company">ABC Company</p>
-            <p class="job-card__location">Ninh Kiều</p>
-            <p class="job-card__salary">100 - 150 triệu</p>
+        <template class="job-card-template">
+            <div class="job-card-template">
+                <h3 class="job-card__title">Frontend Developer</h3>
+                <p class="job-card__company">ABC Company</p>
+                <p class="job-card__location">Ninh Kiều</p>
+                <p class="job-card__salary">100 - 150 triệu</p>
 
-            <div class="job-card__actions">
-                <a href="#" class="button button--primary">Xem chi tiết</a>
-                <button class="button button--secondary">Lưu</button>
+                <div class="job-card__actions">
+                    <a href="#" class="button button--primary">Xem chi tiết</a>
+                    <button class="button button--secondary">Lưu</button>
+                </div>
             </div>
         </template>
     </main>
@@ -231,10 +246,10 @@
         <div class="footer__legal">
             <h4 class="footer__title">Chính sách</h4>
             <ul class="footer__legal-list">
-                <li><a href="#">Tìm việc</a></li>
-                <li><a href="#">Tạo hồ sơ</a></li>
-                <li><a href="#">Việc đã lưu</a></li>
-                <li><a href="#">Lịch sử ứng tuyển</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Quy định đăng tin</a></li>
+                <li><a href="#">Điều khoản dịch vụ</a></li>
             </ul>
         </div>
         
