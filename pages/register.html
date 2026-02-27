@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="assets/css/base.css"> -->
 </head>
 <body>
-    <!-- Trang cho phép người dùng đăng nhập vào hệ thống.
-    Xác định vai trò người dùng (người tìm việc hoặc người đăng việc) dựa trên dữ liệu mẫu lưu trữ cục bộ.
-    Sau khi đăng nhập thành công, người dùng được điều hướng đến các trang phù hợp với vai trò. -->
+    <!-- Trang cho phép người dùng tạo tài khoản mới
+    Thu thập thông tin cơ bản và vai trò người dùng.
+    Dữ liệu được lưu cục bộ -->
     
 <div class="layout">
     <header class="header">
 
         <div class="header__container">
-        <a class="header__logo" href="index.html">
+        <a class="header__logo" href="../index.html">
             <!-- <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo"> -->
             <h1>CTJobs</h1>
         </a>
@@ -27,21 +27,21 @@
         <nav id="primary-navigation" class="header__nav" aria-label="Menu chính">
             <!-- Navigation chính (responsive, sẽ xử lý bằng CSS/JS) -->
             <ul class="header__menu">
-                <li><a class="header__nav-link" href="index.html">Trang chủ</a></li>
-                <li><a class="header__nav-link" href="pages/jobs.html">Danh sách việc làm</a></li>
-                <li><a class="header__nav-link" href="pages/saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a class="header__nav-link" href="pages/about.html">Về chúng tôi</a></li>
-                <li><a class="header__nav-link" href="pages/contact.html">Liên hệ</a></li>
+                <li><a class="header__nav-link" href="../index.html">Trang chủ</a></li>
+                <li><a class="header__nav-link" href="./jobs.html">Danh sách việc làm</a></li>
+                <li><a class="header__nav-link" href="./saved-jobs.html">Việc làm đã lưu</a></li>
+                <li><a class="header__nav-link" href="./about.html">Về chúng tôi</a></li>
+                <li><a class="header__nav-link" href="./contact.html">Liên hệ</a></li>
             </ul>
         </nav>
             <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
             <div class="header__actions">
                 <div class="header__auth">
-                    <a href="login.html">Đăng nhập</a>
-                    <a href="register.html">Đăng ký</a>
+                    <a href="./login.html">Đăng nhập</a>
+                    <a href="./register.html">Đăng ký</a>
                 </div>
                 <div class="header__employer">
-                    <a href="login.html">Dành cho nhà tuyển dụng</a>
+                    <a href="./login.html">Dành cho nhà tuyển dụng</a>
                 </div>
             </div>
 
@@ -88,11 +88,11 @@
         <div class="footer__nav" aria-label="Menu footer">
             <h4 class="footer__title">Liên kết nhanh</h4>
             <ul class="footer__nav-list">
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="pages/jobs.html">Danh sách việc làm</a></li>
-                <li><a href="pages/saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a href="pages/about.html">Về chúng tôi</a></li>
-                <li><a href="pages/contact.html">Liên hệ</a></li>
+                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="./jobs.html">Danh sách việc làm</a></li>
+                <li><a href="./saved-jobs.html">Việc làm đã lưu</a></li>
+                <li><a href="./about.html">Về chúng tôi</a></li>
+                <li><a href="./contact.html">Liên hệ</a></li>
             </ul>
         </div>
         
@@ -135,7 +135,7 @@
             <p>Trụ sở chính: Đại học Cần Thơ, Khu II, đường 3/2, quận Ninh Kiều, TP Cần Thơ</p>
             <p>Hotline: 0987.654.321</p>
             <p>Email: daihoccantho@ctu.edu.vn</p>
-            <p>© 2026 &ndash; <a href="index.html">CanThoJobs</a></p>
+            <p>© 2026 &ndash; <a href="../index.html">CanThoJobs</a></p>
             <p>All rights reserved</p>
         </div>
     </div>
