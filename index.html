@@ -58,117 +58,83 @@
         <!-- Dùng id dể js có thể render dễ hơn -->
 
         <!-- Hero section: banner chính, có thể tích hợp slider bằng JS -->
-        <section id="hero" class="hero">
+        <section class="hero">
             <div class="hero__content">
-                <h2 class="hero__title">Tìm việc làm tại Cần Thơ</h2>
-                <p>Kết nối người tìm việc và nhà tuyển dụng nhanh chóng.</p>
-
-                <div class="hero__slider">
-                    <!-- JS sẽ render hình ảnh ở đây (quản lý thư mục ảnh này riêng) -->
-                </div>
-                <div class="hero__link">
-                    <a href="pages/jobs.html">Xem việc làm</a>
-                    <a href="pages/post-job.html">Đăng tin tuyển dụng</a>
+                <h1 class="hero__title">
+                    Việc làm thêm cho sinh viên tại Cần Thơ
+                </h1>
+                <p class="hero__desc">
+                    Linh hoạt thời gian · Không yêu cầu kinh nghiệm · Gần trường
+                </p>
+        
+                <div class="hero__actions">
+                    <a href="pages/jobs.html" class="button button--primary">
+                        Tìm việc ngay
+                    </a>
+                    <a href="pages/post-job.html" class="button button--outline">
+                        Đăng tuyển
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Search section: lọc việc làm theo từ khóa và khu vực -->
-        <section id="search-bar" class="search-bar" aria-label="Tìm kiếm việc làm">
-            <!-- Lưu ý: thêm id vào các form -->
-            <form id="search-form">
-                <!-- Ô nhập liệu -->
-                <input class="search-bar__input"
-                type="text" placeholder="Nhập từ khóa công việc">
+        <!-- Quick search section: lọc việc làm theo từ khóa và khu vực -->
+        <section class="quick-search">
+            <form action="pages/jobs.html" method="GET" role="search">
 
-                <!-- Danh sách keyword chọn nhanh -->
-                <label for="search-keyword">Từ khóa</label>
-                <input id="search-keyword" >
-                <!-- Bảng chọn khu vực -->
-                <select class="search-bar__select">
-                    <option value="">Chọn khu vực</option>
-                    <option value="ninh-kieu">Ninh Kiều</option>
-                    <option value="cai-rang">Cái Răng</option>
-                </select>
-                <button class="search-bar__btn" type="submit">Tìm kiếm</button>
+                <label for="keyword" class="visually-hidden">
+                    Từ khóa
+                </label>
+
+                <input 
+                    type="text" 
+                    id="keyword" 
+                    name="keyword" 
+                    placeholder="Tìm việc: Phục vụ, Gia sư, Bán hàng..."
+                >
+
+                <button type="submit" class="button button--primary">
+                    Tìm kiếm
+                </button>
+
             </form>
         </section>
 
         <!-- Featured jobs section: công việc nổi bật sẽ hiển thị ở đây -->
         <section class="featured-jobs">
-            <div class="featured-jobs__header">
-                <h2 class="featured-jobs__title">Việc làm mới nhất</h2>
-                <a href="pages/jobs.html" class="featured-jobs__view-all">
-                    Xem tất cả
-                </a>
+        
+            <header class="featured-jobs__header">
+                <h2>Việc làm mới nhất</h2>
+                <a href="pages/jobs.html">Xem tất cả</a>
+            </header>
+        
+            <div class="featured-jobs__list" id="featured-jobs-list">
+                <!-- JS render 4-6 job -->
             </div>
         
-            <div class="featured-jobs__list" id="featured-jobs__list">
-                <!-- JS sẽ render danh sách job-card động -->
-            </div>
-        </section>
-
-        <!-- About preview section: giới thiệu ngắn về website -->
-        <section id="about-preview" class="about-preview">
-            <h2>Giới thiệu</h2>
-            <p>
-                Website được xây dựng nhằm hỗ trợ kết nối việc làm tại khu vực Cần Thơ.
-            </p>
-        </section>
-
-        <!-- Category section: hiển thị liên kết các nhóm ngành -->
-        <section class="category">
-            <h2 class="category__title">Ngành nghề phổ biến</h2>
-
-            <div class="category__list">
-                <a href="#" class="category__item">Công nghệ thông tin</a>
-                <a href="#" class="category__item">Kế toán</a>
-                <a href="#" class="category__item">Marketing</a>
-                <a href="#" class="category__item">Bán hàng</a>
-            </div>
-        </section>
-
-        <!-- Process section: quy trình tìm việc -->
-        <section class="process">
-            <h2 class="process__title">Cách thức hoạt động</h2>
-
-            <div class="process__steps">
-                <div class="process__step">
-                    <h3 class="process__step-title">Tìm kiếm việc làm</h3>
-                    <p>Nhập từ khóa và khu vực mong muốn.</p>
-                </div>
-
-                <div class="process__step">
-                    <h3 class="process__step-title">Ứng tuyển</h3>
-                    <p>Gửi thông tin ứng tuyển trực tiếp.</p>
-                </div>
-
-                <div class="process__step">
-                    <h3 class="process__step-title">Nhận phản hồi</h3>
-                    <p>Nhà tuyển dụng liên hệ với bạn.</p>
-                </div>
-            </div>
         </section>
 
         <!-- Statistics section: hiển thị số liệu hệ thống (có thể render động) -->
-        <section class="stats">
-            <h2 class="stats__title">Thống kê hệ thống</h2>
+        <section class="benefits">
+            <h2>Vì sao nên tìm việc tại CTJobs?</h2>
         
-            <div class="stats__grid">
-                <div class="stats__item">
-                    <span class="stats__number">1200+</span>
-                    <span class="stats__label">Công việc đang tuyển</span>
+            <div class="benefits__grid">
+        
+                <div class="benefit-item">
+                    <h3>Phù hợp sinh viên</h3>
+                    <p>Ưu tiên việc làm part-time và theo ca.</p>
                 </div>
         
-                <div class="stats__item">
-                    <span class="stats__number">500+</span>
-                    <span class="stats__label">Nhà tuyển dụng</span>
+                <div class="benefit-item">
+                    <h3>Gần khu vực trường học</h3>
+                    <p>Dễ dàng tìm việc tại Ninh Kiều và các quận trung tâm.</p>
                 </div>
         
-                <div class="stats__item">
-                    <span class="stats__number">300+</span>
-                    <span class="stats__label">Ứng viên</span>
+                <div class="benefit-item">
+                    <h3>Không yêu cầu kinh nghiệm</h3>
+                    <p>Nhiều công việc dành cho người mới bắt đầu.</p>
                 </div>
+        
             </div>
         </section>
 
@@ -183,91 +149,92 @@
             </a>
         </section>
 
-        <!-- Cần thảo luận lại nên chọn nhóm ngành nào để xây dựng -->
         <!-- Template job-card (dùng làm mẫu cho JS clone hoặc render động) -->
-        <template class="job-card-template">
-            <div class="job-card-template">
-                <h3 class="job-card__title">Frontend Developer</h3>
-                <p class="job-card__company">ABC Company</p>
-                <p class="job-card__location">Ninh Kiều</p>
-                <p class="job-card__salary">100 - 150 triệu</p>
-
-                <div class="job-card__actions">
-                    <a href="#" class="button button--primary">Xem chi tiết</a>
-                    <button class="button button--secondary">Lưu</button>
+        <template id="job-card-template">
+            <article class="job-card">
+    
+                <h3 class="job-card__title"></h3>
+    
+                <p class="job-card__company"></p>
+                <p class="job-card__location"></p>
+    
+                <p class="job-card__salary"></p>
+                <p class="job-card__schedule"></p>
+    
+                <div class="job-card__badges">
+                    <!-- Badge động: Không yêu cầu kinh nghiệm, Gần trường, Linh hoạt -->
                 </div>
-            </div>
+    
+                <a href="#" class="button button--small">
+                    Xem chi tiết
+                </a>
+    
+            </article>
         </template>
     </main>
 
 
-    <footer class="footer">
-    <div class="footer__container">
-        <div class="footer__logo">
+    <footer class="site-footer">
+    
+        <div class="footer-container">
+    
+            <!-- Giới thiệu -->
+            <section class="footer-column footer-about">
+                <h2 class="footer-title">CTJobs</h2>
+                <p>
+                    Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time
+                    linh hoạt, phù hợp lịch học.
+                </p>
+            </section>
+
+            <!-- Cho sinh viên -->
+            <nav class="footer-column" aria-labelledby="footer-student">
+                <h3 id="footer-student" class="footer-title">
+                    Dành cho sinh viên
+                </h3>
+    
+                <ul class="footer-links">
+                    <li><a href="pages/jobs.html">Tìm việc làm thêm</a></li>
+                    <li><a href="#">Việc làm gần trường</a></li>
+                    <li><a href="#">Việc theo ca</a></li>
+                    <li><a href="#">Hướng dẫn ứng tuyển</a></li>
+                </ul>
+            </nav>
+
+            <!-- Cho nhà tuyển dụng -->
+            <nav class="footer-column" aria-labelledby="footer-employer">
+                <h3 id="footer-employer" class="footer-title">
+                    Dành cho nhà tuyển dụng
+                </h3>
+    
+                <ul class="footer-links">
+                    <li><a href="pages/post-job.html">Đăng tin tuyển dụng</a></li>
+                    <li><a href="#">Quy định đăng tin</a></li>
+                    <li><a href="#">Chính sách duyệt bài</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Liên hệ -->
+            <section class="footer-column footer-contact">
+                <h3 class="footer-title">Liên hệ</h3>
+                <ul>
+                    <li>Email: support@ctjobs.vn</li>
+                    <li>Điện thoại: 0900 000 000</li>
+                    <li>Địa chỉ: Ninh Kiều, Cần Thơ</li>
+                </ul>
+            </section>
+    
         </div>
-        
-        <div class="footer__about">
-            <h4 class="footer__title">Thông tin website</h4>
-            <p>Website việc làm Cần Thơ</p>
-            <p>Môn học: Nhập môn lập trình Web</p>
-            <p>Năm học: 2025 - 2026</p>
+    
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <p>
+                © 2026 CTJobs. Kết nối việc làm thêm cho sinh viên Cần Thơ.
+            </p>
         </div>
-        
-        <div class="footer__nav" aria-label="Menu footer">
-            <h4 class="footer__title">Liên kết nhanh</h4>
-            <ul class="footer__nav-list">
-                <li><a href="./index.html">Trang chủ</a></li>
-                <li><a href="pages/jobs.html">Danh sách việc làm</a></li>
-                <li><a href="pages/saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a href="pages/about.html">Về chúng tôi</a></li>
-                <li><a href="pages/contact.html">Liên hệ</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__employer">
-            <h4 class="footer__title">Dành cho nhà tuyển dụng</h4>
-            <ul class="footer__employer-list">
-                <li><a href="#">Đăng tuyển</a></li>
-                <li><a href="#">Quản lý tin</a></li>
-                <li><a href="#">Danh sách ứng viên</a></li>
-                <li><a href="#">Thống kê tuyển dụng</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__jobseeker">
-            <h4 class="footer__title">Dành cho ứng viên</h4>
-            <ul class="footer__jobseeker-list">
-                <li><a href="#">Tìm việc</a></li>
-                <li><a href="#">Tạo hồ sơ</a></li>
-                <li><a href="#">Việc đã lưu</a></li>
-                <li><a href="#">Lịch sử ứng tuyển</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__legal">
-            <h4 class="footer__title">Chính sách</h4>
-            <ul class="footer__legal-list">
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Chính sách bảo mật</a></li>
-                <li><a href="#">Quy định đăng tin</a></li>
-                <li><a href="#">Điều khoản dịch vụ</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__description">
-            <h4>Về website</h4>
-            <p>Website cung cấp thông tin việc làm, kết nối ứng viên và nhà tuyển dụng.</p>
-        </div>
-        
-        <div class="footer__copyright">
-            <p>Trụ sở chính: Đại học Cần Thơ, Khu II, đường 3/2, quận Ninh Kiều, TP Cần Thơ</p>
-            <p>Hotline: 0987.654.321</p>
-            <p>Email: daihoccantho@ctu.edu.vn</p>
-            <p>© 2026 &ndash; <a href="./index.html">CanThoJobs</a></p>
-            <p>All rights reserved</p>
-        </div>
-    </div>
+    
     </footer>
+
 </div>
 </body>
 </html>

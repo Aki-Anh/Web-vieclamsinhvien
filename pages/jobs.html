@@ -52,461 +52,251 @@
 
     
     <!-- Phần nội dung chính -->
-    <main class="container">
-
-        <!-- Page header section: tiêu đề trang, mô tả trang hiện tại -->
-        <section class="page-header">
-            <!-- Breadcrumb: đường dẫn điều hướng -->
-             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <ol class="breadcrumb__list">
-                    <!-- Dùng CSS :before để ngăn cách -->
-                    <li class="breadcrumb__item">
-                        <a href="../index.html" class="breadcrumb__link">Trang chủ</a>
-                    </li>
-                    <li class="breadcrumb__item" aria-current="page">
-                        Danh sách việc làm
-                    </li>
-                </ol>
-             </nav>
-
-            <h1 class="page-header__title">Danh sách việc làm</h1>
-            <p class="page-header__desc">Mô tả</p>
+    <main class="jobs-page">
+    
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li aria-current="page">Việc làm thêm</li>
+            </ol>
+        </nav>
+    
+    
+        <!-- Search Section  -->
+        <section class="jobs-search">
+            <h1 class="jobs-search__title">
+                Tìm việc làm thêm phù hợp với lịch học của bạn
+            </h1>
+    
+            <form class="jobs-search__form" role="search">
+    
+                <div class="search-field">
+                    <label for="keyword">Từ khóa</label>
+                    <input type="text" id="keyword" name="keyword" placeholder="VD: Phục vụ, Gia sư, Bán hàng...">
+                </div>
+    
+                <button type="submit" class="button button--primary">
+                    Tìm kiếm
+                </button>
+    
+            </form>
         </section>
-
-        <!-- Search section: phần tìm kiếm -->
-        <section class="search-section">
-        <form class="search-form">
-
-            <div class="search-form__field">
-                <label for="keyword">Từ khóa</label>
-                <input id="keyword" type="text" placeholder="Tìm kiếm công việc">
-            </div>
-
-            <div class="search-form__field">
-                <label for="location">Địa điểm</label>
-                <select id="location">
-                    <option value="">Tất cả</option>
-                </select>
-            </div>
-
-            <div class="search-form__field">
-                <label for="category">Nhóm ngành</label>
-                <select id="category" name="category">
-                    <option value="">Tất cả</option>
-                    <option value="it">Công nghệ thông tin</option>
-                    <option value="service">Phục vụ - Nhà hàng - Quán cà phê</option>
-                </select>
-            </div>
-
-            <div class="search-form__field">
-                <label for="salary">Mức lương</label>
-                <select id="salary">
-                    <option value="">Tất cả</option>
-                </select>
-            </div>
-
-            <button type="submit" class="button button--primary">
-                Áp dụng
-            </button>
-
-        </form>
-        </section>
-
-        <!-- Jobs layout section: phần layout bao nội dung các công việc -->
+    
+    
+        <!-- Layout -->
         <section class="jobs-layout">
-            <h2 class="visually-hidden">
-                Kết quả tìm kiếm việc làm
-            </h2>
-
-            <aside class="jobs-sidebar" aria-labelledby="sidebar-heading">
-                <h2 id="sidebar-heading" class="visually-hidden">
-                    Bộ lọc việc làm
-                </h2>
-
-                <form id="sidebar-filter-form" class="filter-form">
-
-                    <!-- Địa điểm -->
+    
+            <!-- Sidebar Filter -->
+            <aside class="jobs-sidebar" aria-label="Bộ lọc việc làm">
+    
+                <form class="filter-form">
+    
+                    <!-- Thời gian làm việc -->
                     <div class="filter-group">
-                        <h3 class="filter-group__title">Địa điểm</h3>
-                        <select name="location" id="filter-location">
-                            <option value="">Tất cả</option>
-                            <option value="ninhkieu">Ninh Kiều</option>
-                            <option value="binhthuy">Bình Thủy</option>
-                            <option value="cairang">Cái Răng</option>
-                        </select>
+                        <h2>Thời gian làm việc</h2>
+                        <label><input type="checkbox" name="time" value="part-time"> Part-time</label>
+                        <label><input type="checkbox" name="time" value="shift"> Làm theo ca</label>
+                        <label><input type="checkbox" name="time" value="weekend"> Cuối tuần</label>
+                        <label><input type="checkbox" name="time" value="flexible"> Linh hoạt</label>
                     </div>
-
+    
                     <!-- Ca làm -->
                     <div class="filter-group">
-                        <h3 class="filter-group__title">Ca làm việc</h3>
-                        <label>
-                            <input type="checkbox" name="shift" value="morning">
-                            Ca sáng (6h – 11h)
-                        </label>
-                        <label>
-                            <input type="checkbox" name="shift" value="afternoon">
-                            Ca chiều (12h – 17h)
-                        </label>
-                        <label>
-                            <input type="checkbox" name="shift" value="evening">
-                            Ca tối (17h – 22h)
-                        </label>
-                    </div>
-
-                    <!-- Lương theo giờ -->
-                    <div class="filter-group">
-                        <h3 class="filter-group__title">Lương theo giờ</h3>
-                        <select name="salary" id="filter-salary">
-                            <option value="">Tất cả</option>
-                            <option value="under20">Dưới 20.000đ/giờ</option>
-                            <option value="20to25">20.000 – 25.000đ/giờ</option>
-                            <option value="over25">Trên 25.000đ/giờ</option>
-                        </select>
-                    </div>
-
-                    <!-- Hình thức làm việc -->
-                    <div class="filter-group">
-                        <h3 class="filter-group__title">Hình thức làm việc</h3>
-                        <label><input type="radio" name="type" value="" checked> Tất cả</label>
-                        <label><input type="radio" name="type" value="parttime"> Part-time</label>
-                        <label><input type="radio" name="type" value="fulltime"> Full-time</label>
-                    </div>
-
-                    <!-- Filter cho riêng nhóm ngành IT -->
-                    <div class="filter-group filter-group--it" hidden>
-                        <h3 class="filter-group__title">Công nghệ</h3>
-                        <label><input type="checkbox" name="tech" value="react"> React</label>
-                        <label><input type="checkbox" name="tech" value="node"> NodeJS</label>
-                        <label><input type="checkbox" name="tech" value="java"> Java</label>
-                    </div>
-                    
-                    <div class="filter-group filter-group--it" hidden>
-                        <h3 class="filter-group__title">Kinh nghiệm</h3>
-                        <select name="experience">
-                            <option value="">Tất cả</option>
-                            <option value="junior">Dưới 2 năm</option>
-                            <option value="mid">2 – 5 năm</option>
-                            <option value="senior">Trên 5 năm</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group filter-group--it" hidden>
-                        <h3 class="filter-group__title">Mức lương (theo tháng)</h3>
-                        <select name="salary-monthly">
-                            <option value="">Tất cả</option>
-                            <option value="under10">Dưới 10 triệu</option>
-                            <option value="10to20">10 – 20 triệu</option>
-                            <option value="over20">Trên 20 triệu</option>
-                        </select>
-                    </div>
-
-                    <!-- Filter cho nhóm phục vụ -->
-                    <div class="filter-group filter-group--service" hidden>
-                        <h3 class="filter-group__title">Ca làm việc</h3>
+                        <h2>Ca làm</h2>
                         <label><input type="checkbox" name="shift" value="morning"> Ca sáng</label>
                         <label><input type="checkbox" name="shift" value="afternoon"> Ca chiều</label>
                         <label><input type="checkbox" name="shift" value="evening"> Ca tối</label>
                     </div>
-                    
-                    <div class="filter-group filter-group--service" hidden>
-                        <h3 class="filter-group__title">Lương theo giờ</h3>
-                        <select name="salary-hourly">
+    
+                    <!-- Mức lương -->
+                    <div class="filter-group">
+                        <h2>Mức lương</h2>
+                        <select name="salary-range">
+                            <option value="">Không giới hạn</option>
+                            <option value="under-20k">Dưới 20k/giờ</option>
+                            <option value="20-30k">20 – 30k/giờ</option>
+                            <option value="30-50k">30 – 50k/giờ</option>
+                            <option value="3-5m">3 – 5 triệu/tháng</option>
+                        </select>
+                    </div>
+    
+                    <!-- Yêu cầu kinh nghiệm -->
+                    <div class="filter-group">
+                        <h2>Kinh nghiệm</h2>
+                        <label><input type="radio" name="experience" value=""> Tất cả</label>
+                        <label><input type="radio" name="experience" value="no-exp"> Không yêu cầu</label>
+                        <label><input type="radio" name="experience" value="under-6m"> Dưới 6 tháng</label>
+                    </div>
+    
+                    <!-- Vị trí -->
+                    <div class="filter-group">
+                        <h2>Vị trí</h2>
+                        <select name="location">
                             <option value="">Tất cả</option>
-                            <option value="under20">Dưới 20k/giờ</option>
-                            <option value="20to25">20k – 25k/giờ</option>
-                            <option value="over25">Trên 25k/giờ</option>
+                            <option value="near-school">Gần trường</option>
+                            <option value="center">Trung tâm</option>
                         </select>
                     </div>
-
-                    <div class="filter-actions">
-                        <button type="submit" class="button button--primary">
-                            Áp dụng
-                        </button>
-                        <button type="reset" class="button button--secondary">
-                            Đặt lại
-                        </button>
-                    </div>
-
+    
+                    <button type="reset" class="button button--outline">
+                        Xóa bộ lọc
+                    </button>
+    
                 </form>
+    
             </aside>
-
-            <!-- Jobs content: chứa các công việc và thông tin của nó 
-                    Section nội dung chính của trang jobs,
-                    đại diện cho khu vực hiển thị kết quả tìm kiếm.
-                    Có thể bổ sung heading để đảm bảo semantic đầy đủ.
-            -->
-            <section class="jobs-content">
-
+    
+    
+            <!-- Jobs Content -->
+            <div class="jobs-content">
+    
+                <!-- Header kết quả -->
                 <header class="jobs-content__header">
-                    <!-- JS sẽ render lại heading theo tìm kiếm người dùng -->
-                    <h2 class="jobs-content__title">Việc làm mới nhất</h2>
-
-                    <!-- Jobs toolbar: thanh công cụ hỗ trợ thao tác với công việc -->
-                    <div class="jobs-toolbar">
-                        <label for="sort">Sắp xếp theo</label>
-                        <select name="sort" id="sort">
-                            <option value="lastest">Mới nhất</option>
-                            <option value="salary">Lương cao nhất</option>
-                        </select>
-                    </div>
-
+                    <h2 class="jobs-content__title">
+                        Danh sách việc làm thêm
+                    </h2>
+                    <p class="jobs-count">
+                        Hiển thị 0 kết quả
+                    </p>
                 </header>
-
-                <div class="jobs-list">
-                    <article class="job-card job-card--it"></article>
-                    <article class="job-card job-card--service">
-
-                        <header class="job-card__header">
-                            <h3 class="job-card__title">
-                                <a href="#">Phục vụ quán cà phê</a>
-                            </h3>
-                            <p class="job-card__location">
-                                Ninh Kiều, Cần Thơ
-                            </p>
-                        </header>
-
-                        <div class="job-card__highlight">
-                            <span class="job-card__salary">
-                                25.000đ/giờ
-                            </span>
-                            <span class="job-card__shift">
-                                Ca tối (17h – 22h)
-                            </span>
-                        </div>
-
-                        <div class="job-card__meta">
-                            <span>Part-time</span>
-                            <span>Không yêu cầu kinh nghiệm</span>
-                            <span>Bao ăn</span>
-                        </div>
-
-                        <footer class="job-card__footer">
-                            <time datetime="2026-02-27">
-                                Đăng 1 ngày trước
-                            </time>
-
-                            <div class="job-card__actions">
-                                <button class="button button--secondary">
-                                    Lưu
-                                </button>
-                                <a href="#" class="button button--primary">
-                                    Xem chi tiết
-                                </a>
-                            </div>
-                        </footer>
-
-                    </article>
-                </div>
-
-                <!-- Khổi Jobs loading: hiển thị cho người xem biết đang tải dữ liệu -->
-                <div class="jobs-loading" hidden aria-live="polite">
+    
+                <!-- Filter đang áp dụng -->
+                <div class="active-filters" aria-live="polite"></div>
+    
+                <!-- Loading state -->
+                <div class="jobs-loading" role="status" hidden>
                     Đang tải dữ liệu...
                 </div>
-
-                <!-- Khối Empty state: hiển thị nội dung không được tìm thấy -->
-                <div class="jobs-empty" hidden aria-live="polite">
-                    <p>Không tìm thấy công việc phù hợp</p>
+    
+                <!-- Empty state -->
+                <div class="jobs-empty" hidden>
+                    Không tìm thấy công việc phù hợp với bộ lọc hiện tại.
                 </div>
-
+    
+                <!-- Danh sách job -->
+                <div class="jobs-list">
+                    <!-- Render động bằng JavaScript -->
+                    <article class="job-card">
+            
+                        <h3 class="job-card__title">Phục vụ căn tin</h3>
+            
+                        <p class="job-card__company">Căn tin CNTT&TT</p>
+                        <p class="job-card__location">Trường CNTT&TT, Đại học Cần Thơ</p>
+            
+                        <p class="job-card__salary">20k/giờ</p>
+                        <p class="job-card__schedule">Ca sáng, ca chiều</p>
+            
+                        <div class="job-card__badges">
+                            Trong trường
+                        </div>
+            
+                        <a href="#" class="button button--small">
+                            Xem chi tiết
+                        </a>
+            
+                    </article>
+                </div>
+    
+                <!-- Pagination -->
                 <nav class="pagination" aria-label="Phân trang">
-                    <ul class="pagination__list"></ul>
+                    <button disabled>Trước</button>
+                    <button class="is-active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>Tiếp</button>
                 </nav>
-
-            </section>
+    
+            </div>
+    
         </section>
-
-        <!-- Template: Job Card (dùng cho render động bằng JS) -->
-        <!-- Mẫu job card cho nhóm IT-->
-        <template id="job-card-it-template">
-            <article class="job-card job-card--it">
-
-                <!-- Header -->
-                <header class="job-card__header">
-                    <h3 class="job-card__title">
-                        <a href="#" class="job-card__link">
-                            Frontend Developer
-                        </a>
-                    </h3>
-
-                    <div class="job-card__company">
-                        ABC Company
-                    </div>
-
-                    <div class="job-card__location">
-                        Ninh Kiều, Cần Thơ · Remote
-                    </div>
-                </header>
-
-                <div class="job-card__tags">
-                    <span class="job-card__tag">React</span>
-                    <span class="job-card__tag">TypeScript</span>
-                    <span class="job-card__tag">NodeJS</span>
+    
+    
+        <!-- Template Job Card -->
+        <template id="job-card-template">
+            <article class="job-card">
+    
+                <h3 class="job-card__title"></h3>
+    
+                <p class="job-card__company"></p>
+                <p class="job-card__location"></p>
+    
+                <p class="job-card__salary"></p>
+                <p class="job-card__schedule"></p>
+    
+                <div class="job-card__badges">
+                    <!-- Badge động: Không yêu cầu kinh nghiệm, Gần trường, Linh hoạt -->
                 </div>
-
-                <!-- Thông tin chính -->
-                <div class="job-card__details">
-                    <span class="job-card__salary">
-                        15 – 25 triệu / tháng
-                    </span>
-                    <span class="job-card__experience">
-                        2+ năm kinh nghiệm
-                    </span>
-                    <span class="job-card__type">
-                        Full-time
-                    </span>
-                </div>
-
-                <!-- Footer -->
-                <footer class="job-card__footer">
-                    <time class="job-card__date" datetime="2026-02-27">
-                        Đăng 2 ngày trước
-                    </time>
-
-                    <div class="job-card__actions">
-                        <button type="button" class="button button--secondary">
-                            Lưu
-                        </button>
-                        <a href="#" class="button button--primary">
-                            Xem chi tiết
-                        </a>
-                    </div>
-                </footer>
-
+    
+                <a href="#" class="button button--small">
+                    Xem chi tiết
+                </a>
+    
             </article>
         </template>
-
-        <!-- Mẫu job card cho nhóm phục vụ -->
-        <template id="job-card-service-template">
-            <article class="job-card job-card--service">
-
-                <!-- Header -->
-                <header class="job-card__header">
-                    <h3 class="job-card__title">
-                        <a href="#" class="job-card__link">
-                            Phục vụ quán cà phê
-                        </a>
-                    </h3>
-
-                    <div class="job-card__company">
-                        Cà phê Mộc
-                    </div>
-
-                    <div class="job-card__location">
-                        Ninh Kiều, Cần Thơ
-                    </div>
-                </header>
-
-                <!-- Thông tin nổi bật -->
-                <div class="job-card__highlight">
-                    <span class="job-card__salary">
-                        25k / giờ
-                    </span>
-                    <span class="job-card__shift">
-                        Ca tối (17h – 22h)
-                    </span>
-                </div>
-
-                <!-- Thông tin bổ sung -->
-                <div class="job-card__details">
-                    <span class="job-card__type">
-                        Part-time
-                    </span>
-                    <span class="job-card__requirement">
-                        Không yêu cầu kinh nghiệm
-                    </span>
-                    <span class="job-card__benefit">
-                        Không có
-                    </span>
-                </div>
-
-                <!-- Footer -->
-                <footer class="job-card__footer">
-                    <time class="job-card__date" datetime="2026-02-27">
-                        Đăng 1 ngày trước
-                    </time>
-
-                    <div class="job-card__actions">
-                        <button type="button" class="button button--secondary">
-                            Lưu
-                        </button>
-                        <a href="#" class="button button--primary">
-                            Xem chi tiết
-                        </a>
-                    </div>
-                </footer>
-
-            </article>
-        </template>
-        
+    
     </main>
 
 
-    <footer class="footer">
-    <div class="footer__container">
-        <div class="footer__logo">
+    <footer class="site-footer">
+    
+        <div class="footer-container">
+    
+            <!-- Giới thiệu -->
+            <section class="footer-column footer-about">
+                <h2 class="footer-title">CTJobs</h2>
+                <p>
+                    Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time
+                    linh hoạt, phù hợp lịch học.
+                </p>
+            </section>
+
+            <!-- Cho sinh viên -->
+            <nav class="footer-column" aria-labelledby="footer-student">
+                <h3 id="footer-student" class="footer-title">
+                    Dành cho sinh viên
+                </h3>
+    
+                <ul class="footer-links">
+                    <li><a href="pages/jobs.html">Tìm việc làm thêm</a></li>
+                    <li><a href="#">Việc làm gần trường</a></li>
+                    <li><a href="#">Việc theo ca</a></li>
+                    <li><a href="#">Hướng dẫn ứng tuyển</a></li>
+                </ul>
+            </nav>
+
+            <!-- Cho nhà tuyển dụng -->
+            <nav class="footer-column" aria-labelledby="footer-employer">
+                <h3 id="footer-employer" class="footer-title">
+                    Dành cho nhà tuyển dụng
+                </h3>
+    
+                <ul class="footer-links">
+                    <li><a href="pages/post-job.html">Đăng tin tuyển dụng</a></li>
+                    <li><a href="#">Quy định đăng tin</a></li>
+                    <li><a href="#">Chính sách duyệt bài</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Liên hệ -->
+            <section class="footer-column footer-contact">
+                <h3 class="footer-title">Liên hệ</h3>
+                <ul>
+                    <li>Email: support@ctjobs.vn</li>
+                    <li>Điện thoại: 0900 000 000</li>
+                    <li>Địa chỉ: Ninh Kiều, Cần Thơ</li>
+                </ul>
+            </section>
+    
         </div>
-        
-        <div class="footer__about">
-            <h4 class="footer__title">Thông tin website</h4>
-            <p>Website việc làm Cần Thơ</p>
-            <p>Môn học: Nhập môn lập trình Web</p>
-            <p>Năm học: 2025 - 2026</p>
+    
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <p>
+                © 2026 CTJobs. Kết nối việc làm thêm cho sinh viên Cần Thơ.
+            </p>
         </div>
-        
-        <div class="footer__nav" aria-label="Menu footer">
-            <h4 class="footer__title">Liên kết nhanh</h4>
-            <ul class="footer__nav-list">
-                <li><a href="../index.html">Trang chủ</a></li>
-                <li><a href="./jobs.html">Danh sách việc làm</a></li>
-                <li><a href="./saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a href="./about.html">Về chúng tôi</a></li>
-                <li><a href="./contact.html">Liên hệ</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__employer">
-            <h4 class="footer__title">Dành cho nhà tuyển dụng</h4>
-            <ul class="footer__employer-list">
-                <li><a href="#">Đăng tuyển</a></li>
-                <li><a href="#">Quản lý tin</a></li>
-                <li><a href="#">Danh sách ứng viên</a></li>
-                <li><a href="#">Thống kê tuyển dụng</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__jobseeker">
-            <h4 class="footer__title">Dành cho ứng viên</h4>
-            <ul class="footer__jobseeker-list">
-                <li><a href="#">Tìm việc</a></li>
-                <li><a href="#">Tạo hồ sơ</a></li>
-                <li><a href="#">Việc đã lưu</a></li>
-                <li><a href="#">Lịch sử ứng tuyển</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__legal">
-            <h4 class="footer__title">Chính sách</h4>
-            <ul class="footer__legal-list">
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Chính sách bảo mật</a></li>
-                <li><a href="#">Quy định đăng tin</a></li>
-                <li><a href="#">Điều khoản dịch vụ</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer__description">
-            <h4>Về website</h4>
-            <p>Website cung cấp thông tin việc làm, kết nối ứng viên và nhà tuyển dụng.</p>
-        </div>
-        
-        <div class="footer__copyright">
-            <p>Trụ sở chính: Đại học Cần Thơ, Khu II, đường 3/2, quận Ninh Kiều, TP Cần Thơ</p>
-            <p>Hotline: 0987.654.321</p>
-            <p>Email: daihoccantho@ctu.edu.vn</p>
-            <p>© 2026 &ndash; <a href="../index.html">CanThoJobs</a></p>
-            <p>All rights reserved</p>
-        </div>
-    </div>
+    
     </footer>
 </div>
 </body>
