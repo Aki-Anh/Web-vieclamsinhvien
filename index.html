@@ -6,19 +6,20 @@
     <meta name="description" content="Nền tảng kết nối việc làm tại Cần Thơ dành cho người tìm việc và nhà tuyển dụng.">
     <title>Việc làm ở Cần Thơ</title>
     <!-- <link rel="stylesheet" href="assets/images/favicon.ico"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
+    <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/base.css"> -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome-free-7.1.0-web/css/all.min.css">
 </head>
 <body>
     <!-- Trang giới thiệu tổng quan website việc làm Cần Thơ.
     Hiển thị mục đích của hệ thống, một số công việc nổi bật, và điều hướng người dùng đến các chức năng chính.
     Không yêu cầu đăng nhập, đóng vai trò là điểm vào của hệ thống. -->
     
-<div class="layout">
-    <header class="header">
+<div class="layouty">
+    <header class="site-header">
 
-        <div class="header__container">
+        <div class="header-container">
         <a class="header__logo" href="./index.html">
             <!-- <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo"> -->
             <h1>CTJobs</h1>
@@ -26,26 +27,37 @@
 
         <nav id="primary-navigation" class="header__nav" aria-label="Menu chính">
             <!-- Navigation chính (responsive, sẽ xử lý bằng CSS/JS) -->
-            <ul class="header__menu">
+            <ul class="header__list">
                 <li><a class="header__nav-link" href="./index.html">Trang chủ</a></li>
                 <li><a class="header__nav-link" href="pages/jobs.html">Danh sách việc làm</a></li>
                 <li><a class="header__nav-link" href="pages/saved-jobs.html">Việc làm đã lưu</a></li>
                 <li><a class="header__nav-link" href="pages/about.html">Về chúng tôi</a></li>
                 <li><a class="header__nav-link" href="pages/contact.html">Liên hệ</a></li>
             </ul>
-        </nav>
             <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
             <div class="header__actions">
                 <div class="header__auth">
-                    <a href="pages/login.html">Đăng nhập</a>
-                    <a href="pages/register.html">Đăng ký</a>
+                    <a href="pages/login.html">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Đăng nhập
+                    </a>
+                    <a href="pages/register.html">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Đăng ký
+                    </a>
                 </div>
-                <div class="header__employer">
-                    <a href="pages/login.html">Dành cho nhà tuyển dụng</a>
+                <div class="header__employer header__nav-link--highlight">
+                    <a href="pages/login.html">Đăng tin tuyển dụng</a>
                 </div>
             </div>
+        </nav>
 
-            <button class="header__toggle">☰</button>
+        <div class="nav-overlay">
+        </div>
+        
+        <button class="header__toggle is-open" aria-expanded="false" aria-controls="primary-navigation">
+            ☰
+        </button>
 
         </div>
 
@@ -53,7 +65,7 @@
 
     
     <!-- Phần nội dung chính -->
-    <main class="container">
+    <main class="container home-page page-container">
 
         <!-- Dùng id dể js có thể render dễ hơn -->
 
@@ -64,7 +76,7 @@
                     Việc làm thêm cho sinh viên tại Cần Thơ
                 </h1>
                 <p class="hero__desc">
-                    Linh hoạt thời gian · Không yêu cầu kinh nghiệm · Gần trường
+                    Khám phá việc làm thêm quanh bạn
                 </p>
         
                 <div class="hero__actions">
@@ -82,19 +94,30 @@
         <section class="quick-search">
             <form action="pages/jobs.html" method="GET" role="search">
 
-                <label for="keyword" class="visually-hidden">
-                    Từ khóa
-                </label>
+                <div class="search-group">
 
-                <input 
-                    type="text" 
-                    id="keyword" 
-                    name="keyword" 
-                    placeholder="Tìm việc: Phục vụ, Gia sư, Bán hàng..."
-                >
+                    <i class="fa-solid fa-magnifying-glass search-group__icon"></i>
+
+                    <input type="text" id="keyword" name="keyword"
+                        class="search-group__input"
+                        placeholder="Tìm việc làm thêm...">
+
+                    <div class="search-group__select-wrapper">
+                        <select id="location" name="location"
+                            class="search-group__select">
+                            <option value="">Khu vực làm việc</option>
+                            <option value="ninh-kieu">Ninh Kiều</option>
+                            <option value="cai-rang">Cái Răng</option>
+                            <option value="binh-thuy">Bình Thủy</option>
+                            <option value="o-mon">Ô Môn</option>
+                            <option value="thot-not">Thốt Nốt</option>
+                        </select>
+                    </div>
+
+                </div>
 
                 <button type="submit" class="button button--primary">
-                    Tìm kiếm
+                    Tìm việc
                 </button>
 
             </form>
@@ -104,12 +127,109 @@
         <section class="featured-jobs">
         
             <header class="featured-jobs__header">
-                <h2>Việc làm mới nhất</h2>
+                <h2>Việc làm thêm mới nhất</h2>
                 <a href="pages/jobs.html">Xem tất cả</a>
             </header>
         
             <div class="featured-jobs__list" id="featured-jobs-list">
                 <!-- JS render 4-6 job -->
+                <article class="job-card">
+                
+                    <h3 class="job-card__title">Phục vụ căn tin (Linh hoạt ca sáng)</h3>
+                
+                    <div class="job-card__info">
+                        <span><i class="fa-solid fa-building"></i>
+                            Căn tin CNTT&TT · Trong khuôn viên trường
+                        </span>
+                        <span><i class="fa-solid fa-location-dot"></i>ĐH Cần Thơ</span>
+                    </div>
+                
+                    <div class="job-card__meta">
+                        <span class="salary">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                            20k/giờ
+                        </span>
+                        <span class="schedule">
+                            <i class="fa-solid fa-clock"></i>
+                            Ca sáng / chiều linh hoạt
+                        </span>
+                    </div>
+                
+                    <div class="job-card__footer">
+                        <div class="job-card__badges">
+                            Gần trường
+                        </div>
+                        <div class="job-card__badges">
+                            Không yêu cầu kinh nghiệm
+                        </div>
+                
+                        <a href="#" class="job-card__link">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                
+                </article>
+                <article class="job-card">
+                
+                    <h3 class="job-card__title">Nhân viên bán hàng (Ưu tiên sinh viên)</h3>
+                
+                    <div class="job-card__info">
+                        <span><i class="fa-solid fa-building"></i> Đây là nơi không thuộc địa phận Cần Thơ</span>
+                        <span><i class="fa-solid fa-location-dot"></i> ĐH Cần Thơ</span>
+                    </div>
+                
+                    <div class="job-card__meta">
+                        <span class="salary">
+                            <i class="fa-solid fa-money-bill-wave"></i> 20k/giờ
+                        </span>
+                        <span class="schedule">
+                            <i class="fa-solid fa-clock"></i> Sáng, chiều
+                        </span>
+                    </div>
+                
+                    <div class="job-card__footer">
+                        <div class="job-card__badges">
+                            Ngay trong trường
+                        </div>
+                
+                        <a href="#" class="job-card__link">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                
+                </article>
+                <article class="job-card">
+                
+                    <h3 class="job-card__title">Gia sư Toán (2 buổi/tuần)</h3>
+                
+                    <div class="job-card__info">
+                        <span><i class="fa-solid fa-building"></i> Căn tin CNTT&TT</span>
+                        <span><i class="fa-solid fa-location-dot"></i> ĐH Cần Thơ</span>
+                    </div>
+                
+                    <div class="job-card__meta">
+                        <span class="salary">
+                            <i class="fa-solid fa-money-bill-wave"></i> 20k/giờ
+                        </span>
+                        <span class="schedule">
+                            <i class="fa-solid fa-clock"></i> Sáng, chiều
+                        </span>
+                    </div>
+                
+                    <div class="job-card__footer">
+                        <div class="job-card__badges">
+                            Tại gia
+                        </div>
+                
+                        <a href="#" class="job-card__link">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                
+                </article>
             </div>
         
         </section>
@@ -140,7 +260,7 @@
 
         <!-- CTA section: (call to action) khuyến khích nhà tuyển dụng đăng tin -->
         <section class="cta">
-            <h2 class="cta__title">Bạn là nhà tuyển dụng?</h2>
+            <h2 class="cta__title">Đăng tin tuyển dụng</h2>
             <p class="cta__desc">
                 Đăng tin tuyển dụng và tiếp cận ứng viên phù hợp ngay hôm nay.
             </p>
@@ -152,23 +272,34 @@
         <!-- Template job-card (dùng làm mẫu cho JS clone hoặc render động) -->
         <template id="job-card-template">
             <article class="job-card">
-    
+
                 <h3 class="job-card__title"></h3>
-    
-                <p class="job-card__company"></p>
-                <p class="job-card__location"></p>
-    
-                <p class="job-card__salary"></p>
-                <p class="job-card__schedule"></p>
-    
-                <div class="job-card__badges">
-                    <!-- Badge động: Không yêu cầu kinh nghiệm, Gần trường, Linh hoạt -->
+
+                <div class="job-card__info">
+                    <span><i class="fa-solid fa-building"></i> </span>
+                    <span><i class="fa-solid fa-location-dot"></i> </span>
                 </div>
-    
-                <a href="#" class="button button--small">
-                    Xem chi tiết
-                </a>
-    
+
+                <div class="job-card__meta">
+                    <span class="salary">
+                        <i class="fa-solid fa-money-bill-wave"></i> 
+                    </span>
+                    <span class="schedule">
+                        <i class="fa-solid fa-clock"></i> 
+                    </span>
+                </div>
+
+                <div class="job-card__footer">
+                    <div class="job-card__badges">
+                        
+                    </div>
+
+                    <a href="#" class="job-card__link">
+                        Xem chi tiết
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
             </article>
         </template>
     </main>
@@ -228,13 +359,32 @@
     
         <!-- Bottom bar -->
         <div class="footer-bottom">
-            <p>
-                © 2026 CTJobs. Kết nối việc làm thêm cho sinh viên Cần Thơ.
-            </p>
+            <p>© 2026 CTJobs</p>
+            <p>Kết nối việc làm thêm cho sinh viên Cần Thơ.</p>
         </div>
     
     </footer>
 
 </div>
 </body>
+
+<!-- Script cho phần nav bar, nên đặt trực tiếp trong file -->
+<script>
+    const toggle = document.querySelector('.header__toggle');
+    const nav = document.querySelector('.header__nav');
+    const overlay = document.querySelector('.nav-overlay');
+
+    toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        overlay.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', false);
+    });
+</script>
+
 </html>
