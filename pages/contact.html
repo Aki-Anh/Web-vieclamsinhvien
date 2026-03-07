@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="assets/css/base.css"> -->
 </head>
 <body>
-    <!-- Trang hiển thị thông tin cá nhân của người dùng đang đăng nhập.
-    Nội dung hiển thị thay đổi theo vai trò:
-        Người tìm việc: thông tin cá nhân, danh sách việc đã lưu
-        Người đăng việc: thông tin công ty, danh sách việc đã đăng -->
+    <!-- Trang cung cấp form liên hệ -->
     
 <div class="layout">
     <header class="header">
@@ -57,7 +54,20 @@
     <main class="container">
 
         
+        <!-- Template job-card (dùng làm mẫu cho JS clone hoặc render động) -->
+        <template class="job-card-template">
+            <div class="job-card-template">
+                <h3 class="job-card__title">Frontend Developer</h3>
+                <p class="job-card__company">ABC Company</p>
+                <p class="job-card__location">Ninh Kiều</p>
+                <p class="job-card__salary">100 - 150 triệu</p>
 
+                <div class="job-card__actions">
+                    <a href="#" class="button button--primary">Xem chi tiết</a>
+                    <button class="button button--secondary">Lưu</button>
+                </div>
+            </div>
+        </template>
     </main>
 
     
