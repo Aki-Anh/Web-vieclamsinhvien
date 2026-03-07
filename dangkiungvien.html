@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Ứng viên - Việc Làm Cần Thơ</title>
+</head>
+<body>
+
+    <div style="background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd;">
+        <p><b>BẠN LÀ AI?</b></p>
+        <button type="button" style="padding: 10px 20px; cursor: pointer; border: none; background: #28a745; color: white; font-weight: bold;">
+            TÔI LÀ ỨNG VIÊN
+        </button>
+        <button type="button" onclick="location.href='dangkituyendung.html'" style="padding: 10px 20px; cursor: pointer; border: 1px solid #28a745; background: #fff; color: #28a745; font-weight: bold; margin-left: 10px;">
+            TÔI LÀ NHÀ TUYỂN DỤNG
+        </button>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 30px;">HỒ SƠ ỨNG VIÊN CHI TIẾT</h2>
+    <hr>
+
+    <form id="candidateForm" action="/submit-candidate" method="POST" enctype="multipart/form-data" style="max-width: 700px; margin: auto; padding: 20px;">
+        
+        <h3>1. Thông tin định danh</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px;">
+                <label><b>Ảnh thẻ (3x4 hoặc 4x6) *</b></label><br>
+                <input type="file" name="avatar" accept="image/*" required>
+            </div>
+            <div style="flex: 2; min-width: 300px;">
+                <label><b>Họ và tên *</b></label><br>
+                <input type="text" name="fullname" required minlength="4" placeholder="Nguyễn Văn A" style="width: 100%;">
+            </div>
+        </div><br>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1;">
+                <label><b>Số CCCD/CMND *</b></label><br>
+                <input type="text" id="cccd" name="cccd" required pattern="[0-9]{9,12}" placeholder="9 hoặc 12 số" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+                <label><b>Ngày tháng năm sinh *</b></label><br>
+                <input type="date" id="dob" name="dob" required style="width: 100%;">
+                <p id="age-error" style="color:red; display:none; font-size: 12px;"></p>
+            </div>
+        </div><br>
+
+        <h3>2. Liên hệ & Địa chỉ</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1;">
+                <label><b>Số điện thoại *</b></label><br>
+                <input type="tel" name="phone" required pattern="^(0|84)(3|5|7|8|9)([0-9]{8})$" placeholder="09xxxxxxxx" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+                <label><b>Email *</b></label><br>
+                <input type="email" name="email" required placeholder="name@email.com" style="width: 100%;">
+            </div>
+        </div><br>
+
+        <div>
+            <label><b>Địa chỉ tại Cần Thơ (Quận/Huyện) *</b></label><br>
+            <select name="district" required style="width: 100%; padding: 5px;">
+                <option value="" disabled selected>-- Chọn Quận/Huyện --</option>
+                <optgroup label="Quận">
+                    <option value="Ninh Kiều">Ninh Kiều</option>
+                    <option value="Cái Răng">Cái Răng</option>
+                    <option value="Bình Thủy">Bình Thủy</option>
+                    <option value="Ô Môn">Ô Môn</option>
+                    <option value="Thốt Nốt">Thốt Nốt</option>
+                </optgroup>
+                <optgroup label="Huyện">
+                    <option value="Phong Điền">Phong Điền</option>
+                    <option value="Thới Lai">Thới Lai</option>
+                    <option value="Cờ Đỏ">Cờ Đỏ</option>
+                    <option value="Vĩnh Thạnh">Vĩnh Thạnh</option>
+                </optgroup>
+            </select>
+        </div><br>
+
+        <h3>3. Trình độ & Năng lực</h3>
+        <div>
+            <label><b>Học vấn (Trường, chuyên ngành, bằng cấp) *</b></label><br>
+            <textarea name="education" rows="3" required style="width: 100%;" placeholder="VD: Đại học Cần Thơ - Chuyên ngành Quản trị kinh doanh - Tốt nghiệp loại Khá"></textarea>
+        </div><br>
+
+        <div>
+            <label><b>Kinh nghiệm làm việc *</b></label><br>
+            <textarea name="experience" rows="4" required style="width: 100%;" placeholder="Mô tả các công việc bạn đã từng làm (Thời gian, vị trí, công ty)..."></textarea>
+        </div><br>
+
+        <div>
+            <label><b>Kỹ năng chuyên môn & Kỹ năng mềm *</b></label><br>
+            <input type="text" name="skills" required placeholder="VD: Tin học văn phòng, Giao tiếp tốt, Tiếng Anh giao tiếp..." style="width: 100%;">
+        </div><br>
+
+        <h3>4. Bảo mật tài khoản</h3>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1;">
+                <label><b>Mật khẩu *</b></label><br>
+                <input type="password" id="password" name="password" required minlength="8" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+                <label><b>Xác nhận mật khẩu *</b></label><br>
+                <input type="password" id="confirm_password" required style="width: 100%;">
+            </div>
+        </div>
+        <p id="pwd-error" style="color:red; display:none; font-size: 14px;">Mật khẩu không khớp!</p>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <button type="submit" style="padding: 15px 50px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 16px;">ĐĂNG KÝ HỒ SƠ ỨNG VIÊN</button>
+        </div>
+
+    </form>
+
+    <script>
+        document.getElementById('candidateForm').addEventListener('submit', function(e) {
+            let isValid = true;
+
+            // Kiểm tra tuổi >= 16
+            const dob = new Date(document.getElementById('dob').value);
+            const today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) { age--; }
+
+            if (age < 16) {
+                document.getElementById('age-error').innerText = "Bạn phải từ 16 tuổi trở lên!";
+                document.getElementById('age-error').style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById('age-error').style.display = "none";
+            }
+
+            // Kiểm tra mật khẩu
+            if (document.getElementById('password').value !== document.getElementById('confirm_password').value) {
+                document.getElementById('pwd-error').style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById('pwd-error').style.display = "none";
+            }
+
+            if (!isValid) e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

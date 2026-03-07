@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Nhà Tuyển Dụng - Việc Làm Cần Thơ</title>
+</head>
+<body>
+
+    <div style="background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd;">
+        <p><b>BẠN LÀ AI?</b></p>
+        <button type="button" onclick="location.href='dangkiungvien.html'" style="padding: 10px 20px; cursor: pointer; border: 1px solid #007bff; background: #fff; color: #007bff; font-weight: bold;">
+            TÔI LÀ ỨNG VIÊN
+        </button>
+        <button type="button" style="padding: 10px 20px; cursor: pointer; border: none; background: #007bff; color: white; font-weight: bold; margin-left: 10px;">
+            TÔI LÀ NHÀ TUYỂN DỤNG
+        </button>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 30px;">PHIẾU ĐĂNG TIN TUYỂN DỤNG</h2>
+    <hr>
+
+    <form id="recruitmentForm" action="/submit-job" method="POST" enctype="multipart/form-data" style="max-width: 800px; margin: auto; padding: 20px;">
+        
+        <h3>1. Thông tin doanh nghiệp</h3>
+        <div>
+            <label><b>Tên công ty *</b></label><br>
+            <input type="text" name="company_name" required placeholder="VD: Công ty TNHH ABC Cần Thơ" style="width: 100%;">
+        </div><br>
+
+        <div>
+            <label><b>Logo công ty (Hình ảnh) *</b></label><br>
+            <input type="file" name="company_logo" accept="image/*" required>
+        </div><br>
+
+        <div>
+            <label><b>Địa chỉ trụ sở (Quận/Huyện) *</b></label><br>
+            <select name="district" required style="padding: 5px;">
+                <option value="" disabled selected>-- Chọn Quận/Huyện --</option>
+                <optgroup label="CÁC QUẬN">
+                    <option value="Ninh Kiều">Quận Ninh Kiều</option>
+                    <option value="Cái Răng">Quận Cái Răng</option>
+                    <option value="Bình Thủy">Quận Bình Thủy</option>
+                    <option value="Ô Môn">Quận Ô Môn</option>
+                    <option value="Thốt Nốt">Quận Thốt Nốt</option>
+                </optgroup>
+                <optgroup label="CÁC HUYỆN">
+                    <option value="Phong Điền">Huyện Phong Điền</option>
+                    <option value="Thới Lai">Huyện Thới Lai</option>
+                    <option value="Cờ Đỏ">Huyện Cờ Đỏ</option>
+                    <option value="Vĩnh Thạnh">Huyện Vĩnh Thạnh</option>
+                </optgroup>
+            </select>
+        </div><br>
+
+        <h3>2. Vị trí và Yêu cầu</h3>
+        <div>
+            <label><b>Tên vị trí cần tuyển *</b></label><br>
+            <input type="text" name="job_title" required placeholder="VD: Nhân viên tư vấn, Kỹ thuật viên..." style="width: 100%;">
+        </div><br>
+
+        <div>
+            <label><b>Số lượng nhân viên cần tuyển *</b></label><br>
+            <input type="number" name="quantity" required min="1" style="width: 100px;">
+        </div><br>
+
+        <div>
+            <label><b>Yêu cầu học vấn *</b></label><br>
+            <select name="education">
+                <option value="Không yêu cầu">Không yêu cầu</option>
+                <option value="THPT">Tốt nghiệp THPT</option>
+                <option value="Trung cấp/Cao đẳng">Trung cấp / Cao đẳng</option>
+                <option value="Đại học">Đại học</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label><b>Yêu cầu kinh nghiệm *</b></label><br>
+            <select name="experience">
+                <option value="Chưa có kinh nghiệm">Chưa có kinh nghiệm</option>
+                <option value="Dưới 1 năm">Dưới 1 năm</option>
+                <option value="1 - 2 năm">1 - 2 năm</option>
+                <option value="Trên 2 năm">Trên 2 năm</option>
+            </select>
+        </div>
+
+        <h3>3. Chế độ lương bổng</h3>
+        <div>
+            <label><b>Hình thức trả lương *</b></label><br>
+            <select id="salary_type" name="salary_type" onchange="toggleSalaryInput()" style="padding: 5px;">
+                <option value="deal">Thỏa thuận trực tiếp</option>
+                <option value="fixed">Lương cố định (VNĐ)</option>
+                <option value="range">Khoảng lương (Từ - Đến)</option>
+            </select>
+        </div><br>
+
+        <div id="salary_detail" style="display: none; background: #f9f9f9; padding: 15px; border: 1px dashed #ccc;">
+            <div id="fixed_input" style="display: none;">
+                <label>Số tiền cụ thể:</label>
+                <input type="number" name="salary_fixed" placeholder="8000000">
+            </div>
+            
+            <div id="range_input" style="display: none;">
+                <label>Lương từ:</label>
+                <input type="number" name="salary_from" placeholder="6000000"> 
+                <label>Đến:</label>
+                <input type="number" name="salary_to" placeholder="10000000">
+            </div>
+        </div><br>
+
+        <h3>4. Quyền lợi & Mô tả công việc</h3>
+        <div>
+            <label><b>Quyền lợi cho nhân viên (Lương thưởng, ngày nghỉ...) *</b></label><br>
+            <textarea name="benefits" rows="4" required style="width: 100%;" placeholder="- Thưởng doanh số hàng tháng&#10;- Nghỉ phép, bảo hiểm đầy đủ..."></textarea>
+        </div><br>
+
+        <div>
+            <label><b>Chi tiết công việc (Mô tả công việc & Thời gian làm) *</b></label><br>
+            <textarea name="job_description" rows="5" required style="width: 100%;" placeholder="- Thực hiện các công việc chuyên môn...&#10;- Thời gian: 8h00 - 17h00 (T2 - T7)"></textarea>
+        </div><br>
+
+        <div>
+            <label><b>Hạn chót ứng tuyển *</b></label><br>
+            <input type="date" id="deadline" name="deadline" required>
+        </div><br>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" style="padding: 15px 40px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer;">ĐĂNG TIN TUYỂN DỤNG</button>
+        </div>
+
+    </form>
+
+    <script>
+        // Xử lý ẩn hiện phần nhập lương
+        function toggleSalaryInput() {
+            const type = document.getElementById('salary_type').value;
+            const detailBox = document.getElementById('salary_detail');
+            const fixedInput = document.getElementById('fixed_input');
+            const rangeInput = document.getElementById('range_input');
+
+            detailBox.style.display = (type === 'deal') ? 'none' : 'block';
+            fixedInput.style.display = (type === 'fixed') ? 'block' : 'none';
+            rangeInput.style.display = (type === 'range') ? 'block' : 'none';
+        }
+
+        // Kiểm tra hạn chót
+        document.getElementById('recruitmentForm').addEventListener('submit', function(e) {
+            const deadline = new Date(document.getElementById('deadline').value);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            if (deadline < today) {
+                alert("Lỗi: Hạn chót không được chọn ngày trong quá khứ!");
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>

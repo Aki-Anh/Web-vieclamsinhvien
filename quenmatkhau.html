@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên mật khẩu - Việc Làm Cần Thơ</title>
+</head>
+<body>
+
+    <div style="max-width: 450px; margin: 60px auto; border: 1px solid #ddd; padding: 35px; border-radius: 12px; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; color: #333;">KHÔI PHỤC MẬT KHẨU</h2>
+        <p id="instruction" style="text-align: center; color: #666; font-size: 14px; line-height: 1.5;">
+            Vui lòng nhập Email đã đăng ký để nhận mã khôi phục.
+        </p>
+
+        <form id="step1Form">
+            <div style="margin-bottom: 20px;">
+                <label><b>Email của bạn *</b></label><br>
+                <input type="email" id="resetEmail" required placeholder="name@email.com" 
+                       style="width: 100%; padding: 12px; margin-top: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            
+            <button type="button" onclick="goToStep2()" 
+                    style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                GỬI MÃ XÁC NHẬN
+            </button>
+        </form>
+
+        <form id="step2Form" style="display: none;">
+            <div style="margin-bottom: 15px;">
+                <label><b>Mã xác nhận (OTP) *</b></label><br>
+                <input type="text" placeholder="Gồm 6 chữ số" maxlength="6" 
+                       style="width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label><b>Mật khẩu mới *</b></label><br>
+                <input type="password" id="newPass" required minlength="8" 
+                       style="width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label><b>Xác nhận mật khẩu mới *</b></label><br>
+                <input type="password" id="confirmNewPass" required 
+                       style="width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box;">
+                <p id="errorMatch" style="color: red; font-size: 12px; display: none;">Mật khẩu không khớp!</p>
+            </div>
+
+            <button type="submit" 
+                    style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                ĐỔI MẬT KHẨU
+            </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 25px; font-size: 14px;">
+            <a href="dangnhap.html" style="text-decoration: none; color: #666;">← Quay lại Đăng nhập</a>
+        </div>
+    </div>
+
+    <script>
+        function goToStep2() {
+            const email = document.getElementById('resetEmail').value;
+            if(email === "") {
+                alert("Vui lòng nhập email!");
+                return;
+            }
+            
+            // Giả lập gửi mail thành công
+            document.getElementById('step1Form').style.display = 'none';
+            document.getElementById('step2Form').style.display = 'block';
+            document.getElementById('instruction').innerText = "Mã xác nhận đã được gửi đến: " + email;
+            document.getElementById('instruction').style.color = "green";
+        }
+
+        // Kiểm tra mật khẩu khớp nhau ở bước 2
+        document.getElementById('step2Form').addEventListener('submit', function(e) {
+            const p1 = document.getElementById('newPass').value;
+            const p2 = document.getElementById('confirmNewPass').value;
+            
+            if (p1 !== p2) {
+                e.preventDefault();
+                document.getElementById('errorMatch').style.display = 'block';
+            } else {
+                alert("Chúc mừng! Bạn đã đổi mật khẩu thành công.");
+            }
+        });
+    </script>
+
+</body>
+</html>

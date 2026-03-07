@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Việc làm ở Cần Thơ</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/base.css"> -->
+</head>
+
+<body>
+    <!-- Trang chỉ dành cho người đăng việc.
+    Cho phép nhập và đăng thông tin công việc mới.
+    Dữ liệu công việc được lưu cục bộ để hiển thị trên trang danh sách. -->
+
+    <div class="main">
+        <header class="header">
+            <!-- Phần Header -->
+            <div class="grid">
+                <nav class="header__navbar">
+                    <a href="" class="header__navbar-item">
+                        <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo">
+                    </a>
+                    <a href="" class="header__navbar-item">Danh sách việc làm</a>
+                    <a href="" class="header__navbar-item">Việc làm đã lưu</a>
+                    <a href="" class="header__navbar-item">Về chúng tôi</a>
+                    <a href="" class="header__navbar-item">Liên hệ</a>
+                    <a href="" class="header__navbar-item"></a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Phần nội dung chính -->
+        <main class="container">
+            <section class="section">
+                <p>Đã upload lên github</p>
+            </section>
+            <fieldset>
+                <form action="/submit-job" method="post" enctype="application/x-www-form-urlencoded"
+                    style="padding: 20px;">
+                    <legend style="text-align: center;">
+                        <h2>NHẬP THÔNG TIN TUYỂN DỤNG</h2>
+                    </legend>
+                    <table style="margin: 0 auto;">
+                        <tr>
+                            <td><label for="tenviec">Tên công việc*</label></td>
+                            <td><input type="text" name="title" id="tenviec" style="width: 100px;" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="tencongty">Tên công ty*</label></td>
+                            <td><input type="text" name="company" id="tencongty" style="width: 100px;" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="diadiem">Địa chỉ trụ sở (Quận/Huyện)*</label></td>
+                            <td><select name="district" id="diadiem" style="padding: 5px;" required>
+                                    <option value="" disabled selected>-- Chọn Quận/Huyện --</option>
+                                    <optgroup label="CÁC QUẬN">
+                                        <option value="Ninh Kiều">Quận Ninh Kiều</option>
+                                        <option value="Cái Răng">Quận Cái Răng</option>
+                                        <option value="Bình Thủy">Quận Bình Thủy</option>
+                                        <option value="Ô Môn">Quận Ô Môn</option>
+                                        <option value="Thốt Nốt">Quận Thốt Nốt</option>
+                                    </optgroup>
+                                    <optgroup label="CÁC HUYỆN">
+                                        <option value="Phong Điền">Huyện Phong Điền</option>
+                                        <option value="Thới Lai">Huyện Thới Lai</option>
+                                        <option value="Cờ Đỏ">Huyện Cờ Đỏ</option>
+                                        <option value="Vĩnh Thạnh">Huyện Vĩnh Thạnh</option>
+                                    </optgroup>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="slot">Số người cần thuê*</label></td>
+                            <td><input type="number" name="slot" id="slot" min="1" max="100" style="width: 100px;"
+                                    required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="hocvan">Yêu cầu học vấn*</label></td>
+                            <td><select name="academic" id="hocvan" style="padding: 5px;" required>
+                                    <option>Không có</option>
+                                    <option>Tốt nghiệp THPT</option>
+                                    <option>Cao đẳng</option>
+                                    <option>Đại học</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="hocvan">Yêu cầu kinh nghiệm*</label></td>
+                            <td><select name="academic" id="hocvan" style="padding: 5px;" required>
+                                    <option>Intern (0 kinh nghiệm)</option>
+                                    <option>Fresher (dưới 1 năm)</option>
+                                    <option>Junior (1-3 năm)</option>
+                                    <option>Senior (Trên 3 năm)</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="loaihinh">Hình thức công việc*</label></td>
+                            <td><select name="type" id="loaihinh" style="padding: 5px;" required>
+                                    <option>Toàn thời gian</option>
+                                    <option>Bán thời gian</option>
+                                    <option>Thời vụ</option>
+                                    <option>Làm từ xa</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="luong" class="luong">Mức lương*</label></td>
+                            <td><select name="salary" id="luong" style="padding: 5px;" required>
+                                    <option disabled selected value="">...</option>
+                                    <option value="static">Cố định</option>
+                                    <option value="negotiable">Thỏa thuận</option>
+                                </select></td>
+                        </tr>
+                        <tr id="Luongcodinh">
+                            <td><input type="number" name="staticsalary" id="baonhieu" style="width: 100px;"> VND
+                            </td>
+                            <td><select name="per" id="theo" style="padding: 5px;">
+                                    <option>/giờ</option>
+                                    <option>/ngày</option>
+                                    <option>/tuần</option>
+                                    <option>/tháng</option>
+                                    <option>/năm</option>
+                                </select></td>
+                        </tr>
+                        <style>
+                            #Luongcodinh {
+                                display: none;
+                            }
+                        </style>
+                        <script>
+                            const Selectelement = document.querySelector("#luong");
+                            const row = document.getElementById("Luongcodinh");
+
+                            Selectelement.addEventListener("change", (event) => {
+                                if (event.target.value == "static") {
+                                    row.style.display = "table-row";
+                                }
+                                else {
+                                    row.style.display = "none";
+                                };
+                            });
+                        </script>
+                        <tr>
+                            <td><label for="quyenloi">Quyền lợi nhân viên</label></td>
+                            <td><textarea name="description" rows="6" id="mieuta"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="mieuta">Miêu tả công việc*</label></td>
+                            <td><textarea name="description" rows="6" id="mieuta" required></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email xin việc*</label></td>
+                            <td><input type="email" name="email" id="email" required style="width: 100px;"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="deadline">Hạn chót</label></td>
+                            <td><input type="date" name="email" id="deadline"></td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><button type="submit"
+                                    style="padding: 15px 40px; background: #007bff; color: white; border: none; font-weight: bold; cursor: pointer;">Nhập</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </fieldset>
+        </main>
+
+        <footer class="footer">
+            <!-- Phần Footer -->
+        </footer>
+    </div>
+</body>
+
+</html>
