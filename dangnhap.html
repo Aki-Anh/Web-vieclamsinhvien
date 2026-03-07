@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Việc Làm Cần Thơ</title>
+</head>
+<body>
+
+    <div style="max-width: 400px; margin: 50px auto; border: 1px solid #ddd; padding: 30px; border-radius: 10px; font-family: sans-serif;">
+        <h2 style="text-align: center; color: #333;">ĐĂNG NHẬP</h2>
+        <p style="text-align: center; color: #666; font-size: 14px;">Chào mừng bạn trở lại với Việc Làm Cần Thơ</p>
+        
+        <div style="display: flex; margin-bottom: 20px; border-bottom: 2px solid #eee;">
+            <div id="tabCandidate" onclick="switchRole('candidate')" style="flex: 1; text-align: center; padding: 10px; cursor: pointer; font-weight: bold; color: #28a745; border-bottom: 3px solid #28a745;">Ứng viên</div>
+            <div id="tabEmployer" onclick="switchRole('employer')" style="flex: 1; text-align: center; padding: 10px; cursor: pointer; font-weight: bold; color: #999;">Nhà tuyển dụng</div>
+        </div>
+
+        <form id="loginForm" action="/process-login" method="POST">
+            <input type="hidden" id="userRole" name="userRole" value="candidate">
+
+            <div style="margin-bottom: 15px;">
+                <label><b>Email đăng nhập</b></label><br>
+                <input type="email" name="email" required placeholder="example@gmail.com" style="width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label><b>Mật khẩu</b></label><br>
+                <input type="password" name="password" required style="width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 20px;">
+                <label style="cursor: pointer;"><input type="checkbox"> Ghi nhớ tôi</label>
+                <a href="quenmatkhau.html" style="text-decoration: none; color: #007bff;">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" id="btnLogin" style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                ĐĂNG NHẬP
+            </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 14px;">
+            <span>Chưa có tài khoản? </span>
+            <a id="linkRegister" href="dangkiungvien.html" style="color: #28a745; font-weight: bold; text-decoration: none;">Đăng ký ngay</a>
+        </div>
+    </div>
+
+    <script>
+        function switchRole(role) {
+            const tabC = document.getElementById('tabCandidate');
+            const tabE = document.getElementById('tabEmployer');
+            const btn = document.getElementById('btnLogin');
+            const link = document.getElementById('linkRegister');
+            const roleInput = document.getElementById('userRole');
+
+            if (role === 'candidate') {
+                // Đổi giao diện sang màu xanh lá (Ứng viên)
+                tabC.style.color = '#28a745';
+                tabC.style.borderBottom = '3px solid #28a745';
+                tabE.style.color = '#999';
+                tabE.style.borderBottom = 'none';
+                btn.style.background = '#28a745';
+                link.style.color = '#28a745';
+                link.href = 'dangkiungvien.html';
+                roleInput.value = 'candidate';
+            } else {
+                // Đổi giao diện sang màu xanh dương (Nhà tuyển dụng)
+                tabE.style.color = '#007bff';
+                tabE.style.borderBottom = '3px solid #007bff';
+                tabC.style.color = '#999';
+                tabC.style.borderBottom = 'none';
+                btn.style.background = '#007bff';
+                link.style.color = '#007bff';
+                link.href = 'dangkituyendung.html';
+                roleInput.value = 'employer';
+            }
+        }
+    </script>
+
+</body>
+</html>
