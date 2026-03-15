@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -387,4 +388,378 @@
     });
 </script>
 
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nền tảng kết nối việc làm tại Cần Thơ dành cho sinh viên và nhà tuyển dụng">
+
+    <title>CTJobs - Việc làm thêm tại Cần Thơ</title>
+
+    <link rel="stylesheet" href="assets/css/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="home-page">
+
+    <!-- Header -->
+    <header class="site-header">
+        <!-- TOPBAR -->
+        <div class="header__topbar">
+            <div class="container navbar-container">
+                <div class="topbar-info">
+                    <p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
+                </div>
+                <div class="topbar-actions">
+                    <i class="bi bi-envelope"></i>
+                    <a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
+                    <a href="#" class="btn btn-success">Đăng tuyển ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="header__navbar">
+            <div class="container navbar-container">
+                <div class="navbar-logo">
+                    <a href="#">CTJobs</a>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Mở menu">
+                    <i class="bi bi-list"></i>
+                </button>
+                <nav class="navbar-nav">
+                    <ul class="nav-list">
+                        <li><a href="#">Trang Chủ</a></li>
+                        <li><a href="./pages/jobs.html">Việc Làm</a></li>
+                        <li><a href="#">Giới Thiệu</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar-auth">
+                    <button class="btn btn-outline-primary login-trigger" onclick="openLoginPanel()"
+                        aria-label="Đăng nhập">
+                        <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+                    </button>
+                    <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i>Đăng Ký</a>
+                </div>
+            </div>
+        </div>
+        <div class="login-overlay" onclick="closeAllPanels()"></div>
+
+        <!-- Login Panel -->
+        <div class="login-panel" id="loginPanel">
+            <button class="login-close" onclick="closeAllPanels()" aria-label="Đóng cửa sổ">
+                <i class="bi bi-x"></i>
+            </button>
+            <h3>Đăng nhập</h3>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Nhập email" required>
+                </div>
+                <div class="form-group password-group">
+                    <label for="loginPassword">Mật khẩu</label>
+                    <div class="password-field">
+                        <input type="password" id="loginPassword" required>
+                        <button type="button" class="toggle-password"
+                            onclick="togglePasswordVisibility('loginPassword')" aria-label="Toggle mật khẩu">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+                <div class="login-extra">
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- OffCanvas Menu -->
+        <div class="offcanvas-menu" id="offcanvasMenu">
+            <button class="offcanvas-close" onclick="closeAllPanels()" aria-label="Đóng menu">
+                <i class="bi bi-x"></i>
+            </button>
+
+            <!-- Navigation Container -->
+            <div class="offcanvas-navigation">
+                <ul class="offcanvas-nav">
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="./pages/jobs.html">Việc Làm</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="offcanvas-auth">
+                <button class="btn btn-outline-primary" onclick="openLoginPanel()">Đăng nhập</button>
+                <a href="#" class="btn btn-primary">Đăng ký</a>
+            </div>
+
+            <!-- Employer CTA - toàn bộ div là link -->
+            <a href="#" class="offcanvas-employer"
+                onclick="event.preventDefault(); /* Thêm hành động chuyển trang ở đây */">
+                <p>Dành cho nhà tuyển dụng</p>
+                <button class="btn btn-success">Đăng tuyển ngay</button>
+            </a>
+        </div>
+        <div class="offcanvas-overlay" onclick="closeAllPanels()"></div>
+
+    </header>
+
+    <!-- Main Content -->
+    <main class="site-main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <h1>Tìm việc làm thêm tại Cần&nbsp;Thơ ngay hôm&nbsp;nay</h1>
+                    <p>Khám phá các công việc part-time linh hoạt gần bạn</p>
+                </div>
+<!-- Trong phần hero search -->
+<div class="hero-search">
+    <form id="jobSearchForm">
+        <!-- Ô nhập liệu đầu tiên chiếm toàn bộ dòng -->
+        <div class="search-field grid-search-1">
+            <i class="bi bi-briefcase"></i>
+            <input type="text" placeholder="Tên công việc, khu vực..." aria-label="Tìm kiếm công việc">
+        </div>
+        
+            <div class="search-field grid-search-2">
+                <i class="bi bi-geo-alt"></i>
+                <select id="location" aria-label="Chọn khu vực">
+                    <option value="" selected>Khu vực</option>
+                    <option value="cantho">Cần Thơ</option>
+                    <option value="cairang">Cái Răng</option>
+                    <option value="ninhkieu">Ninh Kiều</option>
+                    <option value="binhthuy">Bình Thủy</option>
+                </select>
+            </div>
+            
+            <div class="search-field grid-search-3">
+                <i class="bi bi-grid"></i>
+                <select id="jobs-category" aria-label="Chọn ngành nghề">
+                    <option value="" selected>Ngành Nghề</option>
+                    <option value="phucvu">Phục Vụ</option>
+                    <option value="giasu">Gia Sư</option>
+                    <option value="trogiang">Trợ Giảng</option>
+                    <option value="banhang">Bán Hàng</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+            </div>
+            
+            <button class="search-button grid-search-4" type="submit">
+                <i class="bi bi-search"></i>
+                <span>Tìm Kiếm</span>
+            </button>
+    </form>
+    
+    <div class="popular-jobs">
+        <p>Từ khóa phổ biến:</p>
+        <a href="#">Phục vụ</a>
+        <a href="#">Bán hàng</a>
+        <a href="#">Gia Sư</a>
+        <a href="#">Marketing</a>
+    </div>
+</div>
+
+
+
+            </div>
+        </section>
+        <section class="feature-jobs">
+            <div class="container">
+                <h2>Việc làm thêm nổi bật</h2>
+                <p>(Hiển thị danh sách việc làm nổi bật)</p>
+            </div>
+        </section>
+        <section class="category-jobs">
+            <div class="container">
+                <h2>Khám phá việc làm theo ngành&nbsp;nghề</h2>
+                <p>(Hiển thị danh mục ngành nghề)</p>
+            </div>
+        </section>
+        <section class="lastest-jobs">
+            <div class="container">
+                <h2>Việc làm thêm mới nhất</h2>
+                <p>(Hiển thị danh sách việc làm mới nhất)</p>
+            </div>
+        </section>
+        <section class="benifits">
+            <div class="container">
+                <h2>Vì sao bạn nên tìm việc ở CTJobs</h2>
+                <p>Nền tảng giúp sinh viên Cần Thơ tìm việc làm thêm nhanh chóng và phù hợp</p>
+                <p>(Hiển thị lợi ích cụ thể như: Uy tín, tiện lợi, dễ dàng,...)</p>
+            </div>
+        </section>
+        <section class="cta">
+            <div class="container">
+                <h4>Dành cho nhà tuyển dụng</h4>
+                <h2>Bạn có vị trí cần ứng tuyển</h2>
+                <p>Đăng tin tuyển dụng và tiếp cận ứng viên phù hợp ngay hôm nay.</p>
+                <a href="#" class="btn btn-primary">Tạo hồ sơ</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <section class="about">
+                <h4>CTJobs</h4>
+                <p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
+                </p>
+            </section>
+            <section class="student">
+                <h5>Dành cho sinh viên</h5>
+                <ul>
+                    <li><a href="#">Tìm Việc</a></li>
+                    <li><a href="#">Tạo Hồ Sơ</a></li>
+                    <li><a href="#">Việc Làm Đã Lưu</a></li>
+                </ul>
+            </section>
+            <section class="employers">
+                <h5>Nhà tuyển dụng</h5>
+                <ul>
+                    <li><a href="#">Đăng Tin</a></li>
+                    <li><a href="#">Quản Lý Công Việc</a></li>
+                    <li><a href="#">Tìm Ứng Viên</a></li>
+                </ul>
+            </section>
+            <section class="contact">
+                <h5>Liên Hệ</h5>
+                <ul>
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        <a href="tel:0900000000">0900 000 000</a>
+                    </li>
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        <a href="#">Ninh Kiều, Cần Thơ</a>
+                    </li>
+                </ul>
+            </section>
+            <section class="social">
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </section>
+        </div>
+        <div class="footer-bottombar">
+            <div>© 2026 CTJobs</div>
+            <div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
+        </div>
+    </footer>
+
+    <script>
+        // UI Functions
+        function isTablet_or_Mobile() {
+            return window.innerWidth <= 992; // Tablet và mobile
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('offcanvasMenu');
+            const overlay = document.querySelector('.offcanvas-overlay');
+            if (menu && overlay) {
+                menu.classList.toggle('active');
+                overlay.style.display = menu.classList.contains('active') ? 'block' : 'none';
+            }
+        }
+
+        function openLoginPanel() {
+            const panel = document.getElementById('loginPanel');
+            const overlay = document.querySelector('.login-overlay');
+            if (panel && overlay) {
+                panel.classList.add('active');
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeAllPanels() {
+            const panels = ['offcanvasMenu', 'loginPanel'];
+            const overlays = ['.offcanvas-overlay', '.login-overlay'];
+
+            panels.forEach((id, index) => {
+                const element = document.getElementById(id);
+                const overlay = document.querySelector(overlays[index]);
+                if (element) element.classList.remove('active');
+                if (overlay) overlay.style.display = 'none';
+            });
+
+            // Clear login form
+            const form = document.getElementById('loginForm');
+            if (form) setTimeout(() => form.reset(), 300);
+        }
+
+        function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling.querySelector('i');
+            if (input && icon) {
+                input.type = input.type === 'password' ? 'text' : 'password';
+                icon.classList.toggle('bi-eye');
+                icon.classList.toggle('bi-eye-slash');
+            }
+        }
+
+        // Event Handlers
+        document.addEventListener('click', function (e) {
+            const menu = document.getElementById('offcanvasMenu');
+            const panel = document.getElementById('loginPanel');
+
+            if (menu && menu.classList.contains('active') &&
+                !e.target.closest('#offcanvasMenu') && !e.target.closest('.menu-toggle')) {
+                closeAllPanels();
+            }
+
+            if (panel && panel.classList.contains('active') &&
+                !e.target.closest('#loginPanel') && !e.target.closest('.login-trigger')) {
+                closeAllPanels();
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllPanels();
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', function () {
+            if (!isTablet_or_Mobile()) {
+                // Trên desktop, đảm bảo menu offcanvas đóng
+                const menu = document.getElementById('offcanvasMenu');
+                const overlay = document.querySelector('.offcanvas-overlay');
+                if (menu) menu.classList.remove('active');
+                if (overlay) overlay.style.display = 'none';
+            }
+        });
+
+        // Enhancements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make select fields clickable anywhere
+            document.querySelectorAll('.search-field').forEach(field => {
+                field.addEventListener('click', function (e) {
+                    if (!e.target.classList.contains('bi') && e.target.tagName !== 'SELECT') {
+                        const select = this.querySelector('select');
+                        if (select) select.focus();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+
+>>>>>>> 3b4cfb3 (fix readme object)
 </html>
