@@ -3,145 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký Ứng viên - Việc Làm Cần Thơ</title>
+    <title>Đăng ký Ứng viên - Việc làm Cần Thơ</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f7f6; }
+        .container { max-width: 1100px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        fieldset { border: 1px solid #28a745; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        legend { font-weight: bold; color: #28a745; font-size: 1.2rem; padding: 0 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #28a745; color: white; }
+        .img-preview { width: 50px; height: 60px; object-fit: cover; border: 1px solid #ccc; }
+        .form-grid { width: 100%; border: none; }
+        .form-grid td { border: none; padding: 8px; }
+        input, select, textarea { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 25px; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; }
+        #btnSubmit { background-color: #28a745; color: white; width: 100%; }
+        .delete-btn { background: #dc3545; color: white; padding: 5px 10px; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-    <div style="background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd;">
-        <p><b>BẠN LÀ AI?</b></p>
-        <button type="button" style="padding: 10px 20px; cursor: pointer; border: none; background: #28a745; color: white; font-weight: bold;">
-            TÔI LÀ ỨNG VIÊN
-        </button>
-        <button type="button" onclick="location.href='dangkituyendung.html'" style="padding: 10px 20px; cursor: pointer; border: 1px solid #28a745; background: #fff; color: #28a745; font-weight: bold; margin-left: 10px;">
-            TÔI LÀ NHÀ TUYỂN DỤNG
-        </button>
+<div class="container">
+    <fieldset>
+        <legend>HỒ SƠ ỨNG VIÊN</legend>
+        <form id="candidateForm">
+            <table class="form-grid">
+                <tr>
+                    <td>Họ tên*</td>
+                    <td><input type="text" id="fullname" required placeholder="Nguyễn Văn A" minlength="4"></td>
+                    <td>Ảnh thẻ*</td>
+                    <td><input type="file" id="avatar" accept="image/*" required></td>
+                </tr>
+                <tr>
+                    <td>SĐT*</td>
+                    <td><input type="tel" id="phone" required pattern="[0-9]{10}" title="Vui lòng nhập đúng 10 chữ số điện thoại" placeholder="09xxxxxxxx"></td>
+                    <td>Email*</td>
+                    <td><input type="email" id="email" required placeholder="vidu@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td>CCCD*</td>
+                    <td><input type="text" id="cccd" required pattern="[0-9]{9,12}" title="CCCD/CMND phải là 9 hoặc 12 chữ số" placeholder="9 hoặc 12 số"></td>
+                    <td>Ngày sinh*</td>
+                    <td><input type="date" id="dob" required></td>
+                </tr>
+                <tr>
+                    <td>Khu vực*</td>
+                    <td>
+                        <select id="district" required>
+                            <option value="">-- Chọn Quận/Huyện --</option>
+                            <option value="Ninh Kiều">Ninh Kiều</option>
+                            <option value="Cái Răng">Cái Răng</option>
+                            <option value="Bình Thủy">Bình Thủy</option>
+                            <option value="Ô Môn">Ô Môn</option>
+                            <option value="Thốt Nốt">Thốt Nốt</option>
+                        </select>
+                    </td>
+                    <td>Kỹ năng*</td>
+                    <td><input type="text" id="skills" required placeholder="VD: Tin học, Giao tiếp"></td>
+                </tr>
+                <tr>
+                    <td>Học vấn*</td>
+                    <td colspan="3"><textarea id="edu" rows="2" required placeholder="Trường học - Chuyên ngành"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Kinh nghiệm*</td>
+                    <td colspan="3"><textarea id="exp" rows="2" required placeholder="Mô tả kinh nghiệm làm việc"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <button type="button" id="btnSubmit">ĐĂNG KÝ HỒ SƠ</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div style="text-align: center; margin-top: 15px; font-size: 14px;">
+            <div>Đã có tài khoản? <a href="dangnhap.html" style="color: #28a745; font-weight: bold;">Đăng nhập</a></div>
+            <div style="margin-top: 5px; color: #666;">Bạn là Nhà tuyển dụng? <a href="dangkituyendung.html" style="color: #007bff; font-weight: bold;">Đăng ký tại đây</a></div>
+        </div>
+    </fieldset>
+
+    <h3>DANH SÁCH ỨNG VIÊN</h3>
+    <div style="overflow-x: auto;">
+        <table id="candidateTable">
+            <thead>
+                <tr>
+                    <th>STT</th><th>Ảnh</th><th>Họ tên</th><th>SĐT</th><th>Email</th><th>CCCD</th><th>Ngày sinh</th><th>Khu vực</th><th>Học vấn</th><th>Kỹ năng</th><th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
+</div>
 
-    <h2 style="text-align: center; margin-top: 30px;">HỒ SƠ ỨNG VIÊN CHI TIẾT</h2>
-    <hr>
+<script>
+    let idNum = 1;
+    document.getElementById('btnSubmit').onclick = function() {
+        const form = document.getElementById('candidateForm');
+        if (form.checkValidity()) {
+            const tbody = document.querySelector('#candidateTable tbody');
+            const tr = document.createElement('tr');
+            
+            addTd(tr, idNum++);
+            const tdImg = document.createElement('td');
+            const img = document.createElement('img');
+            img.className = 'img-preview';
+            const file = document.getElementById('avatar').files[0];
+            if (file) img.src = URL.createObjectURL(file);
+            tdImg.appendChild(img);
+            tr.appendChild(tdImg);
 
-    <form id="candidateForm" action="/submit-candidate" method="POST" enctype="multipart/form-data" style="max-width: 700px; margin: auto; padding: 20px;">
-        
-        <h3>1. Thông tin định danh</h3>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 200px;">
-                <label><b>Ảnh thẻ (3x4 hoặc 4x6) *</b></label><br>
-                <input type="file" name="avatar" accept="image/*" required>
-            </div>
-            <div style="flex: 2; min-width: 300px;">
-                <label><b>Họ và tên *</b></label><br>
-                <input type="text" name="fullname" required minlength="4" placeholder="Nguyễn Văn A" style="width: 100%;">
-            </div>
-        </div><br>
+            addTd(tr, document.getElementById('fullname').value);
+            addTd(tr, document.getElementById('phone').value);
+            addTd(tr, document.getElementById('email').value);
+            addTd(tr, document.getElementById('cccd').value);
+            addTd(tr, document.getElementById('dob').value);
+            addTd(tr, document.getElementById('district').value);
+            addTd(tr, document.getElementById('edu').value);
+            addTd(tr, document.getElementById('skills').value);
 
-        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div style="flex: 1;">
-                <label><b>Số CCCD/CMND *</b></label><br>
-                <input type="text" id="cccd" name="cccd" required pattern="[0-9]{9,12}" placeholder="9 hoặc 12 số" style="width: 100%;">
-            </div>
-            <div style="flex: 1;">
-                <label><b>Ngày tháng năm sinh *</b></label><br>
-                <input type="date" id="dob" name="dob" required style="width: 100%;">
-                <p id="age-error" style="color:red; display:none; font-size: 12px;"></p>
-            </div>
-        </div><br>
+            const tdDel = document.createElement('td');
+            const btnDel = document.createElement('button');
+            btnDel.textContent = "Xóa"; btnDel.className = "delete-btn";
+            btnDel.onclick = () => tr.remove();
+            tdDel.appendChild(btnDel);
+            tr.appendChild(tdDel);
 
-        <h3>2. Liên hệ & Địa chỉ</h3>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div style="flex: 1;">
-                <label><b>Số điện thoại *</b></label><br>
-                <input type="tel" name="phone" required pattern="^(0|84)(3|5|7|8|9)([0-9]{8})$" placeholder="09xxxxxxxx" style="width: 100%;">
-            </div>
-            <div style="flex: 1;">
-                <label><b>Email *</b></label><br>
-                <input type="email" name="email" required placeholder="name@email.com" style="width: 100%;">
-            </div>
-        </div><br>
-
-        <div>
-            <label><b>Địa chỉ tại Cần Thơ (Quận/Huyện) *</b></label><br>
-            <select name="district" required style="width: 100%; padding: 5px;">
-                <option value="" disabled selected>-- Chọn Quận/Huyện --</option>
-                <optgroup label="Quận">
-                    <option value="Ninh Kiều">Ninh Kiều</option>
-                    <option value="Cái Răng">Cái Răng</option>
-                    <option value="Bình Thủy">Bình Thủy</option>
-                    <option value="Ô Môn">Ô Môn</option>
-                    <option value="Thốt Nốt">Thốt Nốt</option>
-                </optgroup>
-                <optgroup label="Huyện">
-                    <option value="Phong Điền">Phong Điền</option>
-                    <option value="Thới Lai">Thới Lai</option>
-                    <option value="Cờ Đỏ">Cờ Đỏ</option>
-                    <option value="Vĩnh Thạnh">Vĩnh Thạnh</option>
-                </optgroup>
-            </select>
-        </div><br>
-
-        <h3>3. Trình độ & Năng lực</h3>
-        <div>
-            <label><b>Học vấn (Trường, chuyên ngành, bằng cấp) *</b></label><br>
-            <textarea name="education" rows="3" required style="width: 100%;" placeholder="VD: Đại học Cần Thơ - Chuyên ngành Quản trị kinh doanh - Tốt nghiệp loại Khá"></textarea>
-        </div><br>
-
-        <div>
-            <label><b>Kinh nghiệm làm việc *</b></label><br>
-            <textarea name="experience" rows="4" required style="width: 100%;" placeholder="Mô tả các công việc bạn đã từng làm (Thời gian, vị trí, công ty)..."></textarea>
-        </div><br>
-
-        <div>
-            <label><b>Kỹ năng chuyên môn & Kỹ năng mềm *</b></label><br>
-            <input type="text" name="skills" required placeholder="VD: Tin học văn phòng, Giao tiếp tốt, Tiếng Anh giao tiếp..." style="width: 100%;">
-        </div><br>
-
-        <h3>4. Bảo mật tài khoản</h3>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-            <div style="flex: 1;">
-                <label><b>Mật khẩu *</b></label><br>
-                <input type="password" id="password" name="password" required minlength="8" style="width: 100%;">
-            </div>
-            <div style="flex: 1;">
-                <label><b>Xác nhận mật khẩu *</b></label><br>
-                <input type="password" id="confirm_password" required style="width: 100%;">
-            </div>
-        </div>
-        <p id="pwd-error" style="color:red; display:none; font-size: 14px;">Mật khẩu không khớp!</p>
-
-        <div style="text-align: center; margin: 40px 0;">
-            <button type="submit" style="padding: 15px 50px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 16px;">ĐĂNG KÝ HỒ SƠ ỨNG VIÊN</button>
-        </div>
-
-    </form>
-
-    <script>
-        document.getElementById('candidateForm').addEventListener('submit', function(e) {
-            let isValid = true;
-
-            // Kiểm tra tuổi >= 16
-            const dob = new Date(document.getElementById('dob').value);
-            const today = new Date();
-            let age = today.getFullYear() - dob.getFullYear();
-            if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) { age--; }
-
-            if (age < 16) {
-                document.getElementById('age-error').innerText = "Bạn phải từ 16 tuổi trở lên!";
-                document.getElementById('age-error').style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById('age-error').style.display = "none";
-            }
-
-            // Kiểm tra mật khẩu
-            if (document.getElementById('password').value !== document.getElementById('confirm_password').value) {
-                document.getElementById('pwd-error').style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById('pwd-error').style.display = "none";
-            }
-
-            if (!isValid) e.preventDefault();
-        });
-    </script>
-
+            tbody.appendChild(tr);
+            form.reset();
+        } else { form.reportValidity(); }
+    };
+    function addTd(tr, val) { const td = document.createElement('td'); td.textContent = val; tr.appendChild(td); }
+</script>
 </body>
 </html>
