@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="assets/css/components/job-card.css">
     <link rel="stylesheet" href="assets/css/components/toast.css">
     <link rel="stylesheet" href="assets/css/components/modal.css">
+=======
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 </head>
 
 <body class="home-page">
@@ -41,26 +44,41 @@
                 <div class="navbar-logo">
                     <a href="#">CTJobs</a>
                 </div>
+<<<<<<< HEAD
                 <button class="menu-toggle" aria-label="Mở menu">
+=======
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Mở menu">
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                     <i class="bi bi-list"></i>
                 </button>
                 <nav class="navbar-nav">
                     <ul class="nav-list">
+<<<<<<< HEAD
                         <li><a href="#" class="active">Trang Chủ</a></li>
                         <li><a href="./pages/jobs.html">Việc Làm</a></li>
                         <li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
+=======
+                        <li><a href="#">Trang Chủ</a></li>
+                        <li><a href="./pages/jobs.html">Việc Làm</a></li>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                         <li><a href="#">Giới Thiệu</a></li>
                         <li><a href="#">Liên Hệ</a></li>
                     </ul>
                 </nav>
                 <div class="navbar-auth">
+<<<<<<< HEAD
                     <button class="btn btn-outline-primary login-trigger" aria-label="Đăng nhập">
+=======
+                    <button class="btn btn-outline-primary login-trigger" onclick="openLoginPanel()"
+                        aria-label="Đăng nhập">
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                         <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
                     </button>
                     <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i>Đăng Ký</a>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 <!-- Login Panel Component -->
 <div class="login-overlay"></div>
 <div class="login-panel" id="loginPanel">
@@ -97,32 +115,86 @@
         <!-- OffCanvas Menu -->
         <div class="offcanvas-menu" id="offcanvasMenu">
             <button class="offcanvas-close" aria-label="Đóng menu">
+=======
+        <div class="login-overlay" onclick="closeAllPanels()"></div>
+
+        <!-- Login Panel -->
+        <div class="login-panel" id="loginPanel">
+            <button class="login-close" onclick="closeAllPanels()" aria-label="Đóng cửa sổ">
+                <i class="bi bi-x"></i>
+            </button>
+            <h3>Đăng nhập</h3>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Nhập email" required>
+                </div>
+                <div class="form-group password-group">
+                    <label for="loginPassword">Mật khẩu</label>
+                    <div class="password-field">
+                        <input type="password" id="loginPassword" required>
+                        <button type="button" class="toggle-password"
+                            onclick="togglePasswordVisibility('loginPassword')" aria-label="Toggle mật khẩu">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+                <div class="login-extra">
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- OffCanvas Menu -->
+        <div class="offcanvas-menu" id="offcanvasMenu">
+            <button class="offcanvas-close" onclick="closeAllPanels()" aria-label="Đóng menu">
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                 <i class="bi bi-x"></i>
             </button>
 
             <!-- Navigation Container -->
             <div class="offcanvas-navigation">
                 <ul class="offcanvas-nav">
+<<<<<<< HEAD
                     <li><a href="#"  class="active">Trang Chủ</a></li>
                     <li><a href="./pages/jobs.html">Việc Làm</a></li>
                     <li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
+=======
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="./pages/jobs.html">Việc Làm</a></li>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                     <li><a href="#">Giới Thiệu</a></li>
                     <li><a href="#">Liên Hệ</a></li>
                 </ul>
             </div>
 
             <div class="offcanvas-auth">
+<<<<<<< HEAD
                 <button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
+=======
+                <button class="btn btn-outline-primary" onclick="openLoginPanel()">Đăng nhập</button>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                 <a href="#" class="btn btn-primary">Đăng ký</a>
             </div>
 
             <!-- Employer CTA - toàn bộ div là link -->
+<<<<<<< HEAD
             <a href="#" class="offcanvas-employer">
+=======
+            <a href="#" class="offcanvas-employer"
+                onclick="event.preventDefault(); /* Thêm hành động chuyển trang ở đây */">
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
                 <p>Dành cho nhà tuyển dụng</p>
                 <button class="btn btn-success">Đăng tuyển ngay</button>
             </a>
         </div>
+<<<<<<< HEAD
         <div class="offcanvas-overlay"></div>
+=======
+        <div class="offcanvas-overlay" onclick="closeAllPanels()"></div>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 
     </header>
 
@@ -174,10 +246,17 @@
     
     <div class="popular-jobs">
         <p>Từ khóa phổ biến:</p>
+<<<<<<< HEAD
         <a href="#" class="popular-keyword">Phục vụ</a>
         <a href="#" class="popular-keyword">Bán hàng</a>
         <a href="#" class="popular-keyword">Gia Sư</a>
         <a href="#" class="popular-keyword">Marketing</a>
+=======
+        <a href="#">Phục vụ</a>
+        <a href="#">Bán hàng</a>
+        <a href="#">Gia Sư</a>
+        <a href="#">Marketing</a>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
     </div>
 </div>
 
@@ -191,6 +270,7 @@
                 <p>(Hiển thị danh sách việc làm nổi bật)</p>
             </div>
         </section>
+<<<<<<< HEAD
 <section class="category-jobs">
   <div class="container">
     <h2>Khám phá việc làm theo ngành&nbsp;nghề</h2>
@@ -224,12 +304,21 @@
 </section>
 
 
+=======
+        <section class="category-jobs">
+            <div class="container">
+                <h2>Khám phá việc làm theo ngành&nbsp;nghề</h2>
+                <p>(Hiển thị danh mục ngành nghề)</p>
+            </div>
+        </section>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
         <section class="lastest-jobs">
             <div class="container">
                 <h2>Việc làm thêm mới nhất</h2>
                 <p>(Hiển thị danh sách việc làm mới nhất)</p>
             </div>
         </section>
+<<<<<<< HEAD
 <section class="benifits">
   <div class="container">
     <h2>Vì sao bạn nên tìm việc ở CTJobs</h2>
@@ -271,6 +360,23 @@
 </section>
 
 
+=======
+        <section class="benifits">
+            <div class="container">
+                <h2>Vì sao bạn nên tìm việc ở CTJobs</h2>
+                <p>Nền tảng giúp sinh viên Cần Thơ tìm việc làm thêm nhanh chóng và phù hợp</p>
+                <p>(Hiển thị lợi ích cụ thể như: Uy tín, tiện lợi, dễ dàng,...)</p>
+            </div>
+        </section>
+        <section class="cta">
+            <div class="container">
+                <h4>Dành cho nhà tuyển dụng</h4>
+                <h2>Bạn có vị trí cần ứng tuyển</h2>
+                <p>Đăng tin tuyển dụng và tiếp cận ứng viên phù hợp ngay hôm nay.</p>
+                <a href="#" class="btn btn-primary">Tạo hồ sơ</a>
+            </div>
+        </section>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
     </main>
 
     <!-- Footer -->
@@ -332,6 +438,7 @@
         </div>
     </footer>
 
+<<<<<<< HEAD
 
 <script src="assets/js/data/jobData.js"></script>
 <script src="assets/js/modules/jobCardBuilder.js"></script>
@@ -340,8 +447,108 @@
 <script src="assets/js/modules/modal.js"></script>
 <script src="assets/js/modules/toast.js"></script>
 <script src="assets/js/main.js"></script>
+=======
+    <script>
+        // UI Functions
+        function isTablet_or_Mobile() {
+            return window.innerWidth <= 992; // Tablet và mobile
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('offcanvasMenu');
+            const overlay = document.querySelector('.offcanvas-overlay');
+            if (menu && overlay) {
+                menu.classList.toggle('active');
+                overlay.style.display = menu.classList.contains('active') ? 'block' : 'none';
+            }
+        }
+
+        function openLoginPanel() {
+            const panel = document.getElementById('loginPanel');
+            const overlay = document.querySelector('.login-overlay');
+            if (panel && overlay) {
+                panel.classList.add('active');
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeAllPanels() {
+            const panels = ['offcanvasMenu', 'loginPanel'];
+            const overlays = ['.offcanvas-overlay', '.login-overlay'];
+
+            panels.forEach((id, index) => {
+                const element = document.getElementById(id);
+                const overlay = document.querySelector(overlays[index]);
+                if (element) element.classList.remove('active');
+                if (overlay) overlay.style.display = 'none';
+            });
+
+            // Clear login form
+            const form = document.getElementById('loginForm');
+            if (form) setTimeout(() => form.reset(), 300);
+        }
+
+        function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling.querySelector('i');
+            if (input && icon) {
+                input.type = input.type === 'password' ? 'text' : 'password';
+                icon.classList.toggle('bi-eye');
+                icon.classList.toggle('bi-eye-slash');
+            }
+        }
+
+        // Event Handlers
+        document.addEventListener('click', function (e) {
+            const menu = document.getElementById('offcanvasMenu');
+            const panel = document.getElementById('loginPanel');
+
+            if (menu && menu.classList.contains('active') &&
+                !e.target.closest('#offcanvasMenu') && !e.target.closest('.menu-toggle')) {
+                closeAllPanels();
+            }
+
+            if (panel && panel.classList.contains('active') &&
+                !e.target.closest('#loginPanel') && !e.target.closest('.login-trigger')) {
+                closeAllPanels();
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAllPanels();
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', function () {
+            if (!isTablet_or_Mobile()) {
+                // Trên desktop, đảm bảo menu offcanvas đóng
+                const menu = document.getElementById('offcanvasMenu');
+                const overlay = document.querySelector('.offcanvas-overlay');
+                if (menu) menu.classList.remove('active');
+                if (overlay) overlay.style.display = 'none';
+            }
+        });
+
+        // Enhancements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make select fields clickable anywhere
+            document.querySelectorAll('.search-field').forEach(field => {
+                field.addEventListener('click', function (e) {
+                    if (!e.target.classList.contains('bi') && e.target.tagName !== 'SELECT') {
+                        const select = this.querySelector('select');
+                        if (select) select.focus();
+                    }
+                });
+            });
+        });
+    </script>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae

@@ -96,16 +96,58 @@
   background-color: var(--color-primary-light);
 }
 
+<<<<<<< HEAD
 .navbar-nav a.active {
   color: var(--color-black);
 }
 
+=======
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 .navbar-auth {
   display: flex;
   gap: var(--spacing-3);
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+
+/* Login Panel & OffCanvas */
+.login-overlay,
+.offcanvas-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+}
+
+/* Center Login Panel */
+.login-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 320px;
+  background: var(--color-bg-primary);
+  padding: var(--spacing-5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: var(--z-modal);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  overflow-y: auto;
+  max-height: 90vh;
+  pointer-events: none;
+}
+
+.login-panel.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 .offcanvas-menu {
   position: fixed;
   top: 0;
@@ -129,6 +171,38 @@
   transform: translateX(-100%);
 }
 
+<<<<<<< HEAD
+=======
+/* Panel Header */
+.login-panel h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Close button for login panel */
+.login-close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  background: none;
+  border: none;
+  font-size: var(--font-size-2xl);
+  cursor: pointer;
+  color: var(--color-gray);
+  padding: var(--spacing-1);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.login-close:hover {
+  background-color: var(--color-gray-light);
+}
+
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 /* Form Groups */
 .form-group {
   margin-bottom: var(--spacing-4);
@@ -494,7 +568,11 @@
 .search-field select:focus {
   border-color: var(--color-primary);
   outline: none;
+<<<<<<< HEAD
   box-shadow: var(--shadow-md);
+=======
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.25);
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 }
 
 /* Force dropdown width to match select width */
@@ -505,24 +583,48 @@
 }
 
 .search-button {
+<<<<<<< HEAD
   background: var(--color-primary);
   color: var(--color-text-inverse);
   border: 2px solid var(--color-primary);
+=======
+  background: var(--color-warning);
+  color: var(--color-warning-dark);
+  border: none;
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
   padding: var(--spacing-4) var(--spacing-5);
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+<<<<<<< HEAD
   transition: all 0.3s;
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
   box-shadow: var(--shadow-md);
+=======
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
   min-width: 150px;
 }
 
 .search-button:hover {
+<<<<<<< HEAD
   background: var(--color-primary-hover);
   border: 2px solid var(--color-primary);
+=======
+  background: var(--color-warning-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+}
+
+.search-button:active {
+  transform: translateY(0);
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 }
 
 .popular-jobs {
@@ -541,6 +643,7 @@
 }
 
 .popular-jobs a {
+<<<<<<< HEAD
   color: var(--color-text-primary);
   font-weight: 500;
   padding: var(--spacing-2) var(--spacing-4);
@@ -556,6 +659,21 @@
   transform: translateY(-1px);
   text-decoration: none;
   border: 1px solid var(--color-border);
+=======
+  color: var(--color-warning);
+  font-weight: 500;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.popular-jobs a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-decoration: none;
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 }
 
 /* Feature Jobs */
@@ -661,6 +779,7 @@
   margin: 0 auto var(--spacing-8);
   line-height: var(--line-height-normal);
 }
+<<<<<<< HEAD
 /* === JOB CATEGORY SECTION === */
 .job-categories-grid {
   display: grid;
@@ -723,6 +842,8 @@
   margin-bottom: var(--spacing-4);
 }
 
+=======
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 
 /* CTA Section */
 .cta {
@@ -1143,6 +1264,7 @@
 }
 
 
+<<<<<<< HEAD
 /* === LOGIN PANEL STYLES === */
 .login-overlay {
     display: none;
@@ -1447,3 +1569,5 @@
 .breadcrumb-item a:hover {
   text-decoration: underline;
 }
+=======
+>>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
