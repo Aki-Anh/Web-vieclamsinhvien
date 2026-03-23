@@ -96,46 +96,14 @@
   background-color: var(--color-primary-light);
 }
 
+.navbar-nav a.active {
+  color: var(--color-black);
+}
+
 .navbar-auth {
   display: flex;
   gap: var(--spacing-3);
   align-items: center;
-}
-
-
-/* Login Panel & OffCanvas */
-.login-overlay,
-.offcanvas-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 99;
-  backdrop-filter: blur(2px);
-}
-
-/* Center Login Panel */
-.login-panel {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  width: 320px;
-  background: var(--color-bg-primary);
-  padding: var(--spacing-5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  z-index: var(--z-modal);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  overflow-y: auto;
-  max-height: 90vh;
-  pointer-events: none;
-}
-
-.login-panel.active {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-  pointer-events: all;
 }
 
 .offcanvas-menu {
@@ -159,35 +127,6 @@
 
 .offcanvas-menu.active {
   transform: translateX(-100%);
-}
-
-/* Panel Header */
-.login-panel h3 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-4);
-  font-size: var(--font-size-xl);
-  color: var(--color-text-primary);
-  text-align: center;
-  font-weight: 600;
-}
-
-/* Close button for login panel */
-.login-close {
-  position: absolute;
-  top: var(--spacing-4);
-  right: var(--spacing-4);
-  background: none;
-  border: none;
-  font-size: var(--font-size-2xl);
-  cursor: pointer;
-  color: var(--color-gray);
-  padding: var(--spacing-1);
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.login-close:hover {
-  background-color: var(--color-gray-light);
 }
 
 /* Form Groups */
@@ -555,7 +494,7 @@
 .search-field select:focus {
   border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.25);
+  box-shadow: var(--shadow-md);
 }
 
 /* Force dropdown width to match select width */
@@ -566,29 +505,24 @@
 }
 
 .search-button {
-  background: var(--color-warning);
-  color: var(--color-warning-dark);
-  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: 2px solid var(--color-primary);
   padding: var(--spacing-4) var(--spacing-5);
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
-  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
   min-width: 150px;
 }
 
 .search-button:hover {
-  background: var(--color-warning-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
-}
-
-.search-button:active {
-  transform: translateY(0);
+  background: var(--color-primary-hover);
+  border: 2px solid var(--color-primary);
 }
 
 .popular-jobs {
@@ -607,19 +541,21 @@
 }
 
 .popular-jobs a {
-  color: var(--color-warning);
+  color: var(--color-text-primary);
   font-weight: 500;
   padding: var(--spacing-2) var(--spacing-4);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--spacing-5);
+  background: var(--color-bg-primary);
   transition: all 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-border);
 }
 
 .popular-jobs a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-text-inverse);
+  background-color: var(--color-primary-hover);
   transform: translateY(-1px);
   text-decoration: none;
+  border: 1px solid var(--color-border);
 }
 
 /* Feature Jobs */
@@ -725,6 +661,68 @@
   margin: 0 auto var(--spacing-8);
   line-height: var(--line-height-normal);
 }
+/* === JOB CATEGORY SECTION === */
+.job-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.job-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-5) var(--spacing-4);
+  background: var(--color-bg-primary);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.job-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.job-category-card i {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-3);
+  color: var(--color-primary);
+}
+
+/* === BENEFITS SECTION === */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.benefit-card {
+  background: var(--color-white);
+  padding: var(--spacing-5);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-4);
+}
+
 
 /* CTA Section */
 .cta {
@@ -1145,3 +1143,307 @@
 }
 
 
+/* === LOGIN PANEL STYLES === */
+.login-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1040;
+}
+
+.login-overlay.active {
+    display: block;
+}
+
+.login-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 100%;
+    max-width: 420px;
+    background: var(--color-bg-primary);
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+    transition: all 0.3s;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.login-panel.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: all;
+    display: block;
+}
+
+/* Header của login panel */
+.login-panel-header {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-5) var(--spacing-5) var(--spacing-4);
+    text-align: center;
+    position: relative;
+}
+
+.login-panel-header h3 {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--color-text-inverse);
+}
+
+.login-panel-header p {
+    margin: var(--spacing-2) 0 0 0;
+    opacity: 0.9;
+    font-size: var(--font-size-sm);
+}
+
+/* Nút đóng */
+.login-close {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: var(--font-size-lg);
+}
+
+.login-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Nội dung form */
+.login-panel-content {
+    padding: var(--spacing-5);
+}
+
+/* Form groups */
+.login-form .form-group {
+    margin-bottom: var(--spacing-4);
+}
+
+.login-form .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: var(--spacing-2);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+}
+
+.login-form input {
+    width: 100%;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    transition: all 0.2s ease;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    box-sizing: border-box;
+}
+
+.login-form input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.login-form input:invalid {
+    border-color: var(--color-danger);
+}
+
+/* Password field */
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: var(--spacing-12);
+}
+
+.toggle-password {
+    position: absolute;
+    right: var(--spacing-3);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray);
+    padding: var(--spacing-2);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover {
+    background-color: var(--color-gray-light);
+    color: var(--color-primary);
+}
+
+/* Submit button */
+.login-submit {
+    width: 100%;
+    padding: var(--spacing-3);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-top: var(--spacing-2);
+    transition: all 0.2s ease;
+}
+
+/* Extra links */
+.login-extra {
+    text-align: center;
+    margin-top: var(--spacing-4);
+}
+
+.forgot-password {
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.forgot-password:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+.register-link {
+    margin-top: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+}
+
+.register-link a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.register-link a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* Responsive design cho mobile */
+@media (max-width: 576px) {
+    .login-panel {
+        width: calc(100% - var(--spacing-8));
+        max-width: none;
+        margin: 0 var(--spacing-4);
+    }
+    
+    .login-panel-header {
+        padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
+    }
+    
+    .login-panel-header h3 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .login-panel-content {
+        padding: var(--spacing-4);
+    }
+    
+    .login-form .form-group {
+        margin-bottom: var(--spacing-3);
+    }
+    
+    .login-form label {
+        font-size: var(--font-size-sm);
+    }
+    
+    .login-form input {
+        padding: var(--spacing-3);
+        font-size: var(--font-size-base);
+    }
+    
+    .login-submit {
+        padding: var(--spacing-3);
+    }
+    
+    .login-extra {
+        margin-top: var(--spacing-3);
+    }
+    
+    .forgot-password,
+    .register-link {
+        font-size: var(--font-size-xs);
+    }
+}
+
+/* Desktop nhỏ */
+@media (max-width: 992px) {
+    .login-panel {
+        max-width: 420px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .login-panel {
+        max-width: 400px;
+    }
+}
+
+/* === BREADCRUMB === */
+.breadcrumb-section {
+  background-color: var(--color-light);
+  padding: 0.5rem 0;
+  margin: var(--spacing-2) 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  gap: 0.25rem;
+}
+
+.breadcrumb li.active {
+  font-weight: 500;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.25rem;
+  color: var(--color-gray);
+}
+
+.breadcrumb-item a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}

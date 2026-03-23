@@ -3,136 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nền tảng kết nối việc làm tại Cần Thơ dành cho người tìm việc và nhà tuyển dụng.">
-    <title>Việc làm ở Cần Thơ</title>
-    <!-- <link rel="stylesheet" href="assets/images/favicon.ico"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/base.css"> -->
-</head>
-<body>
-    <!-- Hiển thị đầy đủ thông tin của một công việc cụ thể.
-    Cho biết trạng thái công việc (đang tuyển / đã tuyển xong).
-    Cho phép người tìm việc thực hiện các thao tác phù hợp với trạng thái. -->
+    <meta name="description" content="Chi tiết công việc part-time tại Cần Thơ - Nhân viên phục vụ bàn">
     
-<div class="layout">
-    <header class="header">
+    <title>Nhân viên phục vụ bàn - Nhà hàng ABC Cần Thơ | CTJobs</title>
+    
+    <link rel="stylesheet" href="../assets/css/normalize.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/pages/job-detail.css">
+</head>
 
-        <div class="header__container">
-        <a class="header__logo" href="../index.html">
-            <!-- <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo"> -->
-            <h1>CTJobs</h1>
-        </a>
+<body class="job-detail-page">
 
-        <nav id="primary-navigation" class="header__nav" aria-label="Menu chính">
-            <!-- Navigation chính (responsive, sẽ xử lý bằng CSS/JS) -->
-            <ul class="header__menu">
-                <li><a class="header__nav-link" href="../index.html">Trang chủ</a></li>
-                <li><a class="header__nav-link" href="./jobs.html">Danh sách việc làm</a></li>
-                <li><a class="header__nav-link" href="./saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a class="header__nav-link" href="./about.html">Về chúng tôi</a></li>
-                <li><a class="header__nav-link" href="./contact.html">Liên hệ</a></li>
-            </ul>
-        </nav>
-            <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
-            <div class="header__actions">
-                <div class="header__auth">
-                    <a href="./login.html">Đăng nhập</a>
-                    <a href="./register.html">Đăng ký</a>
+    <!-- Header -->
+    <header class="site-header">
+        <!-- TOPBAR -->
+        <div class="header__topbar">
+            <div class="container navbar-container">
+                <div class="topbar-info">
+                    <p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
                 </div>
-                <div class="header__employer">
-                    <a href="./login.html">Dành cho nhà tuyển dụng</a>
+                <div class="topbar-actions">
+                    <i class="bi bi-envelope"></i>
+                    <a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
+                    <a href="#" class="btn btn-success">Đăng tuyển ngay</a>
                 </div>
             </div>
-
-            <button class="header__toggle">☰</button>
-
         </div>
+
+        <!-- NAVBAR -->
+        <div class="header__navbar">
+            <div class="container navbar-container">
+                <div class="navbar-logo">
+                    <a href="../index.html">CTJobs</a>
+                </div>
+                <button class="menu-toggle" aria-label="Mở menu">
+                    <i class="bi bi-list"></i>
+                </button>
+                <nav class="navbar-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="./jobs.html">Việc Làm</a></li>
+                        <li><a href="./saved-jobs.html">Đã Lưu</a></li>
+                        <li><a href="#">Giới Thiệu</a></li>
+                        <li><a href="#">Liên Hệ</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar-auth">
+                    <button class="btn btn-outline-primary login-trigger" aria-label="Đăng nhập">
+                        <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+                    </button>
+                    <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i>Đăng Ký</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- OffCanvas Menu -->
+        <div class="offcanvas-menu" id="offcanvasMenu">
+            <button class="offcanvas-close" aria-label="Đóng menu">
+                <i class="bi bi-x"></i>
+            </button>
+
+            <!-- Navigation Container -->
+            <div class="offcanvas-navigation">
+                <ul class="offcanvas-nav">
+                    <li><a href="../index.html">Trang Chủ</a></li>
+                    <li><a href="./jobs.html">Việc Làm</a></li>
+                    <li><a href="./saved-jobs.html">Đã Lưu</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Liên Hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="offcanvas-auth">
+                <button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
+                <a href="#" class="btn btn-primary">Đăng ký</a>
+            </div>
+
+            <!-- Employer CTA - toàn bộ div là link -->
+            <a href="#" class="offcanvas-employer">
+                <p>Dành cho nhà tuyển dụng</p>
+                <button class="btn btn-success">Đăng tuyển ngay</button>
+            </a>
+        </div>
+        <div class="offcanvas-overlay"></div>
 
     </header>
 
-    
-    <!-- Phần nội dung chính -->
-    <main class="container">
+    <!-- Main Content -->
+    <main class="site-main job-detail-page">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="breadcrumb-section">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="./jobs.html">Việc làm</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Đang tải thông tin công việc...</li>
+                </ol>
+            </div>
+        </nav>
 
-        
-        <!-- Template job-card (dùng làm mẫu cho JS clone hoặc render động) -->
-        <template class="job-card-template">
-            <div class="job-card-template">
-                <h3 class="job-card__title">Frontend Developer</h3>
-                <p class="job-card__company">ABC Company</p>
-                <p class="job-card__location">Ninh Kiều</p>
-                <p class="job-card__salary">100 - 150 triệu</p>
-
-                <div class="job-card__actions">
-                    <a href="#" class="button button--primary">Xem chi tiết</a>
-                    <button class="button button--secondary">Lưu</button>
+        <!-- Job Detail Content -->
+        <div class="container">
+            <!-- Job Overview Card - Dynamic Version -->
+            <div class="job-overview-card" id="jobOverview">
+                <!-- Nội dung sẽ được load động bằng JavaScript -->
+                <div class="loading-placeholder">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
                 </div>
             </div>
-        </template>
+
+            <!-- Job Details Content -->
+            <div class="job-details-content">
+                <!-- Main Content -->
+                <div class="job-details-main" id="jobMainContent">
+                    <!-- Nội dung sẽ được load động bằng JavaScript -->
+                </div>
+
+                <!-- Sidebar -->
+                <div class="job-details-sidebar" id="jobSidebar">
+                    <!-- Nội dung sẽ được load động bằng JavaScript -->
+                </div>
+            </div>
+        </div>
+        <!-- Login Panel Component -->
+<div class="login-overlay"></div>
+<div class="login-panel" id="loginPanel">
+    <div class="login-panel-header">
+        <button class="login-close" aria-label="Đóng cửa sổ">
+            <i class="bi bi-x"></i>
+        </button>
+        <h3>Đăng nhập</h3>
+        <p>Chào mừng bạn quay trở lại</p>
+    </div>
+    <div class="login-panel-content">
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Nhập email của bạn" required>
+            </div>
+            <div class="form-group password-group">
+                <label for="loginPassword">Mật khẩu</label>
+                <div class="password-field">
+                    <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+                    <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+        </form>
+        <div class="login-extra">
+            <a href="#" class="forgot-password">Quên mật khẩu?</a>
+            <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+        </div>
+    </div>
+</div>
+
     </main>
 
-    
+    <!-- Footer -->
     <footer class="site-footer">
-    
-        <div class="footer-container">
-    
-            <!-- Giới thiệu -->
-            <section class="footer-column footer-about">
-                <h2 class="footer-title">CTJobs</h2>
-                <p>
-                    Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time
-                    linh hoạt, phù hợp lịch học.
+        <!-- Footer giống như các trang khác -->
+        <div class="container footer-content">
+            <section class="about">
+                <h4>CTJobs</h4>
+                <p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
                 </p>
             </section>
-
-            <!-- Cho sinh viên -->
-            <nav class="footer-column" aria-labelledby="footer-student">
-                <h3 id="footer-student" class="footer-title">
-                    Dành cho sinh viên
-                </h3>
-    
-                <ul class="footer-links">
-                    <li><a href="pages/jobs.html">Tìm việc làm thêm</a></li>
-                    <li><a href="#">Việc làm gần trường</a></li>
-                    <li><a href="#">Việc theo ca</a></li>
-                    <li><a href="#">Hướng dẫn ứng tuyển</a></li>
-                </ul>
-            </nav>
-
-            <!-- Cho nhà tuyển dụng -->
-            <nav class="footer-column" aria-labelledby="footer-employer">
-                <h3 id="footer-employer" class="footer-title">
-                    Dành cho nhà tuyển dụng
-                </h3>
-    
-                <ul class="footer-links">
-                    <li><a href="pages/post-job.html">Đăng tin tuyển dụng</a></li>
-                    <li><a href="#">Quy định đăng tin</a></li>
-                    <li><a href="#">Chính sách duyệt bài</a></li>
-                </ul>
-            </nav>
-    
-            <!-- Liên hệ -->
-            <section class="footer-column footer-contact">
-                <h3 class="footer-title">Liên hệ</h3>
+            <section class="student">
+                <h5>Dành cho sinh viên</h5>
                 <ul>
-                    <li>Email: support@ctjobs.vn</li>
-                    <li>Điện thoại: 0900 000 000</li>
-                    <li>Địa chỉ: Ninh Kiều, Cần Thơ</li>
+                    <li><a href="./jobs.html">Tìm Việc</a></li>
+                    <li><a href="./saved-jobs.html">Việc Làm Đã Lưu</a></li>
+                    <li><a href="#">Tạo Hồ Sơ</a></li>
                 </ul>
             </section>
-    
+            <section class="employers">
+                <h5>Nhà tuyển dụng</h5>
+                <ul>
+                    <li><a href="#">Đăng Tin</a></li>
+                    <li><a href="#">Quản Lý Công Việc</a></li>
+                    <li><a href="#">Tìm Ứng Viên</a></li>
+                </ul>
+            </section>
+            <section class="contact">
+                <h5>Liên Hệ</h5>
+                <ul>
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        <a href="tel:0900000000">0900 000 000</a>
+                    </li>
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        <a href="#">Ninh Kiều, Cần Thơ</a>
+                    </li>
+                </ul>
+            </section>
+            <section class="social">
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </section>
         </div>
-    
-        <!-- Bottom bar -->
-        <div class="footer-bottom">
-            <p>
-                © 2026 CTJobs. Kết nối việc làm thêm cho sinh viên Cần Thơ.
-            </p>
+        <div class="footer-bottombar">
+            <div>© 2026 CTJobs</div>
+            <div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
         </div>
-    
     </footer>
-</div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/data/jobData.js"></script>
+    <script src="../assets/js/modules/jobDetailRenderer.js"></script>
+    <script src="../assets/js/modules/loginPanel.js"></script>
+    <script src="../assets/js/modules/offcanvas.js"></script>
+    <script src="../assets/js/modules/modal.js"></script>
+    <script src="../assets/js/modules/toast.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>
