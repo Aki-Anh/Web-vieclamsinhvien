@@ -1,6 +1,7 @@
 // main.js - Script chính điều khiển toàn bộ website CTJobs
 
 // ==================== HÀM CẬP NHẬT GIAO DIỆN NGƯỜNG DÙNG (GLOBAL) ====================
+// Cập nhật hàm updateHeaderAuthUI
 window.updateHeaderAuthUI = function() {
   const container = document.getElementById("authContainer");
   const guestTpl = document.getElementById("guestTemplate");
@@ -14,199 +15,267 @@ window.updateHeaderAuthUI = function() {
   if (isLoggedIn && userInfo.email) {
     if (isEmployer) {
       // Giao diện cho nhà tuyển dụng
-      const clone = employerTpl ? employerTpl.content.cloneNode(true) : guestTpl.content.cloneNode(true);
-      if (clone.querySelector(".employer-name")) {
-        clone.querySelector(".employer-name").textContent = userInfo.name || userInfo.email.split('@')[0];
-      }
-      if (clone.querySelector(".employer-avatar")) {
-        clone.querySelector(".employer-avatar").src = "https://placehold.co/40x40";
-      }
-      container.innerHTML = "";
-      container.appendChild(clone);
-
-      setTimeout(() => {
-        const logoutBtn = container.querySelector("#logoutBtn");
-        if (logoutBtn) {
-          const newBtn = logoutBtn.cloneNode(true);
-          logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
-          
-          newBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("userInfo");
-            localStorage.removeItem("isEmployer");
-            window.location.reload();
-          });
+      if (employerTpl) {
+        const clone = employerTpl.content.cloneNode(true);
+        const userNameEl = clone.querySelector(".user-name");
+        const userEmailEl = clone.querySelector(".user-email");
+        const avatarEl = clone.querySelector(".user-avatar");
+        
+        if (userNameEl) {
+          userNameEl.textContent = userInfo.name || userInfo.email.split('@')[0];
         }
-      }, 100);
+        if (userEmailEl) {
+          userEmailEl.textContent = userInfo.email;
+        }
+        if (avatarEl) {
+          avatarEl.src = "https://placehold.co/40x40";
+        }
+        container.innerHTML = "";
+        container.appendChild(clone);
+
+        setTimeout(() => {
+          const logoutBtn = container.querySelector("#logoutBtn");
+          if (logoutBtn) {
+            const newBtn = logoutBtn.cloneNode(true);
+            logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
+            
+            newBtn.addEventListener("click", (e) => {
+              e.preventDefault();
+              localStorage.removeItem("isLoggedIn");
+              localStorage.removeItem("userInfo");
+              localStorage.removeItem("isEmployer");
+              window.location.reload();
+            });
+          }
+        }, 100);
+      }
     } else {
       // Giao diện cho ứng viên
-      const clone = userTpl.content.cloneNode(true);
-      clone.querySelector(".user-name").textContent = userInfo.name || userInfo.email.split('@')[0];
-      clone.querySelector(".user-avatar").src = "https://placehold.co/40x40";
-      container.innerHTML = "";
-      container.appendChild(clone);
-
-      setTimeout(() => {
-        const dropdown = container.querySelector('.dropdown-toggle');
-        const menu = container.querySelector('.dropdown-menu');
-        if (dropdown && menu) {
-          dropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menu.classList.toggle('show');
-          });
-
-          document.addEventListener('click', (e) => {
-            if (!container.contains(e.target)) menu.classList.remove('show');
-          });
+      if (userTpl) {
+        const clone = userTpl.content.cloneNode(true);
+        const userNameEl = clone.querySelector(".user-name");
+        const userEmailEl = clone.querySelector(".user-email");
+        const avatarEl = clone.querySelector(".user-avatar");
+        
+        if (userNameEl) {
+          userNameEl.textContent = userInfo.name || userInfo.email.split('@')[0];
         }
-
-        const logoutBtn = container.querySelector("#logoutBtn");
-        if (logoutBtn) {
-          const newBtn = logoutBtn.cloneNode(true);
-          logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
-          
-          newBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("userInfo");
-            localStorage.removeItem("isEmployer");
-            window.location.reload();
-          });
+        if (userEmailEl) {
+          userEmailEl.textContent = userInfo.email;
         }
-      }, 100);
+        if (avatarEl) {
+          avatarEl.src = "https://placehold.co/40x40";
+        }
+        container.innerHTML = "";
+        container.appendChild(clone);
+
+        setTimeout(() => {
+          const dropdown = container.querySelector('.dropdown-toggle');
+          const menu = container.querySelector('.dropdown-menu');
+          if (dropdown && menu) {
+            dropdown.addEventListener('click', (e) => {
+              e.stopPropagation();
+              menu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', (e) => {
+              if (!container.contains(e.target)) menu.classList.remove('show');
+            });
+          }
+
+          const logoutBtn = container.querySelector("#logoutBtn");
+          if (logoutBtn) {
+            const newBtn = logoutBtn.cloneNode(true);
+            logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
+            
+            newBtn.addEventListener("click", (e) => {
+              e.preventDefault();
+              localStorage.removeItem("isLoggedIn");
+              localStorage.removeItem("userInfo");
+              localStorage.removeItem("isEmployer");
+              window.location.reload();
+            });
+          }
+        }, 100);
+      }
     }
   } else {
-    const clone = guestTpl.content.cloneNode(true);
-    const loginBtn = clone.querySelector(".login-trigger");
-    if (loginBtn) {
-      const newBtn = loginBtn.cloneNode(true);
-      loginBtn.parentNode.replaceChild(newBtn, loginBtn);
-      
-      newBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (typeof LoginPanel !== "undefined") LoginPanel.open();
-      });
+    if (guestTpl) {
+      const clone = guestTpl.content.cloneNode(true);
+      const loginBtn = clone.querySelector(".login-trigger");
+      if (loginBtn) {
+        const newBtn = loginBtn.cloneNode(true);
+        loginBtn.parentNode.replaceChild(newBtn, loginBtn);
+        
+        newBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (typeof LoginPanel !== "undefined") LoginPanel.open();
+        });
+      }
+      container.innerHTML = "";
+      container.appendChild(clone);
     }
-    container.innerHTML = "";
-    container.appendChild(clone);
   }
 };
 
-// Cập nhật hàm updateOffcanvasAuthUI cho nhà tuyển dụng
-window.updateOffcanvasAuthUI = function() {
-  const container = document.getElementById("offcanvasAuthContainer");
-  const navList = document.querySelector(".offcanvas-nav");
-  const guestTpl = document.getElementById("offcanvasGuestTemplate");
-  const userTpl = document.getElementById("offcanvasUserTemplate");
-  const employerTpl = document.getElementById("offcanvasEmployerTemplate");
 
-  // Xóa profile và logout item cũ nếu có
-  const existingProfileItem = navList.querySelector('.user-profile-nav-item');
-  const existingLogoutItem = navList.querySelector('.logout-nav-item');
-  if (existingProfileItem) existingProfileItem.remove();
-  if (existingLogoutItem) existingLogoutItem.remove();
+// Cập nhật hàm updateOffcanvasAuthUI
+// Cập nhật hàm updateOffcanvasAuthUI
+window.updateOffcanvasAuthUI = function() {
+  const header = document.querySelector(".offcanvas-header");
+  const footer = document.querySelector(".offcanvas-footer");
+  const navList = document.querySelector(".offcanvas-nav");
+  const guestButtonsTpl = document.getElementById("offcanvasGuestButtonsTemplate");
+  const logoutTpl = document.getElementById("offcanvasLogoutTemplate");
+
+  // Kiểm tra xem các phần tử có tồn tại không
+  if (!header || !footer || !navList) return;
+
+  // Xóa các item cũ nếu có
+  const existingUserHeader = header.querySelector('.offcanvas-user-header');
+  const existingProfileBtn = header.querySelector('.profile-btn');
+  const existingGuestButtons = footer.querySelector('.offcanvas-guest-buttons');
+  const existingLogoutBtn = footer.querySelector('.offcanvas-logout-btn');
+  
+  if (existingUserHeader) existingUserHeader.remove();
+  if (existingProfileBtn) existingProfileBtn.remove();
+  if (existingGuestButtons) existingGuestButtons.remove();
+  if (existingLogoutBtn) existingLogoutBtn.remove();
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
   const isEmployer = localStorage.getItem("isEmployer") === "true";
 
   if (isLoggedIn && userInfo.email) {
-    if (isEmployer) {
-      // Khi là nhà tuyển dụng: ẩn container và thêm profile + logout vào nav
-      container.style.display = "none";
-      
-      // Tạo profile item cho nhà tuyển dụng
-      const profileItem = document.createElement('li');
-      profileItem.className = 'user-profile-nav-item';
-      profileItem.innerHTML = `
-        <div class="offcanvas-user-profile-nav">
-          <img src="https://placehold.co/40x40" alt="Avatar" class="user-avatar-small">
-          <div class="user-info">
-            <span class="user-name">${userInfo.name || userInfo.email.split('@')[0]} (NTD)</span>
-          </div>
-        </div>
-      `;
-      
-      // Tạo logout item
-      const logoutItem = document.createElement('li');
-      logoutItem.className = 'logout-nav-item';
-      logoutItem.innerHTML = `
-        <a href="#" class="logout-item" id="logoutBtnMobile">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Đăng xuất</span>
-        </a>
-      `;
-      
-      // Thêm vào đầu và cuối nav list
-      navList.insertBefore(profileItem, navList.firstChild);
-      navList.appendChild(logoutItem);
+    // Khi đã đăng nhập: thêm thông tin user vào header
+    header.classList.add('with-user-info');
+    
+    // Tạo user profile trong header
+    const userHeader = document.createElement('div');
+    userHeader.className = 'offcanvas-user-header';
+    userHeader.innerHTML = `
+      <img src="https://placehold.co/40x40" alt="Avatar" class="user-avatar-small">
+      <div class="user-info">
+        <div class="user-name">${userInfo.name || userInfo.email.split('@')[0]}${isEmployer ? ' (NTD)' : ''}</div>
+        <div class="user-email">${userInfo.email}</div>
+      </div>
+    `;
+    
+    // Thêm vào header (sau tiêu đề)
+    const titleElement = header.querySelector('.offcanvas-title');
+    if (titleElement) {
+      titleElement.parentNode.insertBefore(userHeader, titleElement.nextSibling);
     } else {
-      // Khi đã đăng nhập là ứng viên
-      container.style.display = "none";
-      
-      // Tạo profile item cho ứng viên
-      const profileItem = document.createElement('li');
-      profileItem.className = 'user-profile-nav-item';
-      profileItem.innerHTML = `
-        <div class="offcanvas-user-profile-nav">
-          <img src="https://placehold.co/40x40" alt="Avatar" class="user-avatar-small">
-          <div class="user-info">
-            <span class="user-name">${userInfo.name || userInfo.email.split('@')[0]}</span>
-          </div>
-        </div>
-      `;
-      
-      // Tạo logout item
-      const logoutItem = document.createElement('li');
-      logoutItem.className = 'logout-nav-item';
-      logoutItem.innerHTML = `
-        <a href="#" class="logout-item" id="logoutBtnMobile">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Đăng xuất</span>
-        </a>
-      `;
-      
-      // Thêm vào đầu và cuối nav list
-      navList.insertBefore(profileItem, navList.firstChild);
-      navList.appendChild(logoutItem);
+      header.appendChild(userHeader);
     }
     
-    // Thêm sự kiện cho nút logout
-    setTimeout(() => {
-      const logoutBtn = document.getElementById("logoutBtnMobile");
-      if (logoutBtn) {
-        const newBtn = logoutBtn.cloneNode(true);
-        logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
-        
-        newBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          localStorage.removeItem("isLoggedIn");
-          localStorage.removeItem("userInfo");
-          localStorage.removeItem("isEmployer");
-          window.location.reload();
-        });
-      }
-    }, 100);
-  } else {
-    // Khi chưa đăng nhập: hiển thị container với 2 nút
-    container.style.display = "block";
-    const clone = guestTpl.content.cloneNode(true);
-    const loginBtn = clone.querySelector(".login-trigger-mobile");
-    if (loginBtn) {
-      const newBtn = loginBtn.cloneNode(true);
-      loginBtn.parentNode.replaceChild(newBtn, loginBtn);
-      
-      newBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (typeof Offcanvas !== "undefined") Offcanvas.closeMenu();
-        if (typeof LoginPanel !== "undefined") LoginPanel.open();
-      });
+    // Thêm profile button vào header (sau user info)
+    const profileBtn = document.createElement('button');
+    profileBtn.className = 'profile-btn btn btn-secondary';
+    profileBtn.id = 'profileBtnMobile';
+    profileBtn.innerHTML = `
+      <i class="bi bi-person"></i>
+      <span>Hồ sơ</span>
+    `;
+    
+    // Thêm vào header (sau user info)
+    if (userHeader) {
+      userHeader.parentNode.insertBefore(profileBtn, userHeader.nextSibling);
+    } else {
+      header.appendChild(profileBtn);
     }
-    container.innerHTML = "";
-    container.appendChild(clone);
+    
+    // Thêm logout button vào footer (trước phần tuyển dụng)
+    if (logoutTpl) {
+      const logoutClone = logoutTpl.content.cloneNode(true);
+      const employerCTA = footer.querySelector('.offcanvas-employer');
+      
+      // Thêm logout button trước employer CTA
+      if (employerCTA) {
+        footer.insertBefore(logoutClone, employerCTA);
+      } else {
+        footer.appendChild(logoutClone);
+      }
+      
+      // Thêm sự kiện cho nút profile
+      setTimeout(() => {
+        const profileBtn = document.getElementById("profileBtnMobile");
+        if (profileBtn) {
+          const newBtn = profileBtn.cloneNode(true);
+          profileBtn.parentNode.replaceChild(newBtn, profileBtn);
+          
+          newBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Đóng offcanvas menu
+            if (typeof Offcanvas !== "undefined") {
+              Offcanvas.closeMenu();
+            }
+            // Chuyển hướng đến trang hồ sơ
+            window.location.href = "./pages/profile.html";
+          });
+        }
+        
+        // Thêm sự kiện cho nút logout
+        const logoutBtn = document.getElementById("logoutBtnMobile");
+        if (logoutBtn) {
+          const newBtn = logoutBtn.cloneNode(true);
+          logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
+          
+          newBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("userInfo");
+            localStorage.removeItem("isEmployer");
+            window.location.reload();
+          });
+        }
+      }, 100);
+    }
+  } else {
+    // Khi chưa đăng nhập: thêm buttons vào footer
+    header.classList.remove('with-user-info');
+    
+    // Xóa các elements trong header nếu có
+    const existingUserHeader = header.querySelector('.offcanvas-user-header');
+    const existingProfileBtn = header.querySelector('.profile-btn');
+    if (existingUserHeader) existingUserHeader.remove();
+    if (existingProfileBtn) existingProfileBtn.remove();
+    
+    // Thêm guest buttons vào footer
+    if (guestButtonsTpl) {
+      const guestClone = guestButtonsTpl.content.cloneNode(true);
+      const employerCTA = footer.querySelector('.offcanvas-employer');
+      
+      // Thêm guest buttons trước employer CTA
+      if (employerCTA) {
+        footer.insertBefore(guestClone, employerCTA);
+      } else {
+        footer.appendChild(guestClone);
+      }
+      
+      // Thêm sự kiện cho nút login
+      setTimeout(() => {
+        const loginBtn = footer.querySelector(".login-trigger-mobile");
+        if (loginBtn) {
+          const newBtn = loginBtn.cloneNode(true);
+          loginBtn.parentNode.replaceChild(newBtn, loginBtn);
+          
+          newBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (typeof Offcanvas !== "undefined") {
+              Offcanvas.closeMenu();
+            }
+            if (typeof LoginPanel !== "undefined") {
+              LoginPanel.open();
+            }
+          });
+        }
+      }, 100);
+    }
   }
 };
+
+
 
 // ==================== IIFE CHÍNH ====================
 (function () {
@@ -306,13 +375,16 @@ function loadLatestJobs() {
     }
 }
 
+// Trong phần loadFeaturedJobs, cập nhật hàm attachHomeJobActions:
 function attachHomeJobActions() {
-    document.querySelectorAll('.job-item .job-title a').forEach(link => {
+    // Add click handlers for job cards on home page
+    document.querySelectorAll('#featuredJobs .job-title a, #latestJobs .job-title a').forEach(link => {
         const jobId = link.closest('.job-item').querySelector('[data-job-id]').dataset.jobId;
         link.href = `./pages/job-detail.html?id=${jobId}`;
     });
 
-    document.querySelectorAll('.view-job-btn').forEach(btn => {
+    // Add click handlers for view buttons
+    document.querySelectorAll('#featuredJobs .view-job-btn, #latestJobs .view-job-btn').forEach(btn => {
         const newBtn = btn.cloneNode(true);
         btn.parentNode.replaceChild(newBtn, btn);
         newBtn.addEventListener('click', function(e) {
@@ -321,7 +393,171 @@ function attachHomeJobActions() {
             window.location.href = `./pages/job-detail.html?id=${jobId}`;
         });
     });
+    
+    // Add click handlers for save buttons
+    document.querySelectorAll('#featuredJobs .save-job-btn, #latestJobs .save-job-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const jobId = parseInt(this.dataset.jobId);
+            const icon = this.querySelector("i");
+            
+            if (icon && icon.classList.contains("bi-bookmark")) {
+                // Lưu công việc
+                icon.classList.remove("bi-bookmark");
+                icon.classList.add("bi-bookmark-fill");
+                icon.classList.add("text-warning");
+                this.setAttribute("aria-label", "Bỏ lưu việc làm");
+                
+                const jobData = JobData.getJobById(jobId);
+                if (jobData && !savedJobs.some((job) => job.id === jobId)) {
+                    savedJobs.push(jobData);
+                    saveJobsToStorage();
+                    showToast("Đã lưu việc làm thành công!", "success");
+                }
+            } else if (icon) {
+                // Bỏ lưu công việc
+                icon.classList.remove("bi-bookmark-fill");
+                icon.classList.remove("text-warning");
+                icon.classList.add("bi-bookmark");
+                this.setAttribute("aria-label", "Lưu việc làm");
+                
+                savedJobs = savedJobs.filter((job) => job.id !== jobId);
+                saveJobsToStorage();
+                showToast("Đã bỏ lưu việc làm!", "warning");
+            }
+        });
+    });
+    
+    // Add click handlers for apply buttons
+    document.querySelectorAll('#featuredJobs .apply-job-btn, #latestJobs .apply-job-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const jobId = parseInt(this.dataset.jobId);
+            if (typeof LoginPanel !== "undefined") {
+                LoginPanel.requireLogin(function () {
+                    if (confirm("Bạn có chắc chắn muốn ứng tuyển cho công việc này?")) {
+                        showToast("Bạn đã ứng tuyển thành công!", "success");
+                    }
+                });
+            }
+        });
+    });
 }
+
+// Trong phần loadLatestJobsGrid, cập nhật hàm:
+function loadLatestJobsGrid() {
+    const container = document.getElementById('latestJobs');
+    if (!container) return;
+
+    try {
+        const allJobs = JobData.getAllJobs();
+        // Get latest 6 jobs
+        const latestJobs = [...allJobs]
+            .sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate))
+            .slice(0, 6);
+        
+        if (latestJobs.length > 0) {
+            const html = JobCardBuilder.buildJobList(latestJobs, "jobs", savedJobs);
+            container.innerHTML = html;
+            attachHomeJobActions(); // Gắn sự kiện cho latest jobs
+        } else {
+            container.innerHTML = '<div class="no-results">Không có công việc mới</div>';
+        }
+    } catch (error) {
+        console.error('Error loading latest jobs:', error);
+        container.innerHTML = '<div class="no-results">Không thể tải công việc mới nhất</div>';
+    }
+}
+
+// Trong phần loadFeaturedJobsSlider, cập nhật hàm attachSliderJobActions:
+function attachSliderJobActions() {
+    // Gắn sự kiện cho các nút trong slider
+    document.querySelectorAll('#featuredJobsSlider .view-job-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const jobId = this.dataset.jobId;
+            if (jobId) {
+                window.location.href = `./pages/job-detail.html?id=${jobId}`;
+            }
+        });
+    });
+    
+    document.querySelectorAll('#featuredJobsSlider .job-title a').forEach(link => {
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        newLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const jobId = this.closest('.job-item-content').querySelector('.view-job-btn').dataset.jobId;
+            if (jobId) {
+                window.location.href = `./pages/job-detail.html?id=${jobId}`;
+            }
+        });
+    });
+    
+    // Gắn sự kiện cho nút lưu trong slider
+    document.querySelectorAll('#featuredJobsSlider .save-job-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const jobId = parseInt(this.dataset.jobId);
+            const icon = this.querySelector("i");
+            
+            if (icon && icon.classList.contains("bi-bookmark")) {
+                icon.classList.remove("bi-bookmark");
+                icon.classList.add("bi-bookmark-fill");
+                icon.classList.add("text-warning");
+                this.setAttribute("aria-label", "Bỏ lưu việc làm");
+                
+                const jobData = JobData.getJobById(jobId);
+                if (jobData && !savedJobs.some((job) => job.id === jobId)) {
+                    savedJobs.push(jobData);
+                    saveJobsToStorage();
+                    showToast("Đã lưu việc làm thành công!", "success");
+                }
+            } else if (icon) {
+                icon.classList.remove("bi-bookmark-fill");
+                icon.classList.remove("text-warning");
+                icon.classList.add("bi-bookmark");
+                this.setAttribute("aria-label", "Lưu việc làm");
+                
+                savedJobs = savedJobs.filter((job) => job.id !== jobId);
+                saveJobsToStorage();
+                showToast("Đã bỏ lưu việc làm!", "warning");
+            }
+        });
+    });
+    
+    // Gắn sự kiện cho nút ứng tuyển trong slider
+    document.querySelectorAll('#featuredJobsSlider .apply-job-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const jobId = parseInt(this.dataset.jobId);
+            if (typeof LoginPanel !== "undefined") {
+                LoginPanel.requireLogin(function () {
+                    if (confirm("Bạn có chắc chắn muốn ứng tuyển cho công việc này?")) {
+                        showToast("Bạn đã ứng tuyển thành công!", "success");
+                    }
+                });
+            }
+        });
+    });
+}
+
 
   function initJobsPage() {
     if (!document.body.classList.contains("jobs-page")) return;

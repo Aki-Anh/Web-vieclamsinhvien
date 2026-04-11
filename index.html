@@ -27,73 +27,79 @@
 				</div>
 				<div class="topbar-actions">
 					<div>
-					<i class="bi bi-envelope"></i>
-					<a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
+						<i class="bi bi-envelope"></i>
+						<a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
 					</div>
 					<a href="#" class="btn btn-warning">Đăng tuyển ngay</a>
 				</div>
 			</div>
 		</div>
 
-<!-- NAVBAR -->
-<div class="header__navbar">
-  <div class="container navbar-container">
-    <div class="navbar-logo">
-      <a href="#">CTJobs</a>
-    </div>
-    
-    <div class="navbar-nav-wrapper">
-      <nav class="navbar-nav">
-        <ul class="nav-list">
-          <li><a href="#" class="active">Trang Chủ</a></li>
-          <li><a href="./pages/jobs.html">Việc Làm</a></li>
-          <li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
-          <li><a href="#">Giới Thiệu</a></li>
-          <li><a href="#">Liên Hệ</a></li>
-        </ul>
-      </nav>
-    </div>
-    
-    <button class="menu-toggle" aria-label="Mở menu">
-      <i class="bi bi-list"></i>
+		<!-- NAVBAR -->
+		<div class="header__navbar">
+			<div class="container navbar-container">
+				<div class="navbar-logo">
+					<a href="#">CTJobs</a>
+				</div>
+
+				<div class="navbar-nav-wrapper">
+					<nav class="navbar-nav">
+						<ul class="nav-list">
+							<li><a href="#" class="active">Trang Chủ</a></li>
+							<li><a href="./pages/jobs.html">Việc Làm</a></li>
+							<li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
+							<li><a href="./pages/about.html">Giới Thiệu</a></li>
+							<li><a href="./pages/contact.html">Liên Hệ</a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<button class="menu-toggle" aria-label="Mở menu">
+					<i class="bi bi-list"></i>
+				</button>
+
+				<div class="navbar-auth">
+					<!-- Chưa đăng nhập -->
+					<template id="guestTemplate">
+						<button class="btn btn-outline-primary login-trigger">
+							<i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+						</button>
+						<a href="./pages/register.html" class="btn btn-primary">
+							<i class="bi bi-person-plus"></i> Đăng Ký
+						</a>
+					</template>
+<!-- Trong phần navbar-auth, cập nhật template cho người dùng -->
+<template id="userTemplate">
+		
+  <div class="user-dropdown">
+    <button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
+      <img src="" alt="Avatar" class="user-avatar">
+      <div class="user-info">
+        <span class="user-name"></span>
+        <span class="user-email"></span>
+      </div>
     </button>
-    
-    <div class="navbar-auth">
-      <!-- Chưa đăng nhập -->
-      <template id="guestTemplate">
-        <button class="btn btn-outline-primary login-trigger">
-          <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
-        </button>
-        <a href="./pages/register.html" class="btn btn-primary">
-          <i class="bi bi-person-plus"></i> Đăng Ký
-        </a>
-      </template>
+    <div class="dropdown-menu" aria-labelledby="userDropdown">
+      <a class="dropdown-item dropdown-item-link" href="./profile.html">
+        <i class="bi bi-person"></i> Hồ sơ
+      </a>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item btn btn-danger" id="logoutBtn">
+        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+      </button>
+    </div>
+  </div>
+</template>
 
-      <!-- Đã đăng nhập -->
-      <template id="userTemplate">
-        <div class="user-dropdown">
-          <button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
-            <img src="" alt="Avatar" class="user-avatar">
-            <span class="user-name"></span>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="userDropdown">
-            <a class="dropdown-item dropdown-item-link" href="./pages/profile.html">
-              <i class="bi bi-person"></i> Hồ sơ
-            </a>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item btn btn-danger " id="logoutBtn">
-              <i class="bi bi-box-arrow-right"></i> Đăng xuất
-            </button>
-          </div>
-        </div>
-      </template>
-
-		<!-- Trong phần navbar-auth, thêm template cho nhà tuyển dụng -->
+<!-- Template cho nhà tuyển dụng -->
 <template id="employerTemplate">
   <div class="user-dropdown">
     <button class="btn btn-link dropdown-toggle" type="button" id="employerDropdown">
       <img src="" alt="Avatar" class="user-avatar">
-      <span class="employer-name"></span> (NTD)
+      <div class="user-info">
+        <span class="user-name"></span>
+        <span class="user-email"></span>
+      </div>
     </button>
     <div class="dropdown-menu" aria-labelledby="employerDropdown">
       <a class="dropdown-item dropdown-item-link" href="#">
@@ -106,20 +112,21 @@
         <i class="bi bi-people"></i> Quản lý ứng viên
       </a>
       <div class="dropdown-divider"></div>
-      <button class="dropdown-item btn btn-danger " id="logoutBtn">
+      <button class="dropdown-item btn btn-danger" id="logoutBtn">
         <i class="bi bi-box-arrow-right"></i> Đăng xuất
       </button>
     </div>
   </div>
 </template>
-      <!-- Placeholder sẽ được JS thay thế -->
-      <div id="authContainer"></div>
-    </div>
-  </div>
-</div>
 
-
+					<!-- Placeholder sẽ được JS thay thế -->
+					<div id="authContainer"></div>
+				</div>
 			</div>
+		</div>
+
+
+		</div>
 		</div>
 		<!-- Login Panel Component -->
 		<div class="login-overlay"></div>
@@ -154,69 +161,64 @@
 				</div>
 			</div>
 		</div>
-		
-<!-- OffCanvas Menu -->
-<div class="offcanvas-overlay"></div>
-<div class="offcanvas-menu" id="offcanvasMenu">
-  <button class="offcanvas-close" aria-label="Đóng menu">
-    <i class="bi bi-x"></i>
-  </button>
 
-  <!-- Navigation Container -->
-  <div class="offcanvas-navigation" id="offcanvasNavigation">
-    <ul class="offcanvas-nav">
-      <li><a href="#" class="active">Trang Chủ</a></li>
-      <li><a href="./pages/jobs.html">Việc Làm</a></li>
-      <li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
-      <li><a href="#">Giới Thiệu</a></li>
-      <li><a href="#">Liên Hệ</a></li>
-    </ul>
-  </div>
+		<!-- OffCanvas Menu -->
+		<div class="offcanvas-overlay"></div>
+		<div class="offcanvas-menu" id="offcanvasMenu">
+			<!-- Offcanvas Header -->
+			<div class="offcanvas-header">
+				<button class="offcanvas-close" aria-label="Đóng menu">
+					<i class="bi bi-x"></i>
+				</button>
+			</div>
 
-  <!-- Auth Container - sẽ được cập nhật bởi JavaScript -->
-  <div class="offcanvas-auth" id="offcanvasAuthContainer">
-    <!-- Guest mode template -->
-    <template id="offcanvasGuestTemplate">
-      <button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
-      <a href="./pages/register.html" class="btn btn-primary">Đăng ký</a>
-    </template>
-    
-    <!-- User mode template -->
-    <template id="offcanvasUserTemplate">
-      <div class="offcanvas-user-profile-nav">
-        <img src="" alt="Avatar" class="user-avatar-small">
-        <div class="user-info">
-          <p class="user-name"></p>
-        </div>
-      </div>
-      <a href="#" class="logout-item" id="logoutBtnMobile">
-        <i class="bi bi-box-arrow-right"></i>
-        <span>Đăng xuất</span>
-      </a>
-    </template>
+			<!-- Offcanvas Body -->
+			<div class="offcanvas-body">
+				<!-- Navigation Container -->
+				<div class="offcanvas-navigation" id="offcanvasNavigation">
+					<ul class="offcanvas-nav">
+						<li><a href="#" class="active">Trang Chủ</a></li>
+						<li><a href="./pages/jobs.html">Việc Làm</a></li>
+						<li><a href="./pages/saved-jobs.html">Đã Lưu</a></li>
+						<li><a href="./pages/about.html">Giới Thiệu</a></li>
+						<li><a href="./pages/contact.html">Liên Hệ</a></li>
+					</ul>
+				</div>
+			</div>
 
-<!-- Trong offcanvas-auth, thêm template cho nhà tuyển dụng -->
-<template id="offcanvasEmployerTemplate">
-  <div class="offcanvas-user-profile-nav">
-    <img src="" alt="Avatar" class="user-avatar-small">
-    <div class="user-info">
-      <p class="user-name"></p> (NTD)
-    </div>
-  </div>
-  <a href="#" class="logout-item" id="logoutBtnMobile">
-    <i class="bi bi-box-arrow-right"></i>
-    <span>Đăng xuất</span>
-  </a>
-</template>
+			<!-- Offcanvas Footer -->
+			<div class="offcanvas-footer">
+				<!-- Guest mode buttons template -->
+				<template id="offcanvasGuestButtonsTemplate">
+					<div class="offcanvas-guest-buttons">
+						<button class="btn btn-outline-primary login-trigger-mobile"
+							style="width: 100%; margin-bottom: var(--spacing-2);">
+							<i class="bi bi-box-arrow-in-right"></i>
+							<span>Đăng nhập</span>
+						</button>
+						<a href="./pages/register.html" class="btn btn-primary" style="width: 100%;">
+							<i class="bi bi-person-plus"></i>
+							<span>Đăng ký</span>
+						</a>
+					</div>
+				</template>
 
-  </div>
+				<!-- Logout Button Template -->
+				<template id="offcanvasLogoutTemplate">
+					<button class="offcanvas-logout-btn btn btn-danger" id="logoutBtnMobile">
+						<i class="bi bi-box-arrow-right"></i>
+						<span>Đăng xuất</span>
+					</button>
+				</template>
 
-  <!-- Employer CTA -->
-  <a href="#" class="offcanvas-employer">
-    <p>Dành cho nhà tuyển dụng</p>
-    <button class="btn btn-success">Đăng tuyển ngay</button>
-  </a>
-</div>
+				<!-- Employer CTA -->
+				<a href="#" class="offcanvas-employer">
+					<p>Dành cho nhà tuyển dụng</p>
+					<button class="btn btn-warning">Đăng tuyển ngay</button>
+				</a>
+			</div>
+		</div>
+
 
 
 	</header>
@@ -281,38 +283,38 @@
 			</div>
 		</section>
 
-		
 
-<section class="feature-jobs">
-    <div class="container">
-        <div class="section-header">
-            <h2>Việc làm thêm nổi bật</h2>
-        </div>
-        <div class="jobs-slider" id="featuredJobsSlider">
-            <!-- Jobs sẽ được load động bằng JavaScript -->
-            <div class="loading-placeholder">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Đang tải...</span>
-                </div>
-            </div>
-        </div>
-        <div class="section-footer">
-            <a href="./pages/jobs.html" class="view-all-link btn btn-primary">
-                <i class="bi bi-eye"></i>
-                Xem tất cả
-            </a>
-        </div>
-    </div>
-</section>
+
+		<section class="feature-jobs">
+			<div class="container">
+				<div class="section-header">
+					<h2>Việc làm thêm nổi bật</h2>
+				</div>
+				<div class="jobs-slider" id="featuredJobsSlider">
+					<!-- Jobs sẽ được load động bằng JavaScript -->
+					<div class="loading-placeholder">
+						<div class="spinner-border" role="status">
+							<span class="visually-hidden">Đang tải...</span>
+						</div>
+					</div>
+				</div>
+				<div class="section-footer">
+					<a href="./pages/jobs.html" class="view-all-link btn btn-primary">
+						<i class="bi bi-eye"></i>
+						Xem tất cả
+					</a>
+				</div>
+			</div>
+		</section>
 
 
 		<!-- Job Categories By Industry -->
 		<section class="job-categories-industry">
 			<div class="container">
-        <div class="section-header">
-				<h2>Việc làm theo ngành nghề</h2>
-				<p>Khám phá các lĩnh vực việc làm phù hợp với sở thích và chuyên môn của bạn</p>
-</div>
+				<div class="section-header">
+					<h2>Việc làm theo ngành nghề</h2>
+					<p>Khám phá các lĩnh vực việc làm phù hợp với sở thích và chuyên môn của bạn</p>
+				</div>
 
 				<div class="industry-grid">
 					<a href="./pages/jobs.html?category=phucvu" class="industry-card">
@@ -391,35 +393,35 @@
 		</section>
 
 
-<section class="latest-jobs">
-    <div class="container">
-        <div class="section-header">
+		<section class="latest-jobs">
+			<div class="container">
+				<div class="section-header">
 					<h2>Việc làm thêm mới nhất</h2>
-</div>
-        <div id="latestJobs">
-            <!-- Jobs sẽ được load động bằng JavaScript -->
-            <div class="loading-placeholder">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Đang tải...</span>
-                </div>
-            </div>
-        </div>
-        <div class="section-footer">
-            <a href="./pages/jobs.html" class="view-all-link btn btn-primary">
-                <i class="bi bi-eye"></i>
-                Xem tất cả
-            </a>
-        </div>
-    </div>
-</section>
+				</div>
+				<div id="latestJobs">
+					<!-- Jobs sẽ được load động bằng JavaScript -->
+					<div class="loading-placeholder">
+						<div class="spinner-border" role="status">
+							<span class="visually-hidden">Đang tải...</span>
+						</div>
+					</div>
+				</div>
+				<div class="section-footer">
+					<a href="./pages/jobs.html" class="view-all-link btn btn-primary">
+						<i class="bi bi-eye"></i>
+						Xem tất cả
+					</a>
+				</div>
+			</div>
+		</section>
 
 
 		<section class="benifits">
 			<div class="container">
-        <div class="section-header">
-				<h2>Vì sao bạn nên tìm việc ở CTJobs</h2>
-				<p>Nền tảng giúp sinh viên Cần Thơ tìm việc làm thêm nhanh chóng và phù hợp</p>
-        </div>
+				<div class="section-header">
+					<h2>Vì sao bạn nên tìm việc ở CTJobs</h2>
+					<p>Nền tảng giúp sinh viên Cần Thơ tìm việc làm thêm nhanh chóng và phù hợp</p>
+				</div>
 				<div class="benefits-grid">
 					<div class="benefit-card">
 						<i class="bi bi-calendar-week benefit-icon"></i>

@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-
 // Thêm vào cuối file offcanvas.js
 document.addEventListener('DOMContentLoaded', function() {
   // Theo dõi thay đổi trạng thái đăng nhập để cập nhật offcanvas

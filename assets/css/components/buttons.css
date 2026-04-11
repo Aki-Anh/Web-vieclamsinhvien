@@ -35,6 +35,30 @@
   color: var(--color-text-inverse);
 }
 
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-light);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
 .btn-warning {
   background-color: var(--color-warning);
   color: var(--color-warning-dark);
