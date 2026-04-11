@@ -1,7 +1,7 @@
 /* === TOAST NOTIFICATIONS === */
 .toast-container {
     position: fixed;
-    top: 120px;
+    top: 140px;
     right: var(--spacing-4);
     z-index: calc(var(--z-fixed) - 5);
     display: flex;
@@ -48,8 +48,10 @@
     color: #212529;
 }
 
+
+
 @media (max-width: 992px) {
 .toast-container {
-    top: 70px;
+    top: 90px;
 }
 }

@@ -2,8 +2,7 @@
 const Offcanvas = {
     // State management
     state: {
-        isMenuOpen: false,
-        isLoginPanelOpen: false // Có thể bỏ dòng này
+        isMenuOpen: false
     },
 
     // Initialize offcanvas system
@@ -28,11 +27,9 @@ const Offcanvas = {
         if (offcanvasClose) {
             offcanvasClose.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.closeMenu(); // Chỉ đóng menu, không đóng login panel
+                this.closeMenu();
             });
         }
-
-        // Loại bỏ phần login trigger ở đây - để LoginPanel module xử lý
 
         // Click outside to close menu only
         document.addEventListener('click', (e) => {
@@ -42,7 +39,7 @@ const Offcanvas = {
         // ESC key to close menu only
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                this.closeMenu(); // Chỉ đóng menu
+                this.closeMenu();
             }
         });
     },
@@ -95,8 +92,6 @@ const Offcanvas = {
             !e.target.closest('.offcanvas-close')) {
             this.closeMenu();
         }
-
-        // KHÔNG xử lý login panel ở đây - để LoginPanel module xử lý
     },
 
     // Handle window resize
@@ -108,10 +103,7 @@ const Offcanvas = {
             }
         });
     }
-
 };
-
-// Thêm vào cuối file offcanvas.js, bên ngoài object Offcanvas
 
 // Bind login trigger events globally
 document.addEventListener('DOMContentLoaded', function() {
@@ -140,4 +132,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    
+});
+
+
+// Thêm vào cuối file offcanvas.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Theo dõi thay đổi trạng thái đăng nhập để cập nhật offcanvas
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'childList') {
+        // Kiểm tra nếu có thay đổi trong auth container
+        if (typeof updateOffcanvasAuthUI === 'function') {
+          setTimeout(updateOffcanvasAuthUI, 100);
+        }
+      }
+    });
+  });
+
+  // Quan sát thay đổi trong auth container
+  const authContainer = document.getElementById('authContainer');
+  if (authContainer) {
+    observer.observe(authContainer, { childList: true, subtree: true });
+  }
 });

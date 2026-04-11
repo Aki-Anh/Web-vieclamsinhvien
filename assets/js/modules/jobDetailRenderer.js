@@ -237,7 +237,7 @@ const JobDetailRenderer = {
             button.querySelector('i').className = 'bi bi-bookmark';
             button.setAttribute('aria-label', 'Lưu việc làm');
             if (typeof Toast !== 'undefined') {
-                Toast.info('Đã bỏ lưu việc làm!');
+                Toast.warning('Đã bỏ lưu việc làm!');
             }
         } else {
             // Lưu công việc

@@ -1,1084 +1,368 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Danh sách việc làm part-time tại Cần Thơ dành cho sinh viên">
-<<<<<<< HEAD
-    <title>Việc Làm - CTJobs</title>
-    
-    <!-- CSS Framework -->
-=======
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Danh sách việc làm part-time tại Cần Thơ dành cho sinh viên">
+	<title>Việc Làm - CTJobs</title>
 
-    <title>Việc Làm - CTJobs</title>
-
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-    <link rel="stylesheet" href="../assets/css/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../assets/css/pages/jobs.css">
-    <link rel="stylesheet" href="../assets/css/components/job-card.css">
-    <link rel="stylesheet" href="../assets/css/components/toast.css">
-    <link rel="stylesheet" href="../assets/css/components/modal.css">
+	<!-- CSS Framework -->
+	<link rel="stylesheet" href="../assets/css/normalize.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+	<link rel="stylesheet" href="../assets/css/base.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/pages/jobs.css">
 </head>
 
 <body class="jobs-page">
-=======
-    <link rel="stylesheet" href="../assets/css/jobs.css">
-</head>
+	<!-- Header -->
+	<header class="site-header">
+		<!-- TOPBAR -->
+		<div class="header__topbar">
+			<div class="container navbar-container">
+				<div class="topbar-info">
+					<p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
+				</div>
+				<div class="topbar-actions">
+					<i class="bi bi-envelope"></i>
+					<a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
+					<a href="#" class="btn btn-warning">Đăng tuyển ngay</a>
+				</div>
+			</div>
+		</div>
 
-<body class="jobs-page">
+		<!-- NAVBAR -->
+		<div class="header__navbar">
+			<div class="container navbar-container">
+				<div class="navbar-logo">
+					<a href="../index.html">CTJobs</a>
+				</div>
+				<button class="menu-toggle" aria-label="Mở menu">
+					<i class="bi bi-list"></i>
+				</button>
+				<nav class="navbar-nav">
+					<ul class="nav-list">
+						<li><a href="../index.html">Trang Chủ</a></li>
+						<li><a href="./jobs.html" class="active">Việc Làm</a></li>
+						<li><a href="./saved-jobs.html">Đã Lưu</a></li>
+						<li><a href="#">Giới Thiệu</a></li>
+						<li><a href="#">Liên Hệ</a></li>
+					</ul>
+				</nav>
 
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-    <!-- Header -->
-    <header class="site-header">
-        <!-- TOPBAR -->
-        <div class="header__topbar">
-            <div class="container navbar-container">
-                <div class="topbar-info">
-                    <p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
-                </div>
-                <div class="topbar-actions">
-                    <i class="bi bi-envelope"></i>
-                    <a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
-                    <a href="#" class="btn btn-success">Đăng tuyển ngay</a>
-                </div>
-            </div>
-        </div>
+				<div class="navbar-auth">
+					<!-- Chưa đăng nhập -->
+					<template id="guestTemplate">
+						<button class="btn btn-outline-primary login-trigger">
+							<i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+						</button>
+						<a href="./pages/register.html" class="btn btn-primary">
+							<i class="bi bi-person-plus"></i> Đăng Ký
+						</a>
+					</template>
 
-        <!-- NAVBAR -->
-        <div class="header__navbar">
-            <div class="container navbar-container">
-                <div class="navbar-logo">
-<<<<<<< HEAD
-                    <a href="../index.html">CTJobs</a>
-                </div>
-                <button class="menu-toggle" aria-label="Mở menu">
-=======
-                    <a href="#">CTJobs</a>
-                </div>
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Mở menu">
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                    <i class="bi bi-list"></i>
-                </button>
-                <nav class="navbar-nav">
-                    <ul class="nav-list">
-                        <li><a href="../index.html">Trang Chủ</a></li>
-<<<<<<< HEAD
-                        <li><a href="./jobs.html" class="active">Việc Làm</a></li>
-                        <li><a href="./saved-jobs.html">Đã Lưu</a></li>
-=======
-                        <li><a href="#" class="active">Việc Làm</a></li>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                        <li><a href="#">Giới Thiệu</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
-                    </ul>
-                </nav>
-                <div class="navbar-auth">
-<<<<<<< HEAD
-                    <button class="btn btn-outline-primary login-trigger" aria-label="Đăng nhập">
-=======
-                    <button class="btn btn-outline-primary login-trigger" onclick="openLoginPanel()"
-                        aria-label="Đăng nhập">
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                        <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
-                    </button>
-                    <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i>Đăng Ký</a>
-                </div>
-            </div>
-        </div>
-<<<<<<< HEAD
+					<!-- Đã đăng nhập -->
+					<template id="userTemplate">
+						<div class="user-dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
+								<img src="" alt="Avatar" class="user-avatar">
+								<span class="user-name"></span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="userDropdown">
+								<a class="dropdown-item dropdown-item-link" href="./pages/profile.html">
+									<i class="bi bi-person"></i> Hồ sơ
+								</a>
+								<div class="dropdown-divider"></div>
+								<button class="dropdown-item btn btn-danger " id="logoutBtn">
+									<i class="bi bi-box-arrow-right"></i> Đăng xuất
+								</button>
+							</div>
+						</div>
+					</template>
 
-
-        <!-- OffCanvas Menu -->
-        <div class="offcanvas-menu" id="offcanvasMenu">
-            <button class="offcanvas-close" aria-label="Đóng menu">
-=======
-        <div class="login-overlay" onclick="closeAllPanels()"></div>
-
-        <!-- Login Panel -->
-        <div class="login-panel" id="loginPanel">
-            <button class="login-close" onclick="closeAllPanels()" aria-label="Đóng cửa sổ">
-                <i class="bi bi-x"></i>
-            </button>
-            <h3>Đăng nhập</h3>
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Nhập email" required>
-                </div>
-                <div class="form-group password-group">
-                    <label for="loginPassword">Mật khẩu</label>
-                    <div class="password-field">
-                        <input type="password" id="loginPassword" required>
-                        <button type="button" class="toggle-password"
-                            onclick="togglePasswordVisibility('loginPassword')" aria-label="Toggle mật khẩu">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
-                <div class="login-extra">
-                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
-                    <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký</a></p>
-                </div>
-            </form>
-        </div>
-
-        <!-- OffCanvas Menu -->
-        <div class="offcanvas-menu" id="offcanvasMenu">
-            <button class="offcanvas-close" onclick="closeAllPanels()" aria-label="Đóng menu">
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                <i class="bi bi-x"></i>
-            </button>
-
-            <!-- Navigation Container -->
-            <div class="offcanvas-navigation">
-                <ul class="offcanvas-nav">
-<<<<<<< HEAD
-                    <li><a href="../index.html">Trang Chủ</a></li>
-                    <li><a href="./jobs.html" class="active">Việc Làm</a></li>
-                    <li><a href="./saved-jobs.html">Đã Lưu</a></li>
-=======
-                    <li><a href="#">Trang Chủ</a></li>
-                    <li><a href="#" class="active">Việc Làm</a></li>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                    <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
-                </ul>
-            </div>
-
-            <div class="offcanvas-auth">
-<<<<<<< HEAD
-                <button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
-=======
-                <button class="btn btn-outline-primary" onclick="openLoginPanel()">Đăng nhập</button>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                <a href="#" class="btn btn-primary">Đăng ký</a>
-            </div>
-
-            <!-- Employer CTA - toàn bộ div là link -->
-<<<<<<< HEAD
-            <a href="#" class="offcanvas-employer">
-=======
-            <a href="#" class="offcanvas-employer"
-                onclick="event.preventDefault(); /* Thêm hành động chuyển trang ở đây */">
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                <p>Dành cho nhà tuyển dụng</p>
-                <button class="btn btn-success">Đăng tuyển ngay</button>
-            </a>
-        </div>
-<<<<<<< HEAD
-        <div class="offcanvas-overlay"></div>
-
-    </header>
+					<!-- Placeholder sẽ được JS thay thế -->
+					<div id="authContainer"></div>
+				</div>
+			</div>
 
 
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="breadcrumb-section">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Việc làm</li>
-            </ol>
-        </div>
-    </nav>
+			<!-- OffCanvas Menu -->
+			<div class="offcanvas-overlay"></div>
+			<div class="offcanvas-menu" id="offcanvasMenu">
+				<button class="offcanvas-close" aria-label="Đóng menu">
+					<i class="bi bi-x"></i>
+				</button>
+				<!-- Khi đã đăng nhập -->
+				<div class="offcanvas-auth logged-in" id="offcanvasAuthContainer">
+					<!-- Template rỗng hoặc không cần vì auth buttons sẽ bị ẩn -->
+					<template id="offcanvasUserTemplate">
+						<!-- Profile sẽ được thêm vào offcanvas-nav -->
+					</template>
+				</div>
+				<!-- Navigation Container -->
+				<div class="offcanvas-navigation">
+					<ul class="offcanvas-nav">
+						<li><a href="../index.html">Trang Chủ</a></li>
+						<li><a href="./jobs.html" class="active">Việc Làm</a></li>
+						<li><a href="./saved-jobs.html">Đã Lưu</a></li>
+						<li><a href="#">Giới Thiệu</a></li>
+						<li><a href="#">Liên Hệ</a></li>
+					</ul>
+				</div>
 
-    <!-- Main Content -->
-    <main class="site-main">
-        <!-- Search Section -->
-        <section class="jobs-search-section">
-            <div class="container">
-                <h1>Tìm việc làm part-time tại Cần Thơ</h1>
-                <form id="jobSearchForm">
-                    <div class="search-field">
-                        <i class="bi bi-briefcase"></i>
-                        <input type="text" placeholder="Tên công việc, khu vực..." aria-label="Tìm kiếm công việc">
-                    </div>
-                    <button class="search-button" type="submit">
-                        <i class="bi bi-search"></i>
-                        <span>Tìm Kiếm</span>
-                    </button>
-                    </div>
-                </form>
-                
-                <div class="popular-jobs">
-                    <small class="text-muted">Từ khóa phổ biến:</small>
-                    <a href="#" class="badge popular-keyword">Phục vụ</a>
-                    <a href="#" class="badge popular-keyword">Gia sư</a>
-                    <a href="#" class="badge popular-keyword">Bán hàng</a>
-                    <a href="#" class="badge popular-keyword">Marketing</a>
-                </div>
-            </div>
-        </section>
-=======
-        <div class="offcanvas-overlay" onclick="closeAllPanels()"></div>
+				<div class="offcanvas-auth guest-mode" id="offcanvasAuthContainer">
+					<template id="offcanvasGuestTemplate">
+						<button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
+						<a href="./pages/register.html" class="btn btn-primary">Đăng ký</a>
+					</template>
+				</div>
 
-    </header>
+				<!-- Employer CTA - toàn bộ div là link -->
+				<a href="#" class="offcanvas-employer">
+					<p>Dành cho nhà tuyển dụng</p>
+					<button class="btn btn-success">Đăng tuyển ngay</button>
+				</a>
+			</div>
 
-    <!-- Main Content -->
-    <main class="site-main jobs-page">
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="breadcrumb-section">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Việc làm</li>
-                </ol>
-            </div>
-        </nav>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-
-        <!-- Jobs Content -->
-        <section class="jobs-content">
-            <div class="container">
-<<<<<<< HEAD
-                <div class="jobs-layout">
-                    <!-- Main Content -->
-                    <div class="jobs-main-content">
-                        <div class="jobs-header">
-                            <div>
-                                <h2>Danh sách việc làm</h2>
-                                <p class="text-muted">Hiển thị <strong>24</strong> việc làm phù hợp</p>
-                            </div>
-                            
-    <div class="sort-control">
-        <label class="form-label">Sắp xếp theo:</label>
-        <div class="sort-options">
-            <div class="form-check sort-option">
-                <input class="form-check-input" type="radio" name="sortOrder" id="sortNewest" value="newest" checked>
-                <label class="form-check-label" for="sortNewest">Mới nhất</label>
-            </div>
-            <div class="form-check sort-option">
-                <input class="form-check-input" type="radio" name="sortOrder" id="sortSalary" value="salary">
-                <label class="form-check-label" for="sortSalary">Lương cao nhất</label>
-            </div>
-            <div class="form-check sort-option">
-                <input class="form-check-input" type="radio" name="sortOrder" id="sortUrgent" value="urgent">
-                <label class="form-check-label" for="sortUrgent">Gấp nhất</label>
-            </div>
-        </div>
-    </div>
-</div>
-
-                        <!-- Job List -->
-                        <div class="jobs-list">
-                        </div>
-
-                        <!-- Pagination -->
-                        <nav class="pagination-wrapper" aria-label="Phân trang việc làm">
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+	</header>
 
 
-        <!-- Floating Filter Button (Mobile) -->
-        <div class="fixed-bottom">
-            <button class="btn btn-primary btn-round" id="openFilterSheet">
-                <i class="bi bi-funnel fs-4"></i>
-            </button>
-        </div>
-                    <!-- Filters Sidebar -->
-                    <div class="filters-sidebar">
-                        <div class="filter-card">
-                            <h4>Bộ lọc</h4>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Tìm kiếm</label>
-                                <input type="text" class="form-control form-control-sm" id="desktopKeywordFilter" placeholder="Từ khóa...">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Ngành nghề</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat1" value="phucvu" checked>
-                                    <label class="form-check-label" for="cat1">Phục vụ (15)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat2" value="giasu">
-                                    <label class="form-check-label" for="cat2">Gia sư (12)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cat3" value="banhang">
-                                    <label class="form-check-label" for="cat3">Bán hàng (10)</label>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Khu vực</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="loc1" value="ninhkieu" checked>
-                                    <label class="form-check-label" for="loc1">Ninh Kiều (25)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="loc2" value="cairang">
-                                    <label class="form-check-label" for="loc2">Cái Răng (18)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="loc3" value="binhthuy">
-                                    <label class="form-check-label" for="loc3">Bình Thủy (12)</label>
-                                </div>
-                            </div>
-                            
-                            <div class="filter-actions">
-                                <button class="btn btn-outline-secondary btn-sm" id="clearFilters">Xóa tất cả</button>
-                                <button class="btn btn-primary btn-sm" id="applyFilters">Áp dụng</button>
-                            </div>
-                        </div>
-=======
-                <!-- Search Section -->
-                <div class="jobs-search-section">
-                    <h1>Tìm việc làm part-time tại Cần Thơ</h1>
-                    <div class="hero-search">
-                        <form id="jobSearchForm" class="jobs-search-form">
-                            <div class="search-field grid-search-1">
-                                <i class="bi bi-briefcase"></i>
-                                <input type="text" placeholder="Tên công việc, kỹ năng..." aria-label="Tìm kiếm công việc">
-                            </div>
-                            
-                            <button class="search-button grid-search-4" type="submit">
-                                <i class="bi bi-search"></i>
-                                <span>Tìm Kiếm</span>
-                            </button>
-                        </form>
-                        
-                        <div class="popular-jobs">
-                            <p>Từ khóa phổ biến:</p>
-                            <a href="#">Phục vụ</a>
-                            <a href="#">Bán hàng</a>
-                            <a href="#">Gia Sư</a>
-                            <a href="#">Marketing</a>
-                        </div>
-                    </div>
-                </div>
+	<!-- Breadcrumb -->
+	<nav aria-label="breadcrumb" class="breadcrumb-section">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Việc làm</li>
+			</ol>
+		</div>
+	</nav>
 
-                <!-- Main Layout with Sidebar -->
-                <div class="jobs-layout">
-                    <!-- Main Content Area -->
-                    <div class="jobs-main-content">
-                        <!-- Jobs Header -->
-                        <div class="jobs-header">
-                            <div class="jobs-summary">
-                                <h2>Việc làm part-time tại Cần Thơ</h2>
-                                <p class="jobs-count">Hiển thị 24 việc làm phù hợp</p>
-                            </div>
-                            
-                            <!-- Sort Options - Changed to Radio Buttons -->
-                            <div class="sort-options">
-                                <fieldset>
-                                    <legend>Sắp xếp theo:</legend>
-                                    <div class="radio-group">
-                                        <label class="radio-option">
-                                            <input type="radio" name="sort" value="newest" checked>
-                                            <span>Mới nhất</span>
-                                        </label>
-                                        <label class="radio-option">
-                                            <input type="radio" name="sort" value="salary-high">
-                                            <span>Lương cao nhất</span>
-                                        </label>
-                                        <label class="radio-option">
-                                            <input type="radio" name="sort" value="urgent">
-                                            <span>Gấp nhất</span>
-                                        </label>
-                                        <label class="radio-option">
-                                            <input type="radio" name="sort" value="popular">
-                                            <span>Phổ biến nhất</span>
-                                        </label>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                        
-<!-- Jobs List -->
-<div class="jobs-list">
-    <!-- Job Item 1 -->
-    <article class="job-card" role="article" aria-labelledby="job-title-1">
-        <div class="job-card-header">
-            <div class="job-company-logo">
-                <img src="https://placehold.co/60x60" alt="Logo công ty Nhà hàng ABC Cần Thơ">
-            </div>
-            <div class="job-title-area">
-                <h3 class="job-title" id="job-title-1">
-                    <a href="#">Nhân viên phục vụ bàn</a>
-                </h3>
-                <p class="company-name">Nhà hàng ABC Cần Thơ</p>
-            </div>
-            <button class="save-job-btn" aria-label="Lưu việc làm">
-                <i class="bi bi-bookmark"></i>
-            </button>
-        </div>
-        
-        <div class="job-card-body">
-            <div class="job-salary highlight">
-                <i class="bi bi-currency-dollar"></i>
-                <span>18k - 22k/giờ</span>
-            </div>
-            
-            <div class="job-meta">
-                <span class="job-category">
-                    <i class="bi bi-tag"></i>
-                    Phục vụ
-                </span>
-                <span class="job-location">
-                    <i class="bi bi-geo-alt"></i>
-                    Ninh Kiều
-                </span>
-            </div>
-            
-            <div class="job-benefits">
-                <i class="bi bi-gift"></i>
-                <span>Ăn ca, thưởng cuối năm</span>
-            </div>
-            
-            <div class="job-footer">
-                <span class="job-posted">
-                    <i class="bi bi-clock"></i>
-                    Đăng 2 ngày trước
-                </span>
-                <button class="btn btn-primary btn-sm apply-now">
-                    Ứng tuyển
-                </button>
-            </div>
-        </div>
-    </article>
-    
-    <!-- Job Item 2 -->
-    <article class="job-card" role="article" aria-labelledby="job-title-2">
-        <div class="job-card-header">
-            <div class="job-company-logo">
-                <img src="https://placehold.co/60x60" alt="Logo công ty Gia sư tại nhà">
-            </div>
-            <div class="job-title-area">
-                <h3 class="job-title" id="job-title-2">
-                    <a href="#">Gia sư môn Toán lớp 9</a>
-                </h3>
-                <p class="company-name">Gia sư tại nhà</p>
-            </div>
-            <button class="save-job-btn saved" aria-label="Bỏ lưu việc làm">
-                <i class="bi bi-bookmark-fill"></i>
-            </button>
-        </div>
-        
-        <div class="job-card-body">
-            <div class="job-salary highlight success">
-                <i class="bi bi-currency-dollar"></i>
-                <span>25k/buổi</span>
-            </div>
-            
-            <div class="job-meta">
-                <span class="job-category">
-                    <i class="bi bi-tag"></i>
-                    Gia sư
-                </span>
-                <span class="job-location">
-                    <i class="bi bi-geo-alt"></i>
-                    Cái Răng
-                </span>
-            </div>
-            
-            <div class="job-benefits">
-                <i class="bi bi-clock-history"></i>
-                <span>Linh hoạt thời gian</span>
-            </div>
-            
-            <div class="job-footer">
-                <span class="job-posted">
-                    <i class="bi bi-clock"></i>
-                    Đăng 1 ngày trước
-                </span>
-                <button class="btn btn-primary btn-sm apply-now">
-                    Ứng tuyển
-                </button>
-            </div>
-        </div>
-    </article>
-    
-    <!-- Job Item 3 -->
-    <article class="job-card" role="article" aria-labelledby="job-title-3">
-        <div class="job-card-header">
-            <div class="job-company-logo">
-                <img src="https://placehold.co/60x60" alt="Logo công ty Siêu thị XYZ">
-            </div>
-            <div class="job-title-area">
-                <h3 class="job-title" id="job-title-3">
-                    <a href="#">Nhân viên bán hàng thời vụ</a>
-                </h3>
-                <p class="company-name">Siêu thị XYZ</p>
-            </div>
-            <button class="save-job-btn" aria-label="Lưu việc làm">
-                <i class="bi bi-bookmark"></i>
-            </button>
-        </div>
-        
-        <div class="job-card-body">
-            <div class="job-salary highlight">
-                <i class="bi bi-currency-dollar"></i>
-                <span>20k - 25k/giờ</span>
-            </div>
-            
-            <div class="job-meta">
-                <span class="job-category">
-                    <i class="bi bi-tag"></i>
-                    Bán hàng
-                </span>
-                <span class="job-location">
-                    <i class="bi bi-geo-alt"></i>
-                    Bình Thủy
-                </span>
-            </div>
-            
-            <div class="job-benefits">
-                <i class="bi bi-percent"></i>
-                <span>Hoa hồng doanh số</span>
-            </div>
-            
-            <div class="job-footer">
-                <span class="job-posted">
-                    <i class="bi bi-clock"></i>
-                    Đăng 3 ngày trước
-                </span>
-                <button class="btn btn-primary btn-sm apply-now">
-                    Ứng tuyển
-                </button>
-            </div>
-        </div>
-    </article>
-    
-    <!-- Job Item 4 -->
-    <article class="job-card" role="article" aria-labelledby="job-title-4">
-        <div class="job-card-header">
-            <div class="job-company-logo">
-                <img src="https://placehold.co/60x60" alt="Logo công ty Công ty TNHH Marketing ABC">
-            </div>
-            <div class="job-title-area">
-                <h3 class="job-title" id="job-title-4">
-                    <a href="#">Nhân viên marketing part-time</a>
-                </h3>
-                <p class="company-name">Công ty TNHH Marketing ABC</p>
-            </div>
-            <button class="save-job-btn" aria-label="Lưu việc làm">
-                <i class="bi bi-bookmark"></i>
-            </button>
-        </div>
-        
-        <div class="job-card-body">
-            <div class="job-salary highlight">
-                <i class="bi bi-currency-dollar"></i>
-                <span>22k - 30k/giờ</span>
-            </div>
-            
-            <div class="job-meta">
-                <span class="job-category">
-                    <i class="bi bi-tag"></i>
-                    Marketing
-                </span>
-                <span class="job-location">
-                    <i class="bi bi-geo-alt"></i>
-                    Ô Môn
-                </span>
-            </div>
-            
-            <div class="job-benefits">
-                <i class="bi bi-award"></i>
-                <span>Thưởng hiệu quả công việc</span>
-            </div>
-            
-            <div class="job-footer">
-                <span class="job-posted">
-                    <i class="bi bi-clock"></i>
-                    Đăng 5 ngày trước
-                </span>
-                <button class="btn btn-primary btn-sm apply-now">
-                    Ứng tuyển
-                </button>
-            </div>
-        </div>
-    </article>
-</div>
+	<!-- Main Content -->
+	<main class="site-main">
+		<!-- Search Section -->
+		<section class="jobs-search-section">
+			<div class="container">
+				<h1>Tìm việc làm part-time tại Cần Thơ</h1>
+				<form id="jobSearchForm">
+					<div class="search-field">
+						<i class="bi bi-briefcase"></i>
+						<input type="text" id="searchInput" class="form-control" placeholder="Tên công việc, khu vực..."
+							aria-label="Tìm kiếm công việc">
+						<button type="button" class="clear-search" id="clearSearchBtn">
+							<i class="bi bi-x-lg"></i>
+						</button>
+					</div>
+					<button class="search-button" type="submit">
+						<i class="bi bi-search"></i>
+						<span>Tìm Kiếm</span>
+					</button>
+				</form>
 
-                        
-                        <!-- Pagination -->
-                        <nav class="pagination-wrapper" aria-label="Phân trang việc làm">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Tiếp</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    
-                    <!-- Sidebar Filters -->
-                    <div class="filters-sidebar">
-                        <aside>
-                            <div class="filter-card">
-                                <div class="filter-header">
-                                    <h3 class="filter-title">
-                                        <i class="bi bi-funnel"></i> Bộ lọc
-                                    </h3>
-                                    <button class="filter-clear-btn">Xóa tất cả</button>
-                                </div>
-                                
-                                <!-- Search Filter -->
-                                <div class="filter-group">
-                                    <h4>Tìm kiếm</h4>
-                                    <div class="filter-search">
-                                        <input type="text" placeholder="Từ khóa...">
-                                    </div>
-                                </div>
-                                
-                                <!-- Category Filter - Accordion Style -->
-                                <div class="filter-group">
-                                    <h4 class="filter-group-title">
-                                        <i class="bi bi-chevron-down"></i>
-                                        <span>Ngành nghề</span>
-                                    </h4>
-                                    <div class="filter-options">
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="category" value="phucvu">
-                                            <span>Phục vụ</span>
-                                            <span class="count">(15)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="category" value="giasu">
-                                            <span>Gia sư</span>
-                                            <span class="count">(12)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="category" value="banhang">
-                                            <span>Bán hàng</span>
-                                            <span class="count">(10)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="category" value="trogiang">
-                                            <span>Trợ giảng</span>
-                                            <span class="count">(8)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="category" value="marketing">
-                                            <span>Marketing</span>
-                                            <span class="count">(5)</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <!-- Location Filter - Accordion Style -->
-                                <div class="filter-group">
-                                    <h4 class="filter-group-title">
-                                        <i class="bi bi-chevron-down"></i>
-                                        <span>Khu vực</span>
-                                    </h4>
-                                    <div class="filter-options">
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="location" value="ninhkieu" checked>
-                                            <span>Ninh Kiều</span>
-                                            <span class="count">(25)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="location" value="cairang">
-                                            <span>Cái Răng</span>
-                                            <span class="count">(18)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="location" value="binhthuy">
-                                            <span>Bình Thủy</span>
-                                            <span class="count">(12)</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="location" value="omon">
-                                            <span>Ô Môn</span>
-                                            <span class="count">(8)</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <!-- Salary Filter - Accordion Style -->
-                                <div class="filter-group">
-                                    <h4 class="filter-group-title">
-                                        <i class="bi bi-chevron-down"></i>
-                                        <span>Mức lương</span>
-                                    </h4>
-                                    <div class="filter-options">
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="salary" value="under15k">
-                                            <span>Dưới 15k/giờ</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="salary" value="15k-20k" checked>
-                                            <span>15k - 20k/giờ</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="salary" value="20k-25k">
-                                            <span>20k - 25k/giờ</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="salary" value="over25k">
-                                            <span>Trên 25k/giờ</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <!-- Job Type Filter - Accordion Style -->
-                                <div class="filter-group">
-                                    <h4 class="filter-group-title">
-                                        <i class="bi bi-chevron-down"></i>
-                                        <span>Hình thức</span>
-                                    </h4>
-                                    <div class="filter-options">
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="type" value="parttime" checked>
-                                            <span>Part-time</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="type" value="fulltime">
-                                            <span>Full-time</span>
-                                        </label>
-                                        <label class="filter-option">
-                                            <input type="checkbox" name="type" value="internship">
-                                            <span>Thực tập</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <!-- Apply Filters Button -->
-                                <button class="btn btn-primary filter-apply-btn">
-                                    <i class="bi bi-check-circle"></i> Áp dụng bộ lọc
-                                </button>
-                            </div>
-                        </aside>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                    </div>
-                </div>
-            </div>
-        </section>
-<<<<<<< HEAD
+				<div class="popular-jobs">
+					<small class="text-muted">Từ khóa phổ biến:</small>
+					<a href="#" class="badge popular-keyword">Phục vụ</a>
+					<a href="#" class="badge popular-keyword">Gia sư</a>
+					<a href="#" class="badge popular-keyword">Bán hàng</a>
+					<a href="#" class="badge popular-keyword">Marketing</a>
+				</div>
+			</div>
+		</section>
 
-        <!-- Bottom Sheet Filter (Mobile) -->
-        <div class="filter-sheet-overlay" id="filterOverlay"></div>
-        <div class="filter-bottom-sheet" id="filterBottomSheet">
-            <div class="filter-sheet-header">
-                <h5 class="mb-0">Bộ lọc</h5>
-                <button class="btn-close" id="closeFilterSheet">×</button>
-            </div>
-            <div class="filter-sheet-content">
-                <div class="mb-3">
-                    <label class="form-label">Từ khóa</label>
-                    <input type="text" class="form-control form-control-sm" id="mobileKeywordFilter" placeholder="Tên công việc...">
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Ngành nghề</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-cat1" value="phucvu">
-                        <label class="form-check-label" for="mobile-cat1">Phục vụ</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-cat2" value="giasu">
-                        <label class="form-check-label" for="mobile-cat2">Gia sư</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-cat3" value="banhang">
-                        <label class="form-check-label" for="mobile-cat3">Bán hàng</label>
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Khu vực</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-loc1" value="ninhkieu">
-                        <label class="form-check-label" for="mobile-loc1">Ninh Kiều</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-loc2" value="cairang">
-                        <label class="form-check-label" for="mobile-loc2">Cái Răng</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mobile-loc3" value="binhthuy">
-                        <label class="form-check-label" for="mobile-loc3">Bình Thủy</label>
-                    </div>
-                </div>
-                
-                <div class="filter-actions">
-                    <button class="btn btn-outline-secondary btn-sm" id="clearMobileFilters">Xóa tất cả</button>
-                    <button class="btn btn-primary btn-sm" id="applyMobileFilters">Áp dụng</button>
-                </div>
-            </div>
-        </div>
-        
-        
-<!-- Login Panel Component -->
-<div class="login-overlay"></div>
-<div class="login-panel" id="loginPanel">
-    <div class="login-panel-header">
-        <button class="login-close" aria-label="Đóng cửa sổ">
-            <i class="bi bi-x"></i>
-        </button>
-        <h3>Đăng nhập</h3>
-        <p>Chào mừng bạn quay trở lại</p>
-    </div>
-    <div class="login-panel-content">
-        <form class="login-form" id="loginForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Nhập email của bạn" required>
-            </div>
-            <div class="form-group password-group">
-                <label for="loginPassword">Mật khẩu</label>
-                <div class="password-field">
-                    <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
-                    <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
-                        <i class="bi bi-eye"></i>
-                    </button>
-                </div>
-            </div>
-            <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
-        </form>
-        <div class="login-extra">
-            <a href="#" class="forgot-password">Quên mật khẩu?</a>
-            <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
-        </div>
-    </div>
-</div>
+		<!-- Jobs Content -->
+		<!-- Jobs Content -->
+		<section class="jobs-content">
+			<div class="container">
+				<div class="jobs-layout">
+					<!-- Main Content -->
+					<div class="jobs-main-content">
+						<div class="jobs-header">
+							<div>
+								<h2>Danh sách việc làm</h2>
+								<p class="text-muted" id="jobsCount"></p>
+							</div>
 
+							<!-- Thay thế phần sắp xếp hiện tại -->
+							<div class="sort-control">
+								<label class="form-label">Sắp xếp theo:</label>
+								<select class="form-select sort-select" id="sortSelect">
+									<option value="newest">Mới nhất</option>
+									<option value="salary">Lương cao nhất</option>
+									<option value="urgent">Gấp nhất</option>
+								</select>
+							</div>
 
+						</div>
 
-    </main>
+						<!-- Job List -->
+						<div class="jobs-list">
+						</div>
 
-=======
-    </main>
+						<!-- Pagination -->
+						<nav class="pagination-wrapper" aria-label="Phân trang việc làm">
+							<ul class="pagination" id="paginationContainer">
+							</ul>
+						</nav>
+					</div>
+					<div class="filter-overlay" id="filterOverlay"></div>
 
-    <!-- Footer -->
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <section class="about">
-                <h4>CTJobs</h4>
-                <p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
-                </p>
-            </section>
-            <section class="student">
-                <h5>Dành cho sinh viên</h5>
-                <ul>
-<<<<<<< HEAD
-                    <li><a href="./jobs.html">Tìm Việc</a></li>
-                    <li><a href="./saved-jobs.html">Việc Làm Đã Lưu</a></li>
-                    <li><a href="#">Tạo Hồ Sơ</a></li>
-=======
-                    <li><a href="#">Tìm Việc</a></li>
-                    <li><a href="#">Tạo Hồ Sơ</a></li>
-                    <li><a href="#">Việc Làm Đã Lưu</a></li>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
-                </ul>
-            </section>
-            <section class="employers">
-                <h5>Nhà tuyển dụng</h5>
-                <ul>
-                    <li><a href="#">Đăng Tin</a></li>
-                    <li><a href="#">Quản Lý Công Việc</a></li>
-                    <li><a href="#">Tìm Ứng Viên</a></li>
-                </ul>
-            </section>
-            <section class="contact">
-                <h5>Liên Hệ</h5>
-                <ul>
-                    <li>
-                        <i class="bi bi-envelope"></i>
-                        <a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
-                    </li>
-                    <li>
-                        <i class="bi bi-telephone"></i>
-                        <a href="tel:0900000000">0900 000 000</a>
-                    </li>
-                    <li>
-                        <i class="bi bi-geo-alt"></i>
-                        <a href="#">Ninh Kiều, Cần Thơ</a>
-                    </li>
-                </ul>
-            </section>
-            <section class="social">
-                <a href="#" class="social-icon" aria-label="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-            </section>
-        </div>
-        <div class="footer-bottombar">
-            <div>© 2026 CTJobs</div>
-            <div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
-        </div>
-    </footer>
+					<!-- Mobile Filter Trigger -->
+					<div class="mobile-filter-trigger">
+						<button class="btn btn-filter-mobile" id="mobileFilterBtn" aria-label="Bộ lọc">
+							<i class="bi bi-funnel"></i>
+						</button>
+					</div>
 
-<<<<<<< HEAD
-    
-<script src="../assets/js/data/jobData.js"></script>
-<script src="../assets/js/modules/jobCardBuilder.js"></script>
-<script src="../assets/js/modules/loginPanel.js"></script>
-<script src="../assets/js/modules/offcanvas.js"></script>
-<script src="../assets/js/modules/modal.js"></script>
-<script src="../assets/js/modules/toast.js"></script>
-<script src="../assets/js/main.js"></script>
+					<!-- Filters Sidebar -->
+					<div class="filters-sidebar">
+						<div class="filter-card">
+							<button class="filter-close-btn" aria-label="Đóng bộ lọc">
+								<i class="bi bi-x"></i>
+							</button>
+							<h4>Bộ lọc</h4>
+
+							<div class="filter-group filter-group-keyword">
+								<label class="form-label">Tìm kiếm</label>
+								<div class="form-control-container">
+									<input type="text" class="form-control-sm" placeholder="Tên công việc, khu vực...">
+									<button type="button" class="filter-clear-btn">
+										<i class="bi bi-x-lg"></i>
+									</button>
+								</div>
+							</div>
+							<div class="filter-content">
+							<div class="filter-group filter-group-categories">
+								<!-- Category filters sẽ được render bởi JobFilter -->
+							</div>
+
+							<div class="filter-group filter-group-locations">
+								<!-- Location filters sẽ được render bởi JobFilter -->
+							</div>
+							</div>
+
+							<div class="filter-actions">
+								<button class="btn btn-outline" id="clearFilters">Xóa tất cả</button>
+								<button class="btn btn-primary" id="applyFilters">Áp dụng</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
 
 
 
 
-=======
-    <script>
-        // UI Functions
-        function isTablet_or_Mobile() {
-            return window.innerWidth <= 992; // Tablet và mobile
-        }
+		<!-- Login Panel Component -->
+		<div class="login-overlay"></div>
+		<div class="login-panel" id="loginPanel">
+			<div class="login-panel-header">
+				<button class="login-close" aria-label="Đóng cửa sổ">
+					<i class="bi bi-x"></i>
+				</button>
+				<h3>Đăng nhập</h3>
+				<p>Chào mừng bạn quay trở lại</p>
+			</div>
+			<div class="login-panel-content">
+				<form class="login-form" id="loginForm">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" placeholder="Nhập email của bạn" required>
+					</div>
+					<div class="form-group password-group">
+						<label for="loginPassword">Mật khẩu</label>
+						<div class="password-field">
+							<input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+							<button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+								<i class="bi bi-eye"></i>
+							</button>
+						</div>
+					</div>
+					<button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+				</form>
+				<div class="login-extra">
+					<a href="#" class="forgot-password">Quên mật khẩu?</a>
+					<p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+				</div>
+			</div>
+		</div>
 
-        function toggleMenu() {
-            const menu = document.getElementById('offcanvasMenu');
-            const overlay = document.querySelector('.offcanvas-overlay');
-            if (menu && overlay) {
-                menu.classList.toggle('active');
-                overlay.style.display = menu.classList.contains('active') ? 'block' : 'none';
-            }
-        }
 
-        function openLoginPanel() {
-            const panel = document.getElementById('loginPanel');
-            const overlay = document.querySelector('.login-overlay');
-            if (panel && overlay) {
-                panel.classList.add('active');
-                overlay.style.display = 'block';
-            }
-        }
 
-        function closeAllPanels() {
-            const panels = ['offcanvasMenu', 'loginPanel'];
-            const overlays = ['.offcanvas-overlay', '.login-overlay'];
+	</main>
 
-            panels.forEach((id, index) => {
-                const element = document.getElementById(id);
-                const overlay = document.querySelector(overlays[index]);
-                if (element) element.classList.remove('active');
-                if (overlay) overlay.style.display = 'none';
-            });
+	<footer class="site-footer">
+		<div class="container footer-content">
+			<section class="about">
+				<h4>CTJobs</h4>
+				<p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
+				</p>
+			</section>
+			<section class="student">
+				<h5>Dành cho sinh viên</h5>
+				<ul>
+					<li><a href="./jobs.html">Tìm Việc</a></li>
+					<li><a href="./saved-jobs.html">Việc Làm Đã Lưu</a></li>
+					<li><a href="#">Tạo Hồ Sơ</a></li>
+				</ul>
+			</section>
+			<section class="employers">
+				<h5>Nhà tuyển dụng</h5>
+				<ul>
+					<li><a href="#">Đăng Tin</a></li>
+					<li><a href="#">Quản Lý Công Việc</a></li>
+					<li><a href="#">Tìm Ứng Viên</a></li>
+				</ul>
+			</section>
+			<section class="contact">
+				<h5>Liên Hệ</h5>
+				<ul>
+					<li>
+						<i class="bi bi-envelope"></i>
+						<a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
+					</li>
+					<li>
+						<i class="bi bi-telephone"></i>
+						<a href="tel:0900000000">0900 000 000</a>
+					</li>
+					<li>
+						<i class="bi bi-geo-alt"></i>
+						<a href="#">Ninh Kiều, Cần Thơ</a>
+					</li>
+				</ul>
+			</section>
+			<section class="social">
+				<a href="#" class="social-icon" aria-label="Facebook">
+					<i class="bi bi-facebook"></i>
+				</a>
+				<a href="#" class="social-icon" aria-label="Instagram">
+					<i class="bi bi-instagram"></i>
+				</a>
+				<a href="#" class="social-icon" aria-label="LinkedIn">
+					<i class="bi bi-linkedin"></i>
+				</a>
+			</section>
+		</div>
+		<div class="footer-bottombar">
+			<div>© 2026 CTJobs</div>
+			<div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
+		</div>
+	</footer>
 
-            // Clear login form
-            const form = document.getElementById('loginForm');
-            if (form) setTimeout(() => form.reset(), 300);
-        }
 
-        function togglePasswordVisibility(id) {
-            const input = document.getElementById(id);
-            const icon = input.nextElementSibling.querySelector('i');
-            if (input && icon) {
-                input.type = input.type === 'password' ? 'text' : 'password';
-                icon.classList.toggle('bi-eye');
-                icon.classList.toggle('bi-eye-slash');
-            }
-        }
+	<script src="../assets/js/data/jobData.js"></script>
+	<script src="../assets/js/modules/jobCardBuilder.js"></script>
+	<script src="../assets/js/modules/pagination.js"></script>
+	<script src="../assets/js/modules/loginPanel.js"></script>
+	<script src="../assets/js/modules/offcanvas.js"></script>
+	<script src="../assets/js/modules/jobFilter.js"></script>
+	<script src="../assets/js/modules/modal.js"></script>
+	<script src="../assets/js/modules/toast.js"></script>
+	<script src="../assets/js/main.js"></script>
 
-        // Toggle Filter Group Visibility
-        function toggleFilterGroup(header) {
-            const group = header.parentElement;
-            const icon = header.querySelector('i');
-            const options = group.querySelector('.filter-options');
-            
-            options.style.display = options.style.display === 'none' ? 'flex' : 'none';
-            icon.classList.toggle('bi-chevron-down');
-            icon.classList.toggle('bi-chevron-up');
-        }
 
-        // Event Handlers
-        document.addEventListener('click', function (e) {
-            const menu = document.getElementById('offcanvasMenu');
-            const panel = document.getElementById('loginPanel');
 
-            if (menu && menu.classList.contains('active') &&
-                !e.target.closest('#offcanvasMenu') && !e.target.closest('.menu-toggle')) {
-                closeAllPanels();
-            }
-
-            if (panel && panel.classList.contains('active') &&
-                !e.target.closest('#loginPanel') && !e.target.closest('.login-trigger')) {
-                closeAllPanels();
-            }
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeAllPanels();
-        });
-
-        // Window resize handler
-        window.addEventListener('resize', function () {
-            if (!isTablet_or_Mobile()) {
-                // Trên desktop, đảm bảo menu offcanvas đóng
-                const menu = document.getElementById('offcanvasMenu');
-                const overlay = document.querySelector('.offcanvas-overlay');
-                if (menu) menu.classList.remove('active');
-                if (overlay) overlay.style.display = 'none';
-            }
-        });
-
-        // Enhancements
-        document.addEventListener('DOMContentLoaded', function () {
-            // Make select fields clickable anywhere
-            document.querySelectorAll('.search-field').forEach(field => {
-                field.addEventListener('click', function (e) {
-                    if (!e.target.classList.contains('bi') && e.target.tagName !== 'SELECT') {
-                        const select = this.querySelector('select');
-                        if (select) select.focus();
-                    }
-                });
-            });
-            
-            // Save job functionality
-            document.querySelectorAll('.save-job-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const icon = this.querySelector('i');
-                    if(icon.classList.contains('bi-bookmark')) {
-                        icon.classList.remove('bi-bookmark');
-                        icon.classList.add('bi-bookmark-fill');
-                        this.setAttribute('aria-label', 'Bỏ lưu việc làm');
-                    } else {
-                        icon.classList.remove('bi-bookmark-fill');
-                        icon.classList.add('bi-bookmark');
-                        this.setAttribute('aria-label', 'Lưu việc làm');
-                    }
-                });
-            });
-            
-            // Add click handlers for filter group titles
-            document.querySelectorAll('.filter-group-title').forEach(title => {
-                title.addEventListener('click', function() {
-                    toggleFilterGroup(this);
-                });
-            });
-            
-            // Initially hide some filter groups (optional)
-            document.querySelectorAll('.filter-group:nth-child(n+3) .filter-options').forEach(options => {
-                options.style.display = 'none';
-                const icon = options.previousElementSibling.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('bi-chevron-down');
-                    icon.classList.add('bi-chevron-up');
-                }
-            });
-        });
-    </script>
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 </body>
+
 </html>

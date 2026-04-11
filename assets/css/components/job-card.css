@@ -1,10 +1,10 @@
-/* === JOB ITEM CARD - UNIFIED STYLES === */
+/* === JOB ITEM CARD - COMPACT & UNIFIED STYLES === */
 .job-item {
     background: var(--color-white);
     border: 1px solid var(--color-gray-light);
     border-radius: 0.5rem;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
     position: relative;
@@ -23,7 +23,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     background: var(--color-primary);
     transform: scaleX(0);
     transition: transform 0.3s ease;
@@ -36,7 +36,8 @@
 
 .job-item-content {
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
 .company-logo {
@@ -44,8 +45,8 @@
 }
 
 .company-logo img {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     object-fit: cover;
     border-radius: 0.375rem;
     border: 1px solid var(--color-gray-light);
@@ -61,27 +62,35 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0; /* Cho phép flex item co lại */
 }
 
 .job-title-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 0.5rem;
-    gap: 1rem;
+    margin-bottom: 0.25rem;
+    gap: 0.75rem;
 }
 
 .job-title {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     flex: 1;
+    line-height: 1.3;
 }
 
 .job-title a {
     color: var(--color-dark);
     text-decoration: none;
     transition: color 0.2s ease;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .job-title a:hover {
@@ -90,32 +99,34 @@
 }
 
 .company-name {
-    margin: 0.25rem 0;
+    margin: 0.125rem 0;
     color: var(--color-gray);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
 }
 
 .salary {
     color: var(--color-success);
     font-weight: 500;
-    margin: 0.25rem 0;
-    font-size: 0.875rem;
+    margin: 0.125rem 0;
+    font-size: 0.8125rem;
 }
 
-/* === BADGES IMPROVEMENTS === */
+/* === BADGES COMPACT === */
 .job-tags {
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.375rem;
+    max-height: 40px; /* Giới hạn chiều cao tags */
+    overflow: hidden;
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.75rem;
+    padding: 0.1875rem 0.625rem;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -123,6 +134,7 @@
     background: var(--color-bg-secondary);
     color: var(--color-gray);
     gap: 0.25rem;
+    white-space: nowrap;
 }
 
 .badge:hover {
@@ -186,56 +198,64 @@
     color: white;
 }
 
-/* Special badges */
+/* Special badges - compact version */
 .badge-hot {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
     color: white;
     font-weight: 600;
+    padding: 0.1875rem 0.5rem;
 }
 
 .badge-hot::before {
     content: "🔥";
-    margin-right: 0.25rem;
+    font-size: 0.6rem;
+    margin-right: 0.125rem;
 }
 
 .badge-urgent {
     background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
     color: white;
     font-weight: 600;
+    padding: 0.1875rem 0.5rem;
 }
 
 .badge-urgent::before {
     content: "⚡";
-    margin-right: 0.25rem;
+    font-size: 0.6rem;
+    margin-right: 0.125rem;
 }
 
 .badge-parttime {
     background: linear-gradient(135deg, #3742fa 0%, #2f3542 100%);
     color: white;
+    padding: 0.1875rem 0.5rem;
 }
 
 .badge-parttime::before {
     content: "⏰";
-    margin-right: 0.25rem;
+    font-size: 0.6rem;
+    margin-right: 0.125rem;
 }
 
 .badge-new {
     background: linear-gradient(135deg, #2ed573 0%, #1dd1a1 100%);
     color: white;
     font-weight: 600;
+    padding: 0.1875rem 0.5rem;
 }
 
 .badge-new::before {
     content: "✨";
-    margin-right: 0.25rem;
+    font-size: 0.6rem;
+    margin-right: 0.125rem;
 }
 
-/* === SAVE BUTTON IMPROVEMENTS === */
+/* === SAVE BUTTON COMPACT === */
 .save-job-btn {
     background: var(--color-bg-secondary);
-    border: 2px solid var(--color-gray-light);
-    width: 40px;
-    height: 40px;
+    border: 1px solid var(--color-gray-light);
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,6 +267,7 @@
     margin: 0;
     position: relative;
     z-index: 2;
+    flex-shrink: 0;
 }
 
 .save-job-btn:hover {
@@ -260,7 +281,7 @@
 }
 
 .save-job-btn i {
-    font-size: 1.25rem;
+    font-size: 1rem;
     transition: all 0.1s ease;
     color: var(--color-gray);
 }
@@ -270,70 +291,74 @@
 }
 
 .save-job-btn i.bi-bookmark-fill {
-    color: var(--color-success);
+    color: var(--color-warning);
 }
 
-.save-job-btn i.bi-trash {
+.save-job-btn i.bi-trash{
     color: var(--color-danger);
 }
 
-/* === JOB ACTIONS FOOTER === */
+/* === JOB ACTIONS FOOTER COMPACT === */
 .job-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-gray-light);
-    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .time-info {
     color: var(--color-gray);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    white-space: nowrap;
 }
 
-/* === ACTION BUTTONS GROUP === */
+/* === ACTION BUTTONS GROUP COMPACT === */
 .job-actions {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     align-items: center;
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 /* VIEW BUTTON */
 .view-job-btn {
     background: var(--color-bg-secondary);
-    border: 1px solid var(--color-gray-light);
+    border: 1px solid var(--color-border);
     color: var(--color-gray);
-    padding: 0.5rem 1rem;
+    padding: 0.375rem 0.75rem;
     border-radius: 0.375rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 500;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.375rem;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .view-job-btn:hover {
     background: var(--color-gray-light);
     border-color: var(--color-gray);
     color: var(--color-dark);
-    transform: translateY(-1px);
+    transform: scale(1.05);
 }
 
 .view-job-btn:active {
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 .view-job-btn i {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }
 
 /* APPLY BUTTON */
@@ -341,44 +366,46 @@
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.375rem 0.75rem;
     border-radius: 0.375rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.375rem;
     box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .apply-job-btn:hover {
     background: var(--color-primary-hover);
     border-color: var(--color-primary-hover);
-    transform: translateY(-2px);
+    transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
 }
 
 .apply-job-btn:active {
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 .apply-job-btn i {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }
 
-/* === RESPONSIVE DESIGN === */
+/* === RESPONSIVE DESIGN COMPACT === */
 @media (max-width: 768px) {
     .job-item {
-        padding: 1rem;
+        padding: 0.875rem;
+        margin-bottom: 0.625rem;
     }
     
     .job-item-content {
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem;
+        gap: 0.75rem;
     }
     
     .company-logo {
@@ -386,24 +413,33 @@
     }
     
     .company-logo img {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
     }
     
     .job-title-section {
         flex-direction: row;
         align-items: flex-start;
+        margin-bottom: 0.125rem;
+        gap: 0.5rem;
+    }
+    
+    .job-title {
+        font-size: 1rem;
     }
     
     .job-footer {
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem;
+        gap: 0.75rem;
+        margin-top: 0.625rem;
+        padding-top: 0.625rem;
     }
     
     .job-actions {
         width: 100%;
         justify-content: flex-end;
+        gap: 0.5rem;
     }
     
     .view-job-btn,
@@ -411,90 +447,109 @@
         flex: 1;
         text-align: center;
         justify-content: center;
+        padding: 0.375rem 0.625rem;
+        font-size: 0.75rem;
     }
     
     .job-tags {
-        margin: 0.5rem 0;
+        margin: 0.375rem 0;
+        gap: 0.25rem;
     }
     
     .badge {
-        font-size: 0.6875rem;
-        padding: 0.2rem 0.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .job-title-section {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
-    
-    .job-actions {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .view-job-btn,
-    .apply-job-btn {
-        width: 100%;
-    }
-    
-    .save-job-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 36px;
-        height: 36px;
-    }
-    
-    .save-job-btn i {
-        font-size: 1rem;
-    }
-    
-    .job-title {
-        font-size: 1.125rem;
-    }
-    
-    .company-name,
-    .salary {
-        font-size: 0.8125rem;
+        font-size: 0.625rem;
+        padding: 0.125rem 0.5rem;
     }
     
     .time-info {
         font-size: 0.75rem;
     }
+}
+
+@media (max-width: 480px) {
+    .job-item {
+        padding: 0.75rem;
+    }
+    
+    .job-title-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+    }
+    
+    .job-actions {
+        flex-direction: column;
+        gap: 0.375rem;
+    }
+    
+    .view-job-btn,
+    .apply-job-btn {
+        width: 100%;
+        padding: 0.375rem;
+        font-size: 0.75rem;
+    }
+    
+    .save-job-btn {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .save-job-btn i {
+        font-size: 0.875rem;
+    }
+    
+    .job-title {
+        font-size: 0.9375rem;
+    }
+    
+    .company-name,
+    .salary {
+        font-size: 0.75rem;
+    }
+    
+    .time-info {
+        font-size: 0.6875rem;
+    }
     
     .job-footer {
-        gap: 0.75rem;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+    }
+    
+    .job-tags {
+        max-height: 32px;
     }
 }
 
-/* === UTILITY CLASSES === */
+/* === UTILITY CLASSES COMPACT === */
 .badge-sm {
-    font-size: 0.6875rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
 }
 
 .badge-md {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.5rem;
 }
 
 .badge-lg {
-    font-size: 0.8125rem;
-    padding: 0.3rem 0.85rem;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
 }
 
-/* Animation for special badges */
+/* Animation for special badges - reduced intensity */
 @keyframes badgePulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.02); }
     100% { transform: scale(1); }
 }
 
 .badge-hot,
 .badge-urgent,
 .badge-new {
-    animation: badgePulse 2s infinite;
+    animation: badgePulse 3s infinite;
 }

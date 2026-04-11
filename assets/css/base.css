@@ -18,7 +18,18 @@
   
   /* Danger Colors */
   --color-danger: #dc3545;
+  --color-danger-hover: #bb2d3b;
   --color-danger-light: #f8d7da;
+  
+  /* Error Colors */
+  --color-error: #dc3545;
+  --color-error-hover: #bb2d3b;
+  --color-error-light: #f8d7da;
+  
+  /* Info Colors */
+  --color-info: #0dcaf0;
+  --color-info-hover: #31d2f2;
+  --color-info-light: #cff4fc;
   
   /* Neutral Colors */
   --color-white: #ffffff;
@@ -41,18 +52,18 @@
   --color-border: #dee2e6;
   --color-border-focus: var(--color-primary);
   
-<<<<<<< HEAD
   /* Shadow Colors */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-=======
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
   /* === TYPOGRAPHY === */
   
   /* Font Families */
   --font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   
   /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.875rem;   /* 14px */
   --font-size-base: 1rem;     /* 16px */
   --font-size-lg: 1.125rem;   /* 18px */
@@ -81,9 +92,10 @@
   /* === COMPONENTS === */
   
   /* Buttons */
-  --btn-padding-x: var(--spacing-4);
-  --btn-padding-y: var(--spacing-3);
+  --btn-padding-x: var(--spacing-3);
+  --btn-padding-y: var(--spacing-2);
   --btn-border-radius: 0.375rem;
+  --btn-font-weight: 600;
   
   /* Forms */
   --input-padding-x: var(--spacing-3);
@@ -105,8 +117,12 @@
   
   /* Z-Index */
   --z-dropdown: 1000;
+  --z-sticky: 1020;
   --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
   --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 }
 
 /* === BASE STYLES === */
@@ -139,81 +155,194 @@ a {
 }
 
 /* Button Styles - Sử dụng biến CSS */
-<<<<<<< HEAD
-
-=======
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-border-radius);
+  font-weight: var(--btn-font-weight);
   cursor: pointer;
   border: none;
   transition: all 0.2s;
-=======
-  padding: var(--btn-padding-y) var(--btn-padding-x);
-  border-radius: var(--btn-border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  outline: none;
-  text-align: center;
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
+  gap: var(--spacing-2);
+  line-height: var(--font-size-xl);
 }
 
+/* Primary Button */
 .btn-primary {
   background-color: var(--color-primary);
-<<<<<<< HEAD
-  color: white;
-=======
   color: var(--color-text-inverse);
-  box-shadow: 0 2px 4px rgba(13, 110, 253, 0.25);
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
+  border: 2px solid var(--color-primary);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
-<<<<<<< HEAD
-=======
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.35);
+  border-color: var(--color-primary-hover);
 }
 
-.btn-primary:active {
-  transform: translateY(0);
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
+.btn-primary:focus {
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
 }
 
+/* Outline Primary Button */
 .btn-outline-primary {
   background-color: transparent;
-<<<<<<< HEAD
-  border: 1px solid var(--color-primary);
-=======
   border: 2px solid var(--color-primary);
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
   color: var(--color-primary);
 }
 
 .btn-outline-primary:hover {
-<<<<<<< HEAD
-  background-color: rgba(13, 110, 253, 0.1);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
 }
 
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--color-gray);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-gray);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-dark);
+  border-color: var(--color-gray-dark);
+}
+
+/* Outline Secondary Button */
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-gray);
+  color: var(--color-gray);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-gray);
+  color: var(--color-text-inverse);
+}
+
+/* Success Button */
+.btn-success {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-success);
+}
+
+.btn-success:hover {
+  background-color: var(--color-success-hover);
+  border-color: var(--color-success-hover);
+}
+
+/* Outline Success Button */
+.btn-outline-success {
+  background-color: transparent;
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: var(--color-danger);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-danger);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-danger-hover);
+  border-color: var(--color-danger-hover);
+}
+
+/* Outline Danger Button */
 .btn-outline-danger {
   background-color: transparent;
-  border: 1px solid var(--color-danger);
+  border: 2px solid var(--color-danger);
   color: var(--color-danger);
 }
 
 .btn-outline-danger:hover {
-  background-color: rgba(220, 53, 69, 0.1);
+  background-color: var(--color-danger);
+  color: var(--color-text-inverse);
 }
 
+/* Warning Button */
+.btn-warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-dark);
+  border: 1px solid var(--color-warning);
+}
+
+.btn-warning:hover {
+  background-color: var(--color-warning-hover);
+  border-color: var(--color-warning-hover);
+}
+
+/* Outline Warning Button */
+.btn-outline-warning {
+  background-color: transparent;
+  border: 2px solid var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.btn-outline-warning:hover {
+  background-color: var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+/* Info Button */
+.btn-info {
+  background-color: var(--color-info);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-info);
+}
+
+.btn-info:hover {
+  background-color: var(--color-info-hover);
+  border-color: var(--color-info-hover);
+}
+
+/* Outline Info Button */
+.btn-outline-info {
+  background-color: transparent;
+  border: 2px solid var(--color-info);
+  color: var(--color-info);
+}
+
+.btn-outline-info:hover {
+  background-color: var(--color-info);
+  color: var(--color-text-inverse);
+}
+
+/* Link Button */
+.btn-link {
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0;
+}
+
+.btn-link:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: calc(var(--btn-padding-y) * 0.75) calc(var(--btn-padding-x) * 0.75);
+  font-size: var(--font-size-sm);
+}
+
+.btn-lg {
+  padding: calc(var(--btn-padding-y) * 1.25) calc(var(--btn-padding-x) * 1.25);
+  font-size: var(--font-size-lg);
+}
+
+/* Badge Styles */
 .badge {
   display: inline-block;
   padding: 0.25em 0.5em;
@@ -226,28 +355,31 @@ a {
   border-radius: 0.375rem;
   background-color: var(--color-light);
   color: var(--color-gray);
-=======
-  background-color: var(--color-primary-light);
-  transform: translateY(-1px);
 }
 
-.btn-success {
+.badge-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.badge-success {
   background-color: var(--color-success);
   color: var(--color-text-inverse);
-  box-shadow: 0 2px 4px rgba(25, 135, 84, 0.25);
 }
 
-.btn-success:hover {
-  background-color: var(--color-success-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(25, 135, 84, 0.35);
+.badge-warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-dark);
 }
 
-/* Focus States for Accessibility */
-.btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
->>>>>>> 3b4cfb3dadaa2bbce0ecf9d9288ff53ea56773ae
+.badge-danger {
+  background-color: var(--color-danger);
+  color: var(--color-text-inverse);
+}
+
+.badge-info {
+  background-color: var(--color-info);
+  color: var(--color-text-inverse);
 }
 
 /* Select Styles */
