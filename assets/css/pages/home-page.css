@@ -231,11 +231,10 @@
 /* Section Header Styles */
 .section-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-8);
   flex-direction: column;
-  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--spacing-8);
   gap: var(--spacing-4);
 }
 
@@ -245,7 +244,6 @@
   color: var(--color-text-primary);
   font-weight: 700;
   position: relative;
-  flex: 1;
 }
 
 .section-header h2::after {
@@ -254,12 +252,44 @@
   width: 60px;
   height: 4px;
   background: var(--color-primary);
-  margin: var(--spacing-4) 0 0 0;
+  margin: var(--spacing-4) auto 0;
+  border-radius: 2px;
+}
+
+/* Đảm bảo tất cả các section-header h2 có cùng kích thước */
+.feature-jobs .section-header h2,
+.job-categories-industry .section-header h2,
+.benifits .section-header h2,
+.latest-jobs .section-header h2 {
+  font-size: var(--font-size-3xl);
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.feature-jobs .section-header h2::after,
+.job-categories-industry .section-header h2::after,
+.benifits .section-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  margin: var(--spacing-4) auto 0;
+  border-radius: 2px;
+}
+
+.latest-jobs .section-header h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-success);
+  margin: var(--spacing-4) auto 0;
   border-radius: 2px;
 }
 
 .section-footer {
-  padding: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,93 +338,15 @@
   line-height: var(--line-height-normal);
 }
 
-/* Responsive cho section header */
-@media (max-width: 768px) {
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-  
-  .section-header h2 {
-    width: 100%;
-  }
-  
-  .section-header h2::after {
-    margin-left: 0;
-  }
-  
-  .view-all-link {
-    align-self: flex-end;
-    margin-top: var(--spacing-4);
-  }
-  
-  .section-header.no-view-all {
-    text-align: left;
-  }
-  
-  .section-header.no-view-all h2::after {
-    margin-left: 0;
-  }
-  
-  .section-header.no-view-all p {
-    text-align: left;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-header {
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .section-header h2 {
-    font-size: var(--font-size-2xl);
-  }
-}
-
 /* Feature Jobs Section */
-.feature-jobs h2 {
-  text-align: center;
-  margin-bottom: var(--spacing-8);
-  font-size: var(--font-size-3xl);
-  color: var(--color-text-primary);
-  font-weight: 700;
-  position: relative;
-}
-
-.feature-jobs h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--color-primary);
-  margin: var(--spacing-4) auto 0;
-  border-radius: 2px;
+.feature-jobs {
+  padding: var(--spacing-12) 0;
 }
 
 /* Job Categories Industry */
 .job-categories-industry {
   background: var(--color-bg-primary);
   padding: var(--spacing-12) 0;
-}
-
-.job-categories-industry h2 {
-  text-align: center;
-  margin-bottom: var(--spacing-4);
-  font-size: var(--font-size-3xl);
-  color: var(--color-text-primary);
-  font-weight: 700;
-  position: relative;
-}
-
-.job-categories-industry h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--color-primary);
-  margin: var(--spacing-4) auto 0;
-  border-radius: 2px;
 }
 
 .industry-grid {
@@ -452,47 +404,11 @@
   margin-top: var(--spacing-3);
 }
 
-
-.latest-jobs .section-header h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--color-success); /* Giữ màu xanh lá đặc trưng */
-  margin: var(--spacing-4) auto 0;
-  border-radius: 2px;
-}
-
 /* Benefits */
 .benifits {
   background: linear-gradient(135deg, #e9f7fe 0%, #d1ecf1 100%);
   text-align: center;
   padding: var(--spacing-16) 0;
-}
-
-.benifits h2 {
-  font-size: var(--font-size-3xl);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-4);
-  font-weight: 700;
-}
-
-.benifits h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--color-primary);
-  margin: var(--spacing-4) auto 0;
-  border-radius: 2px;
-}
-
-.benifits p {
-  font-size: var(--font-size-lg);
-  color: var(--color-gray);
-  max-width: 700px;
-  margin: 0 auto var(--spacing-8);
-  line-height: var(--line-height-normal);
 }
 
 .benefits-grid {
@@ -574,4 +490,60 @@
 .cta .btn-warning:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}
+
+/* Responsive cho section header - giữ nguyên căn giữa */
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .section-header h2 {
+    width: 100%;
+  }
+  
+  .section-header h2::after {
+    margin: var(--spacing-4) auto 0;
+  }
+  
+  .view-all-link {
+    align-self: center;
+    margin-top: var(--spacing-4);
+  }
+  
+  .section-header.no-view-all {
+    text-align: center;
+  }
+  
+  .section-header.no-view-all h2::after {
+    margin: var(--spacing-4) auto 0;
+  }
+  
+  .section-header.no-view-all p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-header {
+    margin-bottom: var(--spacing-6);
+  }
+  
+  .section-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  /* Responsive cho tất cả các section headers */
+  .feature-jobs .section-header h2,
+  .job-categories-industry .section-header h2,
+  .benifits .section-header h2,
+  .latest-jobs .section-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .cta h2 {
+    font-size: var(--font-size-3xl);
+  }
 }
