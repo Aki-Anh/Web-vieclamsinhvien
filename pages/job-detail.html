@@ -2,240 +2,405 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chi tiết công việc part-time tại Cần Thơ - Nhân viên phục vụ bàn">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nền tảng kết nối việc làm tại Cần Thơ dành cho sinh viên và nhà tuyển dụng">
 
-    <title>Nhân viên phục vụ bàn - Nhà hàng ABC Cần Thơ | CTJobs</title>
+  <title>CTJobs - Việc làm thêm tại Cần Thơ</title>
 
-    <link rel="stylesheet" href="../assets/css/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/pages/job-detail.css">
-    <link rel="stylesheet" href="../assets/css/components/toast.css">
-    <link rel="stylesheet" href="../assets/css/components/modal.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
+
+
+  <link rel="stylesheet" href="../assets/css/normalize.min.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="../assets/css/loading.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages/job-detail.css">
+
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script>
+    // Hiển thị loading ngay khi script chạy
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof $ !== 'undefined') {
+        $('#loadingScreen').addClass('show');
+      }
+    });
+  </script>
+
 </head>
+
 
 <body class="job-detail-page">
 
-    <!-- Header -->
-    <header class="site-header">
-        <!-- TOPBAR -->
-        <div class="header__topbar">
-            <div class="container navbar-container">
-                <div class="topbar-info">
-                    <p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
-                </div>
-                <div class="topbar-actions">
-                    <i class="bi bi-envelope"></i>
-                    <a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
-                    <a href="#" class="btn btn-success">Đăng tuyển ngay</a>
-                </div>
-            </div>
+  <!-- Header -->
+	<header class="site-header">
+		<!-- TOPBAR -->
+		<div class="header__topbar">
+			<div class="container navbar-container">
+				<div class="topbar-info">
+					<p>Bạn là nhà tuyển dụng đang tìm ứng viên?</p>
+				</div>
+				<div class="topbar-actions">
+					<div>
+						<i class="bi bi-envelope"></i>
+						<a href="mailto:support@ctjobs.vn" class="topbar-link">support@ctjobs.vn</a>
+					</div>
+					<a href="#" class="btn btn-warning">Đăng tuyển ngay</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- NAVBAR -->
+		<div class="header__navbar">
+			<div class="container navbar-container">
+				<div class="navbar-logo">
+					<a href="../index.html">CTJobs</a>
+				</div>
+
+				<div class="navbar-nav-wrapper">
+					<nav class="navbar-nav">
+						<ul class="nav-list">
+							<li><a href="../index.html">Trang Chủ</a></li>
+							<li><a href="./jobs.html">Việc Làm</a></li>
+							<li><a href="./saved-jobs.html">Đã Lưu</a></li>
+							<li><a href="./about.html">Giới Thiệu</a></li>
+							<li><a href="./contact.html">Liên Hệ</a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<button class="menu-toggle" aria-label="Mở menu">
+					<i class="bi bi-list"></i>
+				</button>
+
+				<div class="navbar-auth">
+					<!-- Chưa đăng nhập -->
+					<template id="guestTemplate">
+						<button class="btn btn-outline-primary login-trigger">
+							<i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+						</button>
+						<a href="./pages/register.html" class="btn btn-primary">
+							<i class="bi bi-person-plus"></i> Đăng Ký
+						</a>
+					</template>
+					<!-- Trong phần navbar-auth, cập nhật template cho người dùng -->
+					<template id="userTemplate">
+
+						<div class="user-dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
+								<img src="" alt="Avatar" class="user-avatar">
+								<div class="user-info">
+									<span class="user-name"></span>
+									<span class="user-email"></span>
+								</div>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="userDropdown">
+								<a class="dropdown-item dropdown-item-link" href="./profile.html">
+									<i class="bi bi-person"></i> Hồ sơ
+								</a>
+								<div class="dropdown-divider"></div>
+								<button class="dropdown-item btn btn-danger" id="logoutBtn">
+									<i class="bi bi-box-arrow-right"></i> Đăng xuất
+								</button>
+							</div>
+						</div>
+					</template>
+
+					<!-- Template cho nhà tuyển dụng -->
+					<template id="employerTemplate">
+						<div class="user-dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" id="employerDropdown">
+								<img src="" alt="Avatar" class="user-avatar">
+								<div class="user-info">
+									<span class="user-name"></span>
+									<span class="user-email"></span>
+								</div>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="employerDropdown">
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-house-door"></i> Bảng điều khiển
+								</a>
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-briefcase"></i> Quản lý việc làm
+								</a>
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-people"></i> Quản lý ứng viên
+								</a>
+								<div class="dropdown-divider"></div>
+								<button class="dropdown-item btn btn-danger" id="logoutBtn">
+									<i class="bi bi-box-arrow-right"></i> Đăng xuất
+								</button>
+							</div>
+						</div>
+					</template>
+
+					<!-- Placeholder sẽ được JS thay thế -->
+					<div id="authContainer"></div>
+				</div>
+			</div>
+		</div>
+
+
+		</div>
+		</div>
+		<!-- Login Panel Component -->
+		<div class="login-overlay"></div>
+		<div class="login-panel" id="loginPanel">
+			<div class="login-panel-header">
+				<button class="login-close" aria-label="Đóng cửa sổ">
+					<i class="bi bi-x"></i>
+				</button>
+				<h3>Đăng nhập</h3>
+				<p>Chào mừng bạn quay trở lại</p>
+			</div>
+			<div class="login-panel-content">
+				<form class="login-form" id="loginForm">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" placeholder="Nhập email của bạn" required>
+					</div>
+					<div class="form-group password-group">
+						<label for="loginPassword">Mật khẩu</label>
+						<div class="password-field">
+							<input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+							<button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+								<i class="bi bi-eye"></i>
+							</button>
+						</div>
+					</div>
+					<button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+				</form>
+				<div class="login-extra">
+					<a href="#" class="forgot-password">Quên mật khẩu?</a>
+					<p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- OffCanvas Menu -->
+		<div class="offcanvas-overlay"></div>
+		<div class="offcanvas-menu" id="offcanvasMenu">
+			<!-- Offcanvas Header -->
+			<div class="offcanvas-header">
+				<button class="offcanvas-close" aria-label="Đóng menu">
+					<i class="bi bi-x"></i>
+				</button>
+			</div>
+
+			<!-- Offcanvas Body -->
+			<div class="offcanvas-body">
+				<!-- Navigation Container -->
+				<div class="offcanvas-navigation" id="offcanvasNavigation">
+					<ul class="offcanvas-nav">
+						<li><a href="../index.html">Trang Chủ</a></li>
+						<li><a href="./jobs.html">Việc Làm</a></li>
+						<li><a href="./saved-jobs.html">Đã Lưu</a></li>
+						<li><a href="./about.html">Giới Thiệu</a></li>
+						<li><a href="./contact.html">Liên Hệ</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Offcanvas Footer -->
+			<div class="offcanvas-footer">
+				<!-- Guest mode buttons template -->
+				<template id="offcanvasGuestButtonsTemplate">
+					<div class="offcanvas-guest-buttons">
+						<button class="btn btn-outline-primary login-trigger-mobile"
+							style="width: 100%; margin-bottom: var(--spacing-2);">
+							<i class="bi bi-box-arrow-in-right"></i>
+							<span>Đăng nhập</span>
+						</button>
+						<a href="./register.html" class="btn btn-primary" style="width: 100%;">
+							<i class="bi bi-person-plus"></i>
+							<span>Đăng ký</span>
+						</a>
+					</div>
+				</template>
+
+				<!-- Logout Button Template -->
+				<template id="offcanvasLogoutTemplate">
+					<button class="offcanvas-logout-btn btn btn-danger" id="logoutBtnMobile">
+						<i class="bi bi-box-arrow-right"></i>
+						<span>Đăng xuất</span>
+					</button>
+				</template>
+
+				<!-- Employer CTA -->
+				<a href="#" class="offcanvas-employer">
+					<p>Dành cho nhà tuyển dụng</p>
+					<button class="btn btn-warning">Đăng tuyển ngay</button>
+				</a>
+			</div>
+		</div>
+
+
+
+	</header>
+
+
+  <!-- Main Content -->
+  <main class="site-main job-detail-page">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="breadcrumb-section">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="./jobs.html">Việc làm</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Đang tải thông tin công việc...</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Job Detail Content -->
+    <div class="container">
+      <!-- Job Overview Card - Dynamic Version -->
+      <div class="job-overview-card" id="jobOverview">
+        <!-- Nội dung sẽ được load động bằng JavaScript -->
+        <div class="loading-placeholder">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Đang tải...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Details Content -->
+      <div class="job-details-content">
+        <!-- Main Content -->
+        <div class="job-details-main" id="jobMainContent">
+          <!-- Nội dung sẽ được load động bằng JavaScript -->
         </div>
 
-        <!-- NAVBAR -->
-        <div class="header__navbar">
-            <div class="container navbar-container">
-                <div class="navbar-logo">
-                    <a href="../index.html">CTJobs</a>
-                </div>
-                <button class="menu-toggle" aria-label="Mở menu">
-                    <i class="bi bi-list"></i>
-                </button>
-                <nav class="navbar-nav">
-                    <ul class="nav-list">
-                        <li><a href="../index.html">Trang Chủ</a></li>
-                        <li><a href="./jobs.html">Việc Làm</a></li>
-                        <li><a href="./saved-jobs.html">Đã Lưu</a></li>
-                        <li><a href="#">Giới Thiệu</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
-                    </ul>
-                </nav>
-                <div class="navbar-auth">
-                    <button class="btn btn-outline-primary login-trigger" aria-label="Đăng nhập">
-                        <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
-                    </button>
-                    <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i>Đăng Ký</a>
-                </div>
-            </div>
+        <!-- Sidebar -->
+        <div class="job-details-sidebar" id="jobSidebar">
+          <!-- Nội dung sẽ được load động bằng JavaScript -->
         </div>
-
-        <!-- OffCanvas Menu -->
-        <div class="offcanvas-menu" id="offcanvasMenu">
-            <button class="offcanvas-close" aria-label="Đóng menu">
-                <i class="bi bi-x"></i>
-            </button>
-
-            <!-- Navigation Container -->
-            <div class="offcanvas-navigation">
-                <ul class="offcanvas-nav">
-                    <li><a href="../index.html">Trang Chủ</a></li>
-                    <li><a href="./jobs.html">Việc Làm</a></li>
-                    <li><a href="./saved-jobs.html">Đã Lưu</a></li>
-                    <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Liên Hệ</a></li>
-                </ul>
+      </div>
+    </div>
+    <!-- Login Panel Component -->
+    <div class="login-overlay"></div>
+    <div class="login-panel" id="loginPanel">
+      <div class="login-panel-header">
+        <button class="login-close" aria-label="Đóng cửa sổ">
+          <i class="bi bi-x"></i>
+        </button>
+        <h3>Đăng nhập</h3>
+        <p>Chào mừng bạn quay trở lại</p>
+      </div>
+      <div class="login-panel-content">
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Nhập email của bạn" required>
+          </div>
+          <div class="form-group password-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <div class="password-field">
+              <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+              <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+                <i class="bi bi-eye"></i>
+              </button>
             </div>
-
-            <div class="offcanvas-auth">
-                <button class="btn btn-outline-primary login-trigger-mobile">Đăng nhập</button>
-                <a href="#" class="btn btn-primary">Đăng ký</a>
-            </div>
-
-            <!-- Employer CTA - toàn bộ div là link -->
-            <a href="#" class="offcanvas-employer">
-                <p>Dành cho nhà tuyển dụng</p>
-                <button class="btn btn-success">Đăng tuyển ngay</button>
-            </a>
+          </div>
+          <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
+        </form>
+        <div class="login-extra">
+          <a href="#" class="forgot-password">Quên mật khẩu?</a>
+          <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
         </div>
-        <div class="offcanvas-overlay"></div>
+      </div>
+    </div>
 
-    </header>
+  </main>
 
-    <!-- Main Content -->
-    <main class="site-main job-detail-page">
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="breadcrumb-section">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="./jobs.html">Việc làm</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Đang tải thông tin công việc...</li>
-                </ol>
-            </div>
-        </nav>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <!-- Footer giống như các trang khác -->
+    <div class="container footer-content">
+      <section class="about">
+        <h4>CTJobs</h4>
+        <p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
+        </p>
+      </section>
+      <section class="student">
+        <h5>Dành cho sinh viên</h5>
+        <ul>
+          <li><a href="./jobs.html">Tìm Việc</a></li>
+          <li><a href="./saved-jobs.html">Việc Làm Đã Lưu</a></li>
+          <li><a href="#">Tạo Hồ Sơ</a></li>
+        </ul>
+      </section>
+      <section class="employers">
+        <h5>Nhà tuyển dụng</h5>
+        <ul>
+          <li><a href="#">Đăng Tin</a></li>
+          <li><a href="#">Quản Lý Công Việc</a></li>
+          <li><a href="#">Tìm Ứng Viên</a></li>
+        </ul>
+      </section>
+      <section class="contact">
+        <h5>Liên Hệ</h5>
+        <ul>
+          <li>
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
+          </li>
+          <li>
+            <i class="bi bi-telephone"></i>
+            <a href="tel:0900000000">0900 000 000</a>
+          </li>
+          <li>
+            <i class="bi bi-geo-alt"></i>
+            <a href="#">Ninh Kiều, Cần Thơ</a>
+          </li>
+        </ul>
+      </section>
+      <section class="social">
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+      </section>
+    </div>
+    <div class="footer-bottombar">
+      <div>© 2026 CTJobs</div>
+      <div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
+    </div>
+  </footer>
 
-        <!-- Job Detail Content -->
-        <div class="container">
-            <!-- Job Overview Card - Dynamic Version -->
-            <div class="job-overview-card" id="jobOverview">
-                <!-- Nội dung sẽ được load động bằng JavaScript -->
-                <div class="loading-placeholder">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Đang tải...</span>
-                    </div>
-                </div>
-            </div>
+  <!-- Scripts -->
 
-            <!-- Job Details Content -->
-            <div class="job-details-content">
-                <!-- Main Content -->
-                <div class="job-details-main" id="jobMainContent">
-                    <!-- Nội dung sẽ được load động bằng JavaScript -->
-                </div>
+	<script src="../assets/js/loading.js"></script>
 
-                <!-- Sidebar -->
-                <div class="job-details-sidebar" id="jobSidebar">
-                    <!-- Nội dung sẽ được load động bằng JavaScript -->
-                </div>
-            </div>
-        </div>
-        <!-- Login Panel Component -->
-        <div class="login-overlay"></div>
-        <div class="login-panel" id="loginPanel">
-            <div class="login-panel-header">
-                <button class="login-close" aria-label="Đóng cửa sổ">
-                    <i class="bi bi-x"></i>
-                </button>
-                <h3>Đăng nhập</h3>
-                <p>Chào mừng bạn quay trở lại</p>
-            </div>
-            <div class="login-panel-content">
-                <form class="login-form" id="loginForm">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Nhập email của bạn" required>
-                    </div>
-                    <div class="form-group password-group">
-                        <label for="loginPassword">Mật khẩu</label>
-                        <div class="password-field">
-                            <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
-                            <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary login-submit" type="submit">Đăng nhập</button>
-                </form>
-                <div class="login-extra">
-                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
-                    <p class="register-link">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
-                </div>
-            </div>
-        </div>
+  <script src="../assets/js/data/jobData.js"></script>
+  <script src="../assets/js/modules/jobCardBuilder.js"></script>
+  <script src="../assets/js/modules/jobDetailRenderer.js"></script>
+  <script src="../assets/js/modules/loginPanel.js"></script>
+  <script src="../assets/js/modules/offcanvas.js"></script>
+  <script src="../assets/js/modules/modal.js"></script>
+  <script src="../assets/js/modules/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
 
-    </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <!-- Footer giống như các trang khác -->
-        <div class="container footer-content">
-            <section class="about">
-                <h4>CTJobs</h4>
-                <p>Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time linh&nbsp;hoạt, phù hợp lịch&nbsp;học.
-                </p>
-            </section>
-            <section class="student">
-                <h5>Dành cho sinh viên</h5>
-                <ul>
-                    <li><a href="./jobs.html">Tìm Việc</a></li>
-                    <li><a href="./saved-jobs.html">Việc Làm Đã Lưu</a></li>
-                    <li><a href="#">Tạo Hồ Sơ</a></li>
-                </ul>
-            </section>
-            <section class="employers">
-                <h5>Nhà tuyển dụng</h5>
-                <ul>
-                    <li><a href="#">Đăng Tin</a></li>
-                    <li><a href="#">Quản Lý Công Việc</a></li>
-                    <li><a href="#">Tìm Ứng Viên</a></li>
-                </ul>
-            </section>
-            <section class="contact">
-                <h5>Liên Hệ</h5>
-                <ul>
-                    <li>
-                        <i class="bi bi-envelope"></i>
-                        <a href="mailto:support@ctjobs.vn">support@ctjobs.vn</a>
-                    </li>
-                    <li>
-                        <i class="bi bi-telephone"></i>
-                        <a href="tel:0900000000">0900 000 000</a>
-                    </li>
-                    <li>
-                        <i class="bi bi-geo-alt"></i>
-                        <a href="#">Ninh Kiều, Cần Thơ</a>
-                    </li>
-                </ul>
-            </section>
-            <section class="social">
-                <a href="#" class="social-icon" aria-label="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-            </section>
-        </div>
-        <div class="footer-bottombar">
-            <div>© 2026 CTJobs</div>
-            <div>Kết nối việc làm thêm cho sinh viên Cần Thơ</div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="../assets/js/data/jobData.js"></script>
-    <script src="../assets/js/modules/jobDetailRenderer.js"></script>
-    <script src="../assets/js/modules/loginPanel.js"></script>
-    <script src="../assets/js/modules/offcanvas.js"></script>
-    <script src="../assets/js/modules/modal.js"></script>
-    <script src="../assets/js/modules/toast.js"></script>
-    <script src="../assets/js/main.js"></script>
+  <!-- Loading Screen Overlay -->
+  <div class="loading-overlay" id="loadingScreen">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <div class="loading-text">Đang tải<span class="loading-dots"><span>.</span><span>.</span><span>.</span></div>
+    </div>
+  </div>
 </body>
 
 </html>

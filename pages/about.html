@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Danh sách việc làm part-time tại Cần Thơ dành cho sinh viên">
-	<title>Việc Làm - CTJobs</title>
+	<meta name="description" content="Tìm hiểu về CTJobs - Nền tảng việc làm part-time tại Cần Thơ, kết nối sinh viên với các cơ hội việc làm linh hoạt và uy tín.">
 
-	<!-- CSS Framework -->
+	<title>CTJobs - Việc làm thêm tại Cần Thơ</title>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="../assets/favicon_io/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+	<link rel="manifest" href="../assets/favicon_io/site.webmanifest">
+
+
 	<link rel="stylesheet" href="../assets/css/normalize.min.css">
 	<link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+
+	<link rel="stylesheet" href="../assets/css/loading.css">
 	<link rel="stylesheet" href="../assets/css/base.css">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<link rel="stylesheet" href="../assets/css/pages/about.css">
+
+	<script src="../assets/js/jquery-3.6.0.min.js"></script>
+	<script>
+		// Hiển thị loading ngay khi script chạy
+		document.addEventListener('DOMContentLoaded', function () {
+			if (typeof $ !== 'undefined') {
+				$('#loadingScreen').addClass('show');
+			}
+		});
+	</script>
+
 </head>
 
 <body class="about-page">
@@ -297,6 +317,7 @@
 		</div>
 	</footer>
 
+	<script src="../assets/js/loading.js"></script>
 
 	<script src="../assets/js/data/jobData.js"></script>
 	<script src="../assets/js/modules/jobCardBuilder.js"></script>
@@ -309,6 +330,13 @@
 	<script src="../assets/js/main.js"></script>
 
 
+	<!-- Loading Screen Overlay -->
+	<div class="loading-overlay" id="loadingScreen">
+		<div class="loading-spinner">
+			<div class="spinner"></div>
+			<div class="loading-text">Đang tải<span class="loading-dots"><span>.</span><span>.</span><span>.</span></div>
+		</div>
+	</div>
 
 </body>
 

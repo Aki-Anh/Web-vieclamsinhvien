@@ -8,11 +8,32 @@
 
 	<title>CTJobs - Việc làm thêm tại Cần Thơ</title>
 
-	<link rel="stylesheet" href="assets/css/normalize.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap-icons.css">
-	<link rel="stylesheet" href="assets/css/base.css">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/pages/home-page.css">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="./assets/favicon_io/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
+	<link rel="manifest" href="./assets/favicon_io/site.webmanifest">
+
+
+	<link rel="stylesheet" href="./assets/css/normalize.min.css">
+	<link rel="stylesheet" href="./assets/css/bootstrap-icons.css">
+
+	<link rel="stylesheet" href="./assets/css/loading.css">
+	<link rel="stylesheet" href="./assets/css/base.css">
+	<link rel="stylesheet" href="./assets/css/main.css">
+	<link rel="stylesheet" href="./assets/css/pages/home-page.css">
+
+	<script src="./assets/js/jquery-3.6.0.min.js"></script>
+	<script>
+		// Hiển thị loading ngay khi script chạy
+		document.addEventListener('DOMContentLoaded', function () {
+			if (typeof $ !== 'undefined') {
+				$('#loadingScreen').addClass('show');
+			}
+		});
+	</script>
+
 </head>
 
 <body class="home-page">
@@ -39,7 +60,7 @@
 		<div class="header__navbar">
 			<div class="container navbar-container">
 				<div class="navbar-logo">
-					<a href="#">CTJobs</a>
+					<a href="./index.html">CTJobs</a>
 				</div>
 
 				<div class="navbar-nav-wrapper">
@@ -68,56 +89,56 @@
 							<i class="bi bi-person-plus"></i> Đăng Ký
 						</a>
 					</template>
-<!-- Trong phần navbar-auth, cập nhật template cho người dùng -->
-<template id="userTemplate">
-		
-  <div class="user-dropdown">
-    <button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
-      <img src="" alt="Avatar" class="user-avatar">
-      <div class="user-info">
-        <span class="user-name"></span>
-        <span class="user-email"></span>
-      </div>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="userDropdown">
-      <a class="dropdown-item dropdown-item-link" href="./profile.html">
-        <i class="bi bi-person"></i> Hồ sơ
-      </a>
-      <div class="dropdown-divider"></div>
-      <button class="dropdown-item btn btn-danger" id="logoutBtn">
-        <i class="bi bi-box-arrow-right"></i> Đăng xuất
-      </button>
-    </div>
-  </div>
-</template>
+					<!-- Trong phần navbar-auth, cập nhật template cho người dùng -->
+					<template id="userTemplate">
 
-<!-- Template cho nhà tuyển dụng -->
-<template id="employerTemplate">
-  <div class="user-dropdown">
-    <button class="btn btn-link dropdown-toggle" type="button" id="employerDropdown">
-      <img src="" alt="Avatar" class="user-avatar">
-      <div class="user-info">
-        <span class="user-name"></span>
-        <span class="user-email"></span>
-      </div>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="employerDropdown">
-      <a class="dropdown-item dropdown-item-link" href="#">
-        <i class="bi bi-house-door"></i> Bảng điều khiển
-      </a>
-      <a class="dropdown-item dropdown-item-link" href="#">
-        <i class="bi bi-briefcase"></i> Quản lý việc làm
-      </a>
-      <a class="dropdown-item dropdown-item-link" href="#">
-        <i class="bi bi-people"></i> Quản lý ứng viên
-      </a>
-      <div class="dropdown-divider"></div>
-      <button class="dropdown-item btn btn-danger" id="logoutBtn">
-        <i class="bi bi-box-arrow-right"></i> Đăng xuất
-      </button>
-    </div>
-  </div>
-</template>
+						<div class="user-dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" id="userDropdown">
+								<img src="" alt="Avatar" class="user-avatar">
+								<div class="user-info">
+									<span class="user-name"></span>
+									<span class="user-email"></span>
+								</div>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="userDropdown">
+								<a class="dropdown-item dropdown-item-link" href="./profile.html">
+									<i class="bi bi-person"></i> Hồ sơ
+								</a>
+								<div class="dropdown-divider"></div>
+								<button class="dropdown-item btn btn-danger" id="logoutBtn">
+									<i class="bi bi-box-arrow-right"></i> Đăng xuất
+								</button>
+							</div>
+						</div>
+					</template>
+
+					<!-- Template cho nhà tuyển dụng -->
+					<template id="employerTemplate">
+						<div class="user-dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" id="employerDropdown">
+								<img src="" alt="Avatar" class="user-avatar">
+								<div class="user-info">
+									<span class="user-name"></span>
+									<span class="user-email"></span>
+								</div>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="employerDropdown">
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-house-door"></i> Bảng điều khiển
+								</a>
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-briefcase"></i> Quản lý việc làm
+								</a>
+								<a class="dropdown-item dropdown-item-link" href="#">
+									<i class="bi bi-people"></i> Quản lý ứng viên
+								</a>
+								<div class="dropdown-divider"></div>
+								<button class="dropdown-item btn btn-danger" id="logoutBtn">
+									<i class="bi bi-box-arrow-right"></i> Đăng xuất
+								</button>
+							</div>
+						</div>
+					</template>
 
 					<!-- Placeholder sẽ được JS thay thế -->
 					<div id="authContainer"></div>
@@ -519,6 +540,7 @@
 		</div>
 	</footer>
 
+	<script src="./assets/js/loading.js"></script>
 
 	<script src="./assets/js/data/jobData.js"></script>
 	<script src="./assets/js/modules/jobCardBuilder.js"></script>
@@ -529,6 +551,13 @@
 	<script src="./assets/js/modules/toast.js"></script>
 	<script src="./assets/js/main.js"></script>
 
+	<!-- Loading Screen Overlay -->
+	<div class="loading-overlay" id="loadingScreen">
+		<div class="loading-spinner">
+			<div class="spinner"></div>
+			<div class="loading-text">Đang tải<span class="loading-dots"><span>.</span><span>.</span><span>.</span></div>
+		</div>
+	</div>
 
 </body>
 
