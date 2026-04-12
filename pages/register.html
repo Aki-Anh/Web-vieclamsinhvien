@@ -3,123 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nền tảng kết nối việc làm tại Cần Thơ dành cho người tìm việc và nhà tuyển dụng.">
-    <title>Việc làm ở Cần Thơ</title>
-    <!-- <link rel="stylesheet" href="assets/images/favicon.ico"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/base.css"> -->
+    <title>Đăng ký - CTJobs</title>
+    <link rel="stylesheet" href="../assets/css/normalize.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
-    <!-- Trang cho phép người dùng tạo tài khoản mới
-    Thu thập thông tin cơ bản và vai trò người dùng.
-    Dữ liệu được lưu cục bộ -->
-    
-<div class="layout">
-    <header class="header">
-
-        <div class="header__container">
-        <a class="header__logo" href="../index.html">
-            <!-- <img src="assets/images/none_img.png" alt="" class="header__navbar-item-logo"> -->
-            <h1>CTJobs</h1>
-        </a>
-
-        <nav id="primary-navigation" class="header__nav" aria-label="Menu chính">
-            <!-- Navigation chính (responsive, sẽ xử lý bằng CSS/JS) -->
-            <ul class="header__menu">
-                <li><a class="header__nav-link" href="../index.html">Trang chủ</a></li>
-                <li><a class="header__nav-link" href="./jobs.html">Danh sách việc làm</a></li>
-                <li><a class="header__nav-link" href="./saved-jobs.html">Việc làm đã lưu</a></li>
-                <li><a class="header__nav-link" href="./about.html">Về chúng tôi</a></li>
-                <li><a class="header__nav-link" href="./contact.html">Liên hệ</a></li>
-            </ul>
-        </nav>
-            <!-- Khu vực xác thực: hiển thị login/register hoặc user menu -->
-            <div class="header__actions">
-                <div class="header__auth">
-                    <a href="./login.html">Đăng nhập</a>
-                    <a href="./register.html">Đăng ký</a>
-                </div>
-                <div class="header__employer">
-                    <a href="./login.html">Dành cho nhà tuyển dụng</a>
+    <div class="container" style="max-width: 500px; margin: 50px auto; padding: 20px;">
+        <h2>Đăng ký tài khoản</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="regName">Họ tên</label>
+                <input type="text" id="regName" class="form-control" required>
+            </div>
+            <div class="form-group password-group">
+                <label for="regPassword">Mật khẩu</label>
+                <div class="password-field">
+                    <input type="password" id="regPassword" class="form-control" required>
+                    <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+                        <i class="bi bi-eye"></i>
+                    </button>
                 </div>
             </div>
+            <div class="form-group password-group">
+                <label for="regConfirmPassword">Xác nhận mật khẩu</label>
+                <div class="password-field">
+                    <input type="password" id="regConfirmPassword" class="form-control" required>
+                    <button type="button" class="toggle-password" aria-label="Hiện/ẩn mật khẩu">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
+        </form>
+        <p class="mt-3">Đã có tài khoản? <a href="../index.html">Đăng nhập ngay</a></p>
+    </div>
 
-            <button class="header__toggle">☰</button>
-
-        </div>
-
-    </header>
-
-    
-    <!-- Phần nội dung chính -->
-    <main class="container">
-
+    <script src="../assets/js/modules/toast.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('regEmail').value;
+            const name = document.getElementById('regName').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                Toast.error('Mật khẩu xác nhận không khớp!');
+                return;
+            }
+            
+            // Lưu thông tin đăng ký (demo)
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userInfo', JSON.stringify({
+                email: email,
+                name: name
+            }));
+            
+            Toast.success('Đăng ký thành công! Bạn sẽ được chuyển đến trang chủ.');
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 2000);
+        });
         
-
-    </main>
-
-
-    <footer class="site-footer">
-    
-        <div class="footer-container">
-    
-            <!-- Giới thiệu -->
-            <section class="footer-column footer-about">
-                <h2 class="footer-title">CTJobs</h2>
-                <p>
-                    Nền tảng kết nối sinh viên Cần Thơ với các công việc part-time
-                    linh hoạt, phù hợp lịch học.
-                </p>
-            </section>
-
-            <!-- Cho sinh viên -->
-            <nav class="footer-column" aria-labelledby="footer-student">
-                <h3 id="footer-student" class="footer-title">
-                    Dành cho sinh viên
-                </h3>
-    
-                <ul class="footer-links">
-                    <li><a href="pages/jobs.html">Tìm việc làm thêm</a></li>
-                    <li><a href="#">Việc làm gần trường</a></li>
-                    <li><a href="#">Việc theo ca</a></li>
-                    <li><a href="#">Hướng dẫn ứng tuyển</a></li>
-                </ul>
-            </nav>
-
-            <!-- Cho nhà tuyển dụng -->
-            <nav class="footer-column" aria-labelledby="footer-employer">
-                <h3 id="footer-employer" class="footer-title">
-                    Dành cho nhà tuyển dụng
-                </h3>
-    
-                <ul class="footer-links">
-                    <li><a href="pages/post-job.html">Đăng tin tuyển dụng</a></li>
-                    <li><a href="#">Quy định đăng tin</a></li>
-                    <li><a href="#">Chính sách duyệt bài</a></li>
-                </ul>
-            </nav>
-    
-            <!-- Liên hệ -->
-            <section class="footer-column footer-contact">
-                <h3 class="footer-title">Liên hệ</h3>
-                <ul>
-                    <li>Email: support@ctjobs.vn</li>
-                    <li>Điện thoại: 0900 000 000</li>
-                    <li>Địa chỉ: Ninh Kiều, Cần Thơ</li>
-                </ul>
-            </section>
-    
-        </div>
-    
-        <!-- Bottom bar -->
-        <div class="footer-bottom">
-            <p>
-                © 2026 CTJobs. Kết nối việc làm thêm cho sinh viên Cần Thơ.
-            </p>
-        </div>
-    
-    </footer>
-</div>
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const passwordField = this.closest('.password-field').querySelector('input');
+                const icon = this.querySelector('i');
+                
+                if (passwordField && icon) {
+                    passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+                    icon.classList.toggle('bi-eye');
+                    icon.classList.toggle('bi-eye-slash');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
