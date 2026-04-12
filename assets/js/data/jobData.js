@@ -9,7 +9,7 @@ const JobData = {
             "salary": "18.000 - 22.000 VNĐ/giờ",
             "location": "Ninh Kiều, Cần Thơ",
             "category": "Phục vụ",
-            "logo": "https://placehold.co/60x60",
+            "logo": "../../assets/images/placeholders/company-logo.svg",
             "postedDate": "15/06/2024",
             "deadline": "30/06/2024",
             "daysLeft": 15,
@@ -48,7 +48,7 @@ const JobData = {
                 "shifts": "Sáng/Ca/Tối",
                 "quantity": "3 người"
             },
-            "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.892345780755!2d105.765432!3d10.029934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAxJzQ3LjgiTiAxMDVCsDQ1JzU1LjYiRQ!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+            "mapEmbed": "../../assets/images/placeholders/map-placeholder.svg",
         },
         {
             "id": 2,
